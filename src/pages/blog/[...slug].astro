@@ -1,20 +1,108 @@
 ---
-import { type CollectionEntry, getCollection } from 'astro:content';
+import { getList, getDetail } from '../../library/microcms';
+import { formatRichText } from '../../library/utils';
 import BlogPost from '../../layouts/BlogPost.astro';
+import LinkButton from '../../components/LinkButton.astro';
+
+import styles from './blog.module.css';
 
 export async function getStaticPaths() {
-	const posts = await getCollection('blog');
-	return posts.map((post) => ({
-		params: { slug: post.slug },
-		props: post,
-	}));
+  const posts = await getList();
+  return posts.contents.map(post => ({
+    params: { slug: post.id },
+    props: post,
+  }));
 }
-type Props = CollectionEntry<'blog'>;
 
-const post = Astro.props;
-const { Content } = await post.render();
+const { slug } = Astro.params;
+const blog = await getDetail(slug as string);
 ---
 
-<BlogPost {...post.data}>
-	<Content />
+<BlogPost {...blog}>
+  <h1 class={styles.title}>{blog.title}</h1>
+  <!-- <TagList tags={blog.tags} /> -->
+  <p class={styles.description}>{blog.description}</p>
+  <div class={styles.meta}>
+    {
+      blog.writer && (
+        <div class={styles.writer}>
+          <picture>
+            <source
+              type="image/webp"
+              src-set={`${blog.writer?.image?.url}?fm=webp&fit=crop&w=48&h=48 1x, ${blog.writer?.image?.url}?fm=webp&fit=crop&w=48&h=48&dpr=2 2x`}
+            />
+            <img
+              src={blog.writer?.image?.url}
+              alt=""
+              class={styles.writerIcon}
+              width={blog.writer?.image?.width}
+              height={blog.writer?.image?.height}
+              decoding="async"
+            />
+          </picture>
+          <span class={styles.writerName}>{blog.writer?.name}</span>
+        </div>
+      )
+    }
+    <!-- <PublishedDate date={blog.publishedAt || blog.createdAt} /> -->
+  </div>
+  <div class={styles.thumbnail}>
+    <picture>
+      <source
+        type="image/webp"
+        media="(max-width: 640px)"
+        src-set={`${blog.thumbnail?.url}?fm=webp&w=414 1x, ${blog.thumbnail?.url}?fm=webp&w=414&dpr=2 2x`}
+      />
+      <source
+        type="image/webp"
+        src-set={`${blog.thumbnail?.url}?fm=webp&fit=crop&w=1200&h=630 1x, ${blog.thumbnail?.url}?fm=webp&fit=crop&w=1200&h=630&dpr=2 2x`}
+      />
+      <img
+        src={blog.thumbnail?.url}
+        alt=""
+        class={styles.thumbnailFront}
+        width={blog.thumbnail?.width}
+        height={blog.thumbnail?.height}
+        decoding="async"
+      />
+    </picture>
+    <picture class={styles.thumbnailBlur}>
+      <source
+        type="image/webp"
+        media="(max-width: 640px)"
+        src-set={`${blog.thumbnail?.url}?fm=webp&w=41&q=10 1x, ${blog.thumbnail?.url}?fm=webp&w=41&dpr=2&q=10 2x`}
+      />
+      <source
+        type="image/webp"
+        src-set={`${blog.thumbnail?.url}?fm=webp&fit=crop&w=120&h=63&q=10 1x, ${blog.thumbnail?.url}?fm=webp&fit=crop&w=120&h=63&q=10 2x`}
+      />
+      <img
+        src={`${blog.thumbnail?.url}?q=10`}
+        alt=""
+        class={styles.thumbnail}
+        width={blog.thumbnail?.width}
+        height={blog.thumbnail?.height}
+        loading="eager"
+        decoding="async"
+      />
+    </picture>
+  </div>
+  <div class={styles.column}>
+    <div class={styles.content}>
+      <div class={styles.cms} set:html={formatRichText(blog.content)} />
+      <div class={styles.twitterShareBlock}>
+        <!-- <ShareButton articleId={blog.id} articleTitle={blog.title} /> -->
+      </div>
+    </div>
+    <!-- {blog.tocVisible && (
+      <div class={styles.toc}>
+        <div class={styles.tocContainer}>
+          <TableOfContents toc={toc} />
+        </div>
+      </div>
+    )} -->
+  </div>
+  <div class={styles.topButton}>
+    <LinkButton href="/">トップページに戻る</LinkButton>
+  </div>
 </BlogPost>

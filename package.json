@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
+    "prebuild": "prettier --write .",
     "build": "astro check && astro build",
+    "deploy": " wrangler pages deploy dist",
     "preview": "astro preview",
     "astro": "astro",
     "format": "prettier --write ."
@@ -16,11 +18,17 @@
     "@astrojs/rss": "^3.0.0",
     "@astrojs/sitemap": "^3.0.3",
     "astro": "^3.6.0",
+    "cheerio": "1.0.0-rc.12",
+    "date-fns": "^2.30.0",
+    "date-fns-tz": "^2.0.0",
+    "highlight.js": "^11.9.0",
     "microcms-js-sdk": "^2.7.0",
     "typescript": "^5.3.2"
   },
   "devDependencies": {
+    "cross-env": "^7.0.3",
     "cspell": "^8.0.0",
-    "prettier": "^3.1.0"
+    "prettier": "^3.1.0",
+    "prettier-plugin-astro": "^0.12.2"
   }
 }

@@ -22,9 +22,14 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
 <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <meta name="generator" content={Astro.generator} />
 
+<!-- Font CSS -->
+<link rel="stylesheet" href="/fonts/GenJyuuGothic-Normal/GenJyuuGothic-Normal.css" >
+<link rel="stylesheet" href="/fonts/GenJyuuGothic-Bold/GenJyuuGothic-Bold.css" >
+
 <!-- Font preloads -->
-<link rel="preload" href="/fonts/atkinson-regular.woff" as="font" type="font/woff" crossorigin />
-<link rel="preload" href="/fonts/atkinson-bold.woff" as="font" type="font/woff" crossorigin />
+<link rel="preload" href="/fonts/inter/inter-v13-latin-regular.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/fonts/inter/inter-v13-latin-500.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/fonts/inter/inter-v13-latin-700.woff2" as="font" type="font/woff2" crossorigin />
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />

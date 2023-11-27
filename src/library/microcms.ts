@@ -39,11 +39,11 @@ export type Blog = {
 
 export type Article = Blog & MicroCMSContentId & MicroCMSDate;
 
-if (!process.env.MICROCMS_SERVICE_DOMAIN) {
+if (!import.meta.env.MICROCMS_SERVICE_DOMAIN) {
   throw new Error('MICROCMS_SERVICE_DOMAIN is required');
 }
 
-if (!process.env.MICROCMS_API_KEY) {
+if (!import.meta.env.MICROCMS_API_KEY) {
   throw new Error('MICROCMS_API_KEY is required');
 }
 
@@ -52,8 +52,8 @@ if (!process.env.MICROCMS_API_KEY) {
  * @see https://github.com/microcmsio/microcms-js-sdk
  */
 export const client = createClient({
-  serviceDomain: process.env.MICROCMS_SERVICE_DOMAIN,
-  apiKey: process.env.MICROCMS_API_KEY,
+  serviceDomain: import.meta.env.MICROCMS_SERVICE_DOMAIN,
+  apiKey: import.meta.env.MICROCMS_API_KEY,
 });
 
 /**

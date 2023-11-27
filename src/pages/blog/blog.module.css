@@ -1,0 +1,425 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-size: 2.8rem;
+  margin-bottom: 24px;
+  text-align: center;
+  line-height: 1.28;
+  letter-spacing: 0;
+}
+
+.description {
+  font-size: 1rem;
+  color: var(--color-text-sub);
+  margin: 24px 40px;
+  text-align: center;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  margin-bottom: 64px;
+}
+
+.writer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 40px;
+  border-right: 1px solid var(--color-border);
+  margin-right: 40px;
+}
+
+.writerIcon {
+  display: block;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+}
+
+.writerName {
+  margin-left: 16px;
+  font-weight: bold;
+}
+
+.thumbnail {
+  position: relative;
+  width: 1200px;
+  max-width: 960px;
+  height: auto;
+}
+
+.thumbnailFront {
+  width: 1200px;
+  max-width: 960px;
+  height: auto;
+  border-radius: 2rem;
+  opacity: 0;
+  animation: fadeIn 600ms cubic-bezier(0.33, 1, 0.68, 1) forwards;
+}
+
+.thumbnailBlur {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  filter: blur(30px) saturate(180%);
+  opacity: 0;
+  animation: fadeIn 400ms 200ms cubic-bezier(0.33, 1, 0.68, 1) forwards;
+  user-select: none;
+  z-index: -1;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.column {
+  position: relative;
+  display: flex;
+  width: 100%;
+  gap: 32px;
+  margin: 3rem 0 0;
+}
+
+.toc {
+  width: 240px;
+  flex-shrink: 0;
+}
+
+.tocContainer {
+  position: sticky;
+  max-height: 100%;
+  top: 32px;
+  width: 100%;
+  overflow-y: auto;
+}
+
+.cms {
+  width: 100%;
+}
+
+.cms *:first-child {
+  margin-top: 0;
+}
+
+.cms > h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  border-bottom: 1px solid var(--color-border);
+  margin: 2.8rem 0 1rem;
+}
+
+.cms > h2 {
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin: 2.8rem 0 1rem;
+}
+
+.cms > h3 {
+  font-size: 1.4rem;
+  font-weight: bold;
+  margin: 2.8rem 0 1rem;
+}
+
+.cms > h4 {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 2.4rem 0 1rem;
+}
+
+.cms > h5 {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin: 2rem 0 1rem;
+}
+
+.cms > p {
+  margin: 1.4rem 0 0.5rem;
+  line-height: 2;
+}
+
+.cms > pre {
+  overflow-x: auto;
+}
+
+.cms pre > code {
+  background-color: var(--color-bg-code);
+  font-size: 0.9em;
+  display: block;
+  overflow-x: auto;
+  padding: 16px;
+  border-top-right-radius: var(--border-radius);
+  border-bottom-right-radius: var(--border-radius);
+  border-bottom-left-radius: var(--border-radius);
+  letter-spacing: 0.024em;
+}
+
+.cms pre > code:focus-within {
+  outline: 2px solid var(--color-primary-light);
+}
+
+.cms div[data-filename]::before {
+  display: inline-block;
+  background-color: var(--color-bg-sub);
+  content: attr(data-filename);
+  margin: 1em 0 0;
+  font-family: var(--font-inter);
+  font-size: 0.8rem;
+  font-weight: bold;
+  padding: 4px 16px;
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+}
+
+.cms ul,
+.cms ol {
+  margin: 0.5rem 0 0.5rem 2rem;
+}
+
+.cms > ul,
+.cms > ol {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.cms ul > li {
+  list-style: disc;
+}
+
+.cms ol > li {
+  list-style: decimal;
+}
+
+.cms li {
+  margin: 0.5rem 0;
+}
+
+.cms a {
+  text-decoration: underline;
+}
+
+.cms img {
+  border-radius: var(--border-radius);
+}
+
+.cms > figure > img,
+.cms > figure > a > img {
+  max-width: 100%;
+  height: auto;
+  margin: 2rem 0;
+}
+
+.cms > figure > figcaption {
+  margin-top: -2rem;
+  color: var(--color-text-sub);
+  font-size: 0.9em;
+}
+
+.cms > strong {
+  font-weight: bold;
+}
+
+.cms > blockquote {
+  border-left: 4px solid var(--color-border);
+  padding-left: 1rem;
+  font-style: italic;
+  margin: 2rem 0;
+}
+
+.cms > blockquote > figure > a > img {
+  width: 100%;
+  height: auto;
+}
+
+.cms > blockquote > figure + p {
+  margin-top: 0.4rem;
+}
+
+.cms > blockquote > figure > figcaption {
+  color: var(--color-text-sub);
+  font-size: 0.9em;
+}
+
+.cms > hr {
+  margin: 4rem 0;
+  height: 1px;
+  background-color: var(--color-border);
+  border: none;
+}
+
+.cms > table {
+  width: 100%;
+  margin: 2rem 0;
+}
+
+.cms > table th {
+  background-color: var(--color-bg-sub);
+  text-align: left;
+  padding: 1rem;
+}
+
+.cms > table td {
+  text-align: left;
+  padding: 1rem;
+}
+
+.cms iframe {
+  position: relative;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+.cms span.marker {
+  background-color: var(--color-bg-sub-2);
+  padding: 0.2em 0.4em;
+  border-radius: var(--border-radius);
+  font-size: 0.9em;
+  font-weight: bold;
+}
+
+.twitterShareBlock {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  margin-top: 3rem;
+}
+
+.twitterShareBlock::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  margin: auto 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-border);
+}
+
+.twitterShareBlock::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 300px;
+  height: 3px;
+  background-color: #fff;
+}
+
+.topButton {
+  margin-top: 120px;
+}
+
+@media (max-width: 1020px) {
+  .column {
+    flex-wrap: wrap;
+  }
+
+  .thumbnail {
+    width: 100%;
+    height: auto;
+  }
+
+  .thumbnailFront {
+    width: 100%;
+    height: auto;
+    border-radius: 1.2rem;
+  }
+
+  .toc {
+    order: 1;
+    width: 280px;
+    max-width: 100%;
+    margin: 0 auto;
+    /* display: none; */
+  }
+
+  .content {
+    order: 2;
+    width: 100%;
+  }
+
+  .topButton {
+    margin-top: 80px;
+  }
+}
+
+@media (max-width: 640px) {
+  .title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    text-align: left;
+  }
+
+  .description {
+    font-size: 0.9rem;
+    color: var(--color-text-sub);
+    margin: 24px 0 40px;
+    text-align: left;
+  }
+
+  .toc {
+    width: 100%;
+  }
+
+  .meta {
+    display: grid;
+    place-items: center;
+    margin-bottom: 40px;
+    font-size: 0.9rem;
+  }
+
+  .writer {
+    padding-right: 24px;
+    margin-right: 24px;
+  }
+
+  .writerIcon {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+  }
+
+  .writerName {
+    margin-left: 16px;
+  }
+
+  .thumbnail {
+    width: 100%;
+    height: auto;
+  }
+
+  .thumbnailFront {
+    width: 100%;
+    height: auto;
+    border-radius: 1.2rem;
+  }
+
+  .thumbnailBlur {
+    filter: blur(30px) saturate(180%);
+  }
+
+  .twitterShareBlock::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    margin: auto 0 auto -24px;
+    width: calc(100% + 48px);
+    height: 1px;
+    background-color: var(--color-border);
+  }
+
+  .twitterShareBlock::after {
+    width: 272px;
+    max-width: 100%;
+  }
+}
