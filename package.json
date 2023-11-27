@@ -1,0 +1,26 @@
+{
+  "name": "astro-blog",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "format": "prettier --write ."
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.3.1",
+    "@astrojs/mdx": "^1.1.5",
+    "@astrojs/rss": "^3.0.0",
+    "@astrojs/sitemap": "^3.0.3",
+    "astro": "^3.6.0",
+    "microcms-js-sdk": "^2.7.0",
+    "typescript": "^5.3.2"
+  },
+  "devDependencies": {
+    "cspell": "^8.0.0",
+    "prettier": "^3.1.0"
+  }
+}
