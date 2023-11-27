@@ -1,2 +1,2 @@
-export const SITE_TITLE = 'Astro Blog';
-export const SITE_DESCRIPTION = 'LuminusのAstro Blogのサンプルです。';
+export const SITE_TITLE = 'Luminus';
+export const SITE_DESCRIPTION = 'LuminusのAstro Blogサンプルです。';
