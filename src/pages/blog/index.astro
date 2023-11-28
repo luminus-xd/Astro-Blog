@@ -19,7 +19,8 @@ const posts = await getList();
 			}
 			ul {
 				display: grid;
-				gap: 24px;
+				gap: 36px;
+				margin-top: 16px;
 				grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
 			}
 			img {
@@ -30,19 +31,30 @@ const posts = await getList();
 				aspect-ratio: 40 / 21;
 				object-fit: cover;
 			}
+			h1 {
+				line-height: 1.24;
+			}
+			h2 {
+				margin: 0;
+				font-size: 1.28rem;
+				line-height: 1.24;
+				font-weight: 700;
+				margin-top: 8px;
+			}
 		</style>
 	</head>
 	<body>
 		<Header />
 		<main>
 			<section>
+				<h1>投稿記事一覧</h1>
 				<ul>
 					{
 						posts.contents.map((post) => (
 							<li>
 								<a href={`/blog/${post.id}/`}>
 									<img width={720} height={360} src={post.thumbnail?.url} alt="" />
-									<h4 class="title">{post.title}</h4>
+									<h2 class="title">{post.title}</h2>
 								</a>
 							</li>
 						))

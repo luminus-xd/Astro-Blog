@@ -26,6 +26,8 @@
     "typescript": "^5.3.2"
   },
   "devDependencies": {
+    "@vite-pwa/astro": "^0.1.5",
+    "astro-compress": "^2.2.3",
     "astro-robots-txt": "^1.0.0",
     "cross-env": "^7.0.3",
     "cspell": "^8.0.0",
