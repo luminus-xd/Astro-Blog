@@ -14,7 +14,7 @@
 }
 
 .description {
-  font-size: 1rem;
+  font-size: 1.6rem;
   color: var(--color-text-sub);
   margin: 24px 40px;
   text-align: center;
@@ -67,7 +67,7 @@
   position: absolute;
   inset: 0;
   margin: auto;
-  filter: blur(30px) saturate(180%);
+  filter: blur(16px) saturate(180%);
   opacity: 0;
   animation: fadeIn 400ms 200ms cubic-bezier(0.33, 1, 0.68, 1) forwards;
   user-select: none;
@@ -114,32 +114,32 @@
 }
 
 .cms > h1 {
-  font-size: 2rem;
+  font-size: 2.8rem;
   font-weight: bold;
   border-bottom: 1px solid var(--color-border);
   margin: 2.8rem 0 1rem;
 }
 
 .cms > h2 {
-  font-size: 1.6rem;
+  font-size: 2rem;
   font-weight: bold;
   margin: 2.8rem 0 1rem;
 }
 
 .cms > h3 {
-  font-size: 1.4rem;
+  font-size: 1.82rem;
   font-weight: bold;
   margin: 2.8rem 0 1rem;
 }
 
 .cms > h4 {
-  font-size: 1.2rem;
+  font-size: 1.68rem;
   font-weight: bold;
   margin: 2.4rem 0 1rem;
 }
 
 .cms > h5 {
-  font-size: 1.1rem;
+  font-size: 1.6rem;
   font-weight: bold;
   margin: 2rem 0 1rem;
 }
@@ -155,7 +155,7 @@
 
 .cms pre > code {
   background-color: var(--color-bg-code);
-  font-size: 0.9em;
+  font-size: 1.4rem;
   display: block;
   overflow-x: auto;
   padding: 16px;
@@ -175,7 +175,7 @@
   content: attr(data-filename);
   margin: 1em 0 0;
   font-family: var(--font-inter);
-  font-size: 0.8rem;
+  font-size: 1.2rem;
   font-weight: bold;
   padding: 4px 16px;
   border-radius: var(--border-radius) var(--border-radius) 0 0;
@@ -355,13 +355,13 @@
 
 @media (max-width: 640px) {
   .title {
-    font-size: 2rem;
+    font-size: 2.8rem;
     margin-bottom: 20px;
     text-align: left;
   }
 
   .description {
-    font-size: 0.9rem;
+    font-size: 1.6rem;
     color: var(--color-text-sub);
     margin: 24px 0 40px;
     text-align: left;
@@ -375,7 +375,7 @@
     display: grid;
     place-items: center;
     margin-bottom: 40px;
-    font-size: 0.9rem;
+    font-size: 0.9em;
   }
 
   .writer {
@@ -390,7 +390,7 @@
   }
 
   .writerName {
-    margin-left: 16px;
+    margin-left: 12px;
   }
 
   .thumbnail {
@@ -405,7 +405,7 @@
   }
 
   .thumbnailBlur {
-    filter: blur(30px) saturate(180%);
+    filter: blur(16px) saturate(180%);
   }
 
   .twitterShareBlock::before {

@@ -64,6 +64,7 @@ const blog = await getDetail(slug as string);
         width={blog.thumbnail?.width}
         height={blog.thumbnail?.height}
         decoding="async"
+        transition:name={`BlogMV-${blog.id}`}
       />
     </picture>
     <picture class={styles.thumbnailBlur}>

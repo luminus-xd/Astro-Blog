@@ -32,11 +32,12 @@ const posts = await getList();
 				object-fit: cover;
 			}
 			h1 {
+				font-size: 2.8rem;
 				line-height: 1.24;
 			}
 			h2 {
 				margin: 0;
-				font-size: 1.28rem;
+				font-size: 2rem;
 				line-height: 1.24;
 				font-weight: 700;
 				margin-top: 8px;
@@ -53,8 +54,8 @@ const posts = await getList();
 						posts.contents.map((post) => (
 							<li>
 								<a href={`/blog/${post.id}/`}>
-									<img width={720} height={360} src={post.thumbnail?.url} alt="" />
-									<h2 class="title">{post.title}</h2>
+									<img width={720} height={360} src={post.thumbnail?.url} alt="" transition:name={`BlogMV-${post.id}`} />
+									<h2>{post.title}</h4>
 								</a>
 							</li>
 						))

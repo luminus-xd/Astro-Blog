@@ -24,8 +24,8 @@
     var(--color-primary) -20%,
     var(--color-primary-light) 50%
   );
-  --font-family-primary: Inter, GenJyuuGothic, -apple-system, BlinkMacSystemFont,
-  'Helvetica Neue', YuGothic, 'ヒラギノ角ゴ ProN W3', Hiragino Kaku Gothic ProN, Arial, 'メイリオ', sans-serif;
+  --font-family-primary: Inter, GenJyuuGothic, -apple-system, BlinkMacSystemFont, 'Helvetica Neue',
+    YuGothic, 'ヒラギノ角ゴ ProN W3', Hiragino Kaku Gothic ProN, Arial, 'メイリオ', sans-serif;
 }
 
 /* inter-regular - latin */
@@ -60,6 +60,7 @@
 }
 
 html {
+  font-size: 62.5%;
   scroll-behavior: smooth;
 }
 
@@ -75,12 +76,16 @@ body {
   letter-spacing: 0.028em;
   color: var(--color-text-main);
   line-height: 1.8;
-  font-size: 1.1em;
+  font-size: 1.6rem;
 }
 
 main {
   margin: 60px auto 40px;
   padding: 0 20px;
+}
+
+h1,h2,h3,h4,h5,h6 {
+  line-height: 1.26;
 }
 
 code {
@@ -107,7 +112,7 @@ img {
 
 @media (max-width: 640px) {
   body {
-    font-size: 1em;
+    font-size: 1.6rem;
   }
 }
 
