@@ -1,0 +1,24 @@
+---
+import { formatDate } from '../library/utils';
+
+interface Props {
+	date: string;
+}
+
+const { date } = Astro.props;
+---
+
+<span class="date">
+  <img src="/images/clock.svg" alt="" width={16} height={16} />
+  {formatDate(date)}
+</span>
+
+<style>
+    .date {
+      display: flex;
+      align-items: center;
+      line-height: 16px;
+      gap: 8px;
+      margin: 0.8rem 0;
+    }
+</style>

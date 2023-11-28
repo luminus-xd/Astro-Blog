@@ -13,7 +13,7 @@ if (!import.meta.env.BASE_URL) {
  * @param date Dateオブジェクト
  * @returns
  */
-export const formatDate = (date: string) => {
+export function formatDate (date: string) {
   const utcDate = new Date(date);
   const jstDate = utcToZonedTime(utcDate, 'Asia/Tokyo');
   return format(jstDate, 'yyyy-MM-dd');

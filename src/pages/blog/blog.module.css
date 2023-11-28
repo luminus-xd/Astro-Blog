@@ -22,8 +22,8 @@
 
 .meta {
   display: flex;
-  align-items: center;
-  margin-bottom: 64px;
+  justify-content: center;
+  margin-bottom: 48px;
 }
 
 .writer {
@@ -89,7 +89,7 @@
   display: flex;
   width: 100%;
   gap: 32px;
-  margin: 3rem 0 0;
+  margin: 2em 0 0;
 }
 
 .toc {
@@ -183,7 +183,7 @@
 
 .cms ul,
 .cms ol {
-  margin: 0.5rem 0 0.5rem 2rem;
+  margin: 1em 0 1em 2rem;
 }
 
 .cms > ul,
@@ -292,7 +292,7 @@
   display: grid;
   justify-items: center;
   align-items: center;
-  margin-top: 3rem;
+  margin-top: 4.8rem;
 }
 
 .twitterShareBlock::before {
@@ -372,8 +372,8 @@
   }
 
   .meta {
-    display: grid;
-    place-items: center;
+    display: flex;
+    justify-content: center;
     margin-bottom: 40px;
     font-size: 0.9em;
   }

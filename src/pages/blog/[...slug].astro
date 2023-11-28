@@ -2,6 +2,7 @@
 import { getList, getDetail } from '../../library/microcms';
 import { formatRichText } from '../../library/utils';
 import BlogPost from '../../layouts/BlogPost.astro';
+import PublishedDate from '../../components/PublishedDate.astro';
 import LinkButton from '../../components/LinkButton.astro';
 
 import styles from './blog.module.css';
@@ -44,7 +45,7 @@ const blog = await getDetail(slug as string);
         </div>
       )
     }
-    <!-- <PublishedDate date={blog.publishedAt || blog.createdAt} /> -->
+    <PublishedDate date={blog.publishedAt || blog.createdAt} />
   </div>
   <div class={styles.thumbnail}>
     <picture>
