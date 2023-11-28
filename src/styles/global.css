@@ -24,8 +24,8 @@
     var(--color-primary) -20%,
     var(--color-primary-light) 50%
   );
-  --font-family-primary: Inter, GenJyuuGothic, -apple-system, BlinkMacSystemFont,
-  'Helvetica Neue', YuGothic, 'ヒラギノ角ゴ ProN W3', Hiragino Kaku Gothic ProN, Arial, 'メイリオ', sans-serif;
+  --font-family-primary: Inter, GenJyuuGothic, -apple-system, BlinkMacSystemFont, 'Helvetica Neue',
+    YuGothic, 'ヒラギノ角ゴ ProN W3', Hiragino Kaku Gothic ProN, Arial, 'メイリオ', sans-serif;
 }
 
 /* inter-regular - latin */

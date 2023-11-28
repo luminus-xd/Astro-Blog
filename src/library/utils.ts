@@ -26,7 +26,7 @@ export const formatDate = (date: string) => {
  * @param richText microCMSのリッチテキスト
  * @returns
  */
-export function formatRichText (richText: string) {
+export function formatRichText(richText: string) {
   const $ = cheerio.load(richText);
   const highlight = (text: string, lang?: string) => {
     if (!lang) return hljs.highlightAuto(text);
@@ -43,7 +43,7 @@ export function formatRichText (richText: string) {
     $(elm).attr('tabindex', '0');
   });
   return $.html();
-};
+}
 
 /**
  * 目次のオブジェクト型

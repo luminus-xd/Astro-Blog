@@ -41,7 +41,7 @@ const posts = await getList();
 						posts.contents.map((post) => (
 							<li>
 								<a href={`/blog/${post.id}/`}>
-									<img width={720} height={360} src={post.thumbnail?.url} alt="" />
+									<img width={720} height={360} src={post.thumbnail?.url} alt="" transition:name={`BlogMV-${post.id}`} />
 									<h4 class="title">{post.title}</h4>
 								</a>
 							</li>

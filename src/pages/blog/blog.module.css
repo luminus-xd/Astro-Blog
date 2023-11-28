@@ -67,7 +67,7 @@
   position: absolute;
   inset: 0;
   margin: auto;
-  filter: blur(30px) saturate(180%);
+  filter: blur(16px) saturate(180%);
   opacity: 0;
   animation: fadeIn 400ms 200ms cubic-bezier(0.33, 1, 0.68, 1) forwards;
   user-select: none;
@@ -405,7 +405,7 @@
   }
 
   .thumbnailBlur {
-    filter: blur(30px) saturate(180%);
+    filter: blur(16px) saturate(180%);
   }
 
   .twitterShareBlock::before {

@@ -1,5 +1,5 @@
 import { defineConfig } from 'astro/config';
-import robotsTxt from "astro-robots-txt";
+import robotsTxt from 'astro-robots-txt';
 import mdx from '@astrojs/mdx';
 import sitemap from '@astrojs/sitemap';
 
