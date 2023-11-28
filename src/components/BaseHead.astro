@@ -4,9 +4,9 @@
 import '../styles/global.css';
 
 interface Props {
-	title: string;
-	description: string;
-	image?: string;
+  title: string;
+  description: string;
+  image?: string;
 }
 
 import { ViewTransitions } from 'astro:transitions';
@@ -21,15 +21,35 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link rel="icon" href="/favicon.ico" />
 <meta name="generator" content={Astro.generator} />
+<meta name="theme-color" content="#282c34" />
+<meta name="msapplication-TileColor" content="#282c34" />
 
 <!-- Font CSS -->
-<link rel="stylesheet" href="/fonts/GenJyuuGothic-Normal/GenJyuuGothic-Normal.css" >
-<link rel="stylesheet" href="/fonts/GenJyuuGothic-Bold/GenJyuuGothic-Bold.css" >
+<link rel="stylesheet" href="/fonts/GenJyuuGothic-Normal/GenJyuuGothic-Normal.css" />
+<link rel="stylesheet" href="/fonts/GenJyuuGothic-Bold/GenJyuuGothic-Bold.css" />
 
 <!-- Font preloads -->
-<link rel="preload" href="/fonts/inter/inter-v13-latin-regular.woff2" as="font" type="font/woff2" crossorigin />
-<link rel="preload" href="/fonts/inter/inter-v13-latin-500.woff2" as="font" type="font/woff2" crossorigin />
-<link rel="preload" href="/fonts/inter/inter-v13-latin-700.woff2" as="font" type="font/woff2" crossorigin />
+<link
+  rel="preload"
+  href="/fonts/inter/inter-v13-latin-regular.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+<link
+  rel="preload"
+  href="/fonts/inter/inter-v13-latin-500.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
+<link
+  rel="preload"
+  href="/fonts/inter/inter-v13-latin-700.woff2"
+  as="font"
+  type="font/woff2"
+  crossorigin
+/>
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
@@ -52,6 +72,12 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
+
+<!-- Sitemap -->
+<link rel="sitemap" href="/sitemap-0.xml" />
+
+<!-- Manifest -->
+<link rel="manifest" href="/manifest.webmanifest" crossorigin="use-credentials" />
 
 <!-- View Transitions -->
 <ViewTransitions />
