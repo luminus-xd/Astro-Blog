@@ -7,7 +7,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://astro-blog-56t.pages.dev/',
+  site: 'https://luminus.pages.dev/',
   integrations: [
     robotsTxt(),
     mdx(),
