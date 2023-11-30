@@ -29,11 +29,15 @@ const blog = await getDetail(slug as string);
         <div class={styles.writer}>
           <picture>
             <source
+              type="image/avif"
+              srcset={`${blog.writer?.image?.url}?fm=avif&fit=crop&w=48&h=48 1x, ${blog.writer?.image?.url}?fm=avif&fit=crop&w=48&h=48&dpr=2 2x`}
+            />
+            <source
               type="image/webp"
-              src-set={`${blog.writer?.image?.url}?fm=webp&fit=crop&w=48&h=48 1x, ${blog.writer?.image?.url}?fm=webp&fit=crop&w=48&h=48&dpr=2 2x`}
+              srcset={`${blog.writer?.image?.url}?fm=webp&fit=crop&w=48&h=48 1x, ${blog.writer?.image?.url}?fm=webp&fit=crop&w=48&h=48&dpr=2 2x`}
             />
             <img
-              src={blog.writer?.image?.url}
+              src={`${blog.writer?.image?.url}?&fit=crop&w=48&h=48`}
               alt=""
               class={styles.writerIcon}
               width={blog.writer?.image?.width}
@@ -53,23 +57,23 @@ const blog = await getDetail(slug as string);
       <source
         type="image/avif"
         media="(max-width: 640px)"
-        src-set={`${blog.thumbnail?.url}?fm=avif&w=414 1x, ${blog.thumbnail?.url}?fm=avif&w=414&dpr=2 2x`}
+        srcset={`${blog.thumbnail?.url}?fm=avif&w=414 1x`}
       />
       <source
         type="image/avif"
-        src-set={`${blog.thumbnail?.url}?fm=avif&fit=crop&w=1200&h=630 1x, ${blog.thumbnail?.url}?fm=avif&fit=crop&w=1200&h=630&dpr=2 2x`}
+        srcset={`${blog.thumbnail?.url}?fm=avif&fit=crop&w=1200&h=630`}
       />
       <source
         type="image/webp"
         media="(max-width: 640px)"
-        src-set={`${blog.thumbnail?.url}?fm=webp&w=414 1x, ${blog.thumbnail?.url}?fm=webp&w=414&dpr=2 2x`}
+        srcset={`${blog.thumbnail?.url}?fm=webp&w=414 1x`}
       />
       <source
         type="image/webp"
-        src-set={`${blog.thumbnail?.url}?fm=webp&fit=crop&w=1200&h=630 1x, ${blog.thumbnail?.url}?fm=webp&fit=crop&w=1200&h=630&dpr=2 2x`}
+        srcset={`${blog.thumbnail?.url}?fm=webp&fit=crop&w=1200&h=630`}
       />
       <img
-        src={blog.thumbnail?.url}
+        src={`${blog.thumbnail?.url}?fit=crop&w=1200&h=630`}
         alt=""
         class={styles.thumbnailFront}
         width={blog.thumbnail?.width}
@@ -83,23 +87,23 @@ const blog = await getDetail(slug as string);
       <source
         type="image/avif"
         media="(max-width: 640px)"
-        src-set={`${blog.thumbnail?.url}?fm=avif&w=41&q=10 1x, ${blog.thumbnail?.url}?fm=avif&w=41&dpr=2&q=10 2x`}
+        srcset={`${blog.thumbnail?.url}?fm=avif&w=41&q=10&blur=75`}
       />
       <source
         type="image/avif"
-        src-set={`${blog.thumbnail?.url}?fm=avif&fit=crop&w=120&h=63&q=10 1x, ${blog.thumbnail?.url}?fm=avif&fit=crop&w=120&h=63&q=10 2x`}
+        srcset={`${blog.thumbnail?.url}?fm=avif&fit=crop&w=120&h=63&q=10&blur=75`}
       />
       <source
         type="image/webp"
         media="(max-width: 640px)"
-        src-set={`${blog.thumbnail?.url}?fm=webp&w=41&q=10 1x, ${blog.thumbnail?.url}?fm=webp&w=41&dpr=2&q=10 2x`}
+        srcset={`${blog.thumbnail?.url}?fm=webp&w=41&q=10&blur=75`}
       />
       <source
         type="image/webp"
-        src-set={`${blog.thumbnail?.url}?fm=webp&fit=crop&w=120&h=63&q=10 1x, ${blog.thumbnail?.url}?fm=webp&fit=crop&w=120&h=63&q=10 2x`}
+        srcset={`${blog.thumbnail?.url}?fm=webp&fit=crop&w=120&h=63&q=10&blur=75`}
       />
       <img
-        src={`${blog.thumbnail?.url}?q=10`}
+        src={`${blog.thumbnail?.url}?fit=crop&w=1200&h=630&q=10&blur=75`}
         alt=""
         class={styles.thumbnail}
         width={blog.thumbnail?.width}
