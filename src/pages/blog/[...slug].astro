@@ -39,6 +39,7 @@ const blog = await getDetail(slug as string);
               width={blog.writer?.image?.width}
               height={blog.writer?.image?.height}
               decoding="async"
+              fetchpriority="high"
             />
           </picture>
           <span class={styles.writerName}>{blog.writer?.name}</span>
@@ -49,6 +50,15 @@ const blog = await getDetail(slug as string);
   </div>
   <div class={styles.thumbnail}>
     <picture>
+      <source
+        type="image/avif"
+        media="(max-width: 640px)"
+        src-set={`${blog.thumbnail?.url}?fm=avif&w=414 1x, ${blog.thumbnail?.url}?fm=avif&w=414&dpr=2 2x`}
+      />
+      <source
+        type="image/avif"
+        src-set={`${blog.thumbnail?.url}?fm=avif&fit=crop&w=1200&h=630 1x, ${blog.thumbnail?.url}?fm=avif&fit=crop&w=1200&h=630&dpr=2 2x`}
+      />
       <source
         type="image/webp"
         media="(max-width: 640px)"
@@ -66,9 +76,19 @@ const blog = await getDetail(slug as string);
         height={blog.thumbnail?.height}
         decoding="async"
         transition:name={`BlogMV-${blog.id}`}
+        fetchpriority="high"
       />
     </picture>
     <picture class={styles.thumbnailBlur}>
+      <source
+        type="image/avif"
+        media="(max-width: 640px)"
+        src-set={`${blog.thumbnail?.url}?fm=avif&w=41&q=10 1x, ${blog.thumbnail?.url}?fm=avif&w=41&dpr=2&q=10 2x`}
+      />
+      <source
+        type="image/avif"
+        src-set={`${blog.thumbnail?.url}?fm=avif&fit=crop&w=120&h=63&q=10 1x, ${blog.thumbnail?.url}?fm=avif&fit=crop&w=120&h=63&q=10 2x`}
+      />
       <source
         type="image/webp"
         media="(max-width: 640px)"
