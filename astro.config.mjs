@@ -1,8 +1,8 @@
 import { defineConfig } from 'astro/config';
 import robotsTxt from 'astro-robots-txt';
 import mdx from '@astrojs/mdx';
-import AstroPWA from "@vite-pwa/astro";
-import compress from "astro-compress";
+import AstroPWA from '@vite-pwa/astro';
+import compress from 'astro-compress';
 import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config

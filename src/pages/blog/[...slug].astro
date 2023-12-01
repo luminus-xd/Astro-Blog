@@ -4,6 +4,7 @@ import { formatRichText } from '../../library/utils';
 import BlogPost from '../../layouts/BlogPost.astro';
 import PublishedDate from '../../components/PublishedDate.astro';
 import LinkButton from '../../components/LinkButton.astro';
+import ShareButton from '../../components/ShareButton.astro';
 
 import styles from './blog.module.css';
 
@@ -57,17 +58,17 @@ const blog = await getDetail(slug as string);
       <source
         type="image/avif"
         media="(max-width: 640px)"
-        srcset={`${blog.thumbnail?.url}?fm=avif&w=414 1x`}
+        srcset={`${blog.thumbnail?.url}?fm=avif&w=414 1x, ${blog.thumbnail?.url}?fm=avif&w=414&dpr=2 2x`}
       />
-      <source type="image/avif" srcset={`${blog.thumbnail?.url}?fm=avif&fit=crop&w=1200&h=630`} />
+      <source type="image/avif" srcset={`${blog.thumbnail?.url}?fm=avif&fit=crop&w=1200&h=630 1x, ${blog.thumbnail?.url}?fm=avif&fit=crop&w=1200&h=630&dpr=2 2x`} />
       <source
         type="image/webp"
         media="(max-width: 640px)"
-        srcset={`${blog.thumbnail?.url}?fm=webp&w=414 1x`}
+        srcset={`${blog.thumbnail?.url}?fm=webp&w=414 1x, ${blog.thumbnail?.url}?fm=webp&w=414&dpr=2 2x`}
       />
-      <source type="image/webp" srcset={`${blog.thumbnail?.url}?fm=webp&fit=crop&w=1200&h=630`} />
+      <source type="image/webp" srcset={`${blog.thumbnail?.url}?fm=webp&fit=crop&w=1200&h=630 1x, ${blog.thumbnail?.url}?fm=webp&fit=crop&w=1200&h=630&dpr=2 2x`} />
       <img
-        src={`${blog.thumbnail?.url}?fit=crop&w=1200&h=630`}
+        srcset={`${blog.thumbnail?.url}?fit=crop&w=1200&h=630 1x, ${blog.thumbnail?.url}?fit=crop&w=1200&h=630&dpr=2 2x`}
         alt=""
         class={styles.thumbnailFront}
         width={blog.thumbnail?.width}
@@ -81,28 +82,28 @@ const blog = await getDetail(slug as string);
       <source
         type="image/avif"
         media="(max-width: 640px)"
-        srcset={`${blog.thumbnail?.url}?fm=avif&w=41&q=10&blur=75`}
+        srcset={`${blog.thumbnail?.url}?fm=avif&w=414&q=10&blur=75 1x, ${blog.thumbnail?.url}?fm=avif&w=414&q=10&blur=75&dpr=2 2x`}
       />
       <source
         type="image/avif"
-        srcset={`${blog.thumbnail?.url}?fm=avif&fit=crop&w=120&h=63&q=10&blur=75`}
+        srcset={`${blog.thumbnail?.url}?fm=avif&fit=crop&w=1200&h=630&q=10&blur=75 1x, ${blog.thumbnail?.url}?fm=avif&fit=crop&w=1200&h=630&q=10&blur=75&dpr=2 2x`}
       />
       <source
         type="image/webp"
         media="(max-width: 640px)"
-        srcset={`${blog.thumbnail?.url}?fm=webp&w=41&q=10&blur=75`}
+        srcset={`${blog.thumbnail?.url}?fm=webp&w=41&q=10&blur=75 1x, ${blog.thumbnail?.url}?fm=webp&w=41&q=10&blur=75&dpr=2 2x`}
       />
       <source
         type="image/webp"
-        srcset={`${blog.thumbnail?.url}?fm=webp&fit=crop&w=120&h=63&q=10&blur=75`}
+        srcset={`${blog.thumbnail?.url}?fm=webp&fit=crop&w=120&h=63&q=10&blur=75 1x, ${blog.thumbnail?.url}?fm=webp&fit=crop&w=120&h=63&q=10&blur=75&dpr=2 2x`}
       />
       <img
-        src={`${blog.thumbnail?.url}?fit=crop&w=1200&h=630&q=10&blur=75`}
+        srcset={`${blog.thumbnail?.url}?fit=crop&w=1200&h=630&q=10&blur=75 1x, ${blog.thumbnail?.url}?fit=crop&w=1200&h=630&q=10&blur=75&dpr=2 2x`}
         alt=""
         class={styles.thumbnail}
         width={blog.thumbnail?.width}
         height={blog.thumbnail?.height}
-        loading="eager"
+        loading="async"
         decoding="async"
       />
     </picture>
@@ -111,7 +112,7 @@ const blog = await getDetail(slug as string);
     <div class={styles.content}>
       <div id="cms" class={styles.cms} set:html={formatRichText(blog.content)} />
       <div class={styles.twitterShareBlock}>
-        <!-- <ShareButton articleId={blog.id} articleTitle={blog.title} /> -->
+        <ShareButton blogId={blog.id} blogTitle={blog.title} />
       </div>
     </div>
     {

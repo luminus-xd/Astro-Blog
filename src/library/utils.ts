@@ -4,20 +4,16 @@ import cheerio from 'cheerio';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/atom-one-dark.css';
 
-if (!import.meta.env.BASE_URL) {
-  throw new Error('BASE_URL is required');
-}
-
 /**
  * Dateオブジェクトをフォーマットして返す
  * @param date Dateオブジェクト
  * @returns
  */
-export function formatDate (date: string) {
+export function formatDate(date: string) {
   const utcDate = new Date(date);
   const jstDate = utcToZonedTime(utcDate, 'Asia/Tokyo');
   return format(jstDate, 'yyyy-MM-dd');
-};
+}
 
 /**
  * リッチテキストをフォーマットして返す
@@ -71,12 +67,4 @@ export const renderToc = (body: string): TocEntry[] => {
   });
 
   return toc;
-};
-
-/**
- * BASE_URLを返す
- * @returns
- */
-export const getDomain = () => {
-  return import.meta.env.BASE_URL;
 };
