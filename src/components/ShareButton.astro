@@ -1,0 +1,115 @@
+---
+import { formatDate } from '../library/utils';
+import { SITE_URL } from '../consts';
+
+interface Props {
+  blogId: string;
+  blogTitle: string;
+}
+
+const { blogId, blogTitle } = Astro.props;
+---
+
+<a
+  class="shareButton"
+  href={`https://twitter.com/intent/tweet?text=${blogTitle}&url=${SITE_URL}/blog/${blogId}/`}
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <img
+    class="twitterX"
+    src="/images/twitter-x-logo.svg"
+    alt="記事をツイートする"
+    width={40}
+    height={40}
+  />
+  <img
+    class="twitterX"
+    src="/images/twitter-x-logo-black.svg"
+    alt=""
+    width={40}
+    height={40}
+    aria-hidden="true"
+    data-clone="true"
+  />
+  <span class="shareButtonText">記事をツイートする</span>
+</a>
+
+<style>
+  .twitterX {
+    position: absolute;
+    inset: 0;
+    margin: auto auto auto 8px;
+    opacity: 0;
+    transition: opacity 800ms;
+  }
+
+  .twitterX[data-clone] {
+    opacity: 1;
+  }
+
+  .shareButton {
+    position: relative;
+    display: flex;
+    align-items: center;
+    padding: 8px 24px 8px 48px;
+    border-radius: 32px;
+    --_g1: conic-gradient(from 90deg at 50% 75%, #000 90deg, #fff 0) no-repeat;
+    --_g2: conic-gradient(from 90deg at 50% 75%, #0000 90deg, #000 0) no-repeat;
+    background:
+      var(--_g1) 0 calc(134% - var(--_p, 0%)),
+      var(--_g2) 0 calc(134% - var(--_p, 0%)),
+      var(--_g1) 100% calc(200% - var(--_p, 0%)),
+      var(--_g2) 100% calc(200% - var(--_p, 0%)),
+      #000;
+    background-size: 50.2% 400%;
+    -webkit-background-clip: text, border-box;
+    background-clip: text, border-box;
+    transition: 0.8s;
+    background-color: #000;
+    border: 4px solid #000;
+    backface-visibility: hidden;
+    overflow: hidden;
+    will-change: box-shadow;
+    z-index: 2;
+    box-sizing: border-box;
+  }
+
+  .shareButton:hover,
+  .shareButton:focus-within {
+    --_p: 134%;
+    box-shadow:
+      0 0 32px 0 rgb(29, 161, 242),
+      0 0 20px 10px rgba(29, 161, 242, 0.64);
+  }
+
+  .shareButton:hover .twitterX,
+  .shareButton:focus-within .twitterX {
+    opacity: 1;
+  }
+
+  .shareButton:hover .twitterX[data-clone],
+  .shareButton:focus-within .twitterX[data-clone] {
+    opacity: 0;
+  }
+
+  .shareButtonText {
+    color: #000;
+    transition: color 800ms;
+    transform: translateY(2px);
+  }
+
+  .shareButton:hover .shareButtonText,
+  .shareButton:focus-within .shareButtonText {
+    color: #fff;
+  }
+
+  @media (max-width: 767px) {
+    .shareButton {
+      background-size: 50% 400%;
+    }
+    .shareButtonText {
+      transform: translateY(1px);
+    }
+  }
+</style>

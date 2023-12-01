@@ -2,6 +2,7 @@
 import BaseHead from '../../components/BaseHead.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+import PublishedDate from '../../components/PublishedDate.astro';
 import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 
 import { getList } from '../../library/microcms';
@@ -36,7 +37,7 @@ const posts = await getList();
 			}
 			h2 {
 				font-size: 2rem;
-				margin-top: 0.4em;
+				margin-top: 0.6em;
 			}
 		</style>
 	</head>
@@ -51,11 +52,12 @@ const posts = await getList();
 							<li>
 								<a href={`/blog/${post.id}/`}>
 									<picture>
-										<source type="image/avif" srcset={`${post.thumbnail?.url}?fm=avif&fit=crop&w=391&h=205`}>
-										<source type="image/webp" srcset={`${post.thumbnail?.url}?fm=webp&fit=crop&w=391&h=205`}>
-										<img width={391} height={205} src={`${post.thumbnail?.url}?fit=crop&w=391&h=205`} alt="" transition:name={`BlogMV-${post.id}`} />
+										<source type="image/avif" srcset={`${post.thumbnail?.url}?fm=avif&fit=crop&w=391&h=205 1x, ${post.thumbnail?.url}?fm=avif&fit=crop&w=391&h=205&dpr=2 2x`}>
+										<source type="image/webp" srcset={`${post.thumbnail?.url}?fm=webp&fit=crop&w=391&h=205 1x, ${post.thumbnail?.url}?fm=webp&fit=crop&w=391&h=205&dpr=2 2x`}>
+										<img width={391} height={205} srcset={`${post.thumbnail?.url}?fit=crop&w=391&h=205 1x, ${post.thumbnail?.url}?fit=crop&w=391&h=205&dpr=2 2x`} alt="" transition:name={`BlogMV-${post.id}`} />
 									</picture>
-									<h2>{post.title}</h4>
+									<h2>{post.title}</h2>
+									<PublishedDate date={post.publishedAt || post.createdAt} />
 								</a>
 							</li>
 						))
