@@ -102,13 +102,21 @@
   max-height: 100%;
   top: 32px;
   width: 100%;
+  padding-left: 2px;
   overflow-y: auto;
 }
 
 .tocTitle {
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   font-weight: bold;
-  margin: 0 0 1rem;
+  margin: 0 0 1rem -2px;
+}
+
+.tocTitle span {
+  display: inline-block;
+  margin-right: 4px;
+  font-weight: normal;
+  color: var(--color-text-sub);
 }
 
 .cms {

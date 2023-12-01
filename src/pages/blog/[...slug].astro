@@ -60,13 +60,19 @@ const blog = await getDetail(slug as string);
         media="(max-width: 640px)"
         srcset={`${blog.thumbnail?.url}?fm=avif&w=414 1x, ${blog.thumbnail?.url}?fm=avif&w=414&dpr=2 2x`}
       />
-      <source type="image/avif" srcset={`${blog.thumbnail?.url}?fm=avif&fit=crop&w=1200&h=630 1x, ${blog.thumbnail?.url}?fm=avif&fit=crop&w=1200&h=630&dpr=2 2x`} />
+      <source
+        type="image/avif"
+        srcset={`${blog.thumbnail?.url}?fm=avif&fit=crop&w=1200&h=630 1x, ${blog.thumbnail?.url}?fm=avif&fit=crop&w=1200&h=630&dpr=2 2x`}
+      />
       <source
         type="image/webp"
         media="(max-width: 640px)"
         srcset={`${blog.thumbnail?.url}?fm=webp&w=414 1x, ${blog.thumbnail?.url}?fm=webp&w=414&dpr=2 2x`}
       />
-      <source type="image/webp" srcset={`${blog.thumbnail?.url}?fm=webp&fit=crop&w=1200&h=630 1x, ${blog.thumbnail?.url}?fm=webp&fit=crop&w=1200&h=630&dpr=2 2x`} />
+      <source
+        type="image/webp"
+        srcset={`${blog.thumbnail?.url}?fm=webp&fit=crop&w=1200&h=630 1x, ${blog.thumbnail?.url}?fm=webp&fit=crop&w=1200&h=630&dpr=2 2x`}
+      />
       <img
         srcset={`${blog.thumbnail?.url}?fit=crop&w=1200&h=630 1x, ${blog.thumbnail?.url}?fit=crop&w=1200&h=630&dpr=2 2x`}
         alt=""
@@ -103,7 +109,7 @@ const blog = await getDetail(slug as string);
         class={styles.thumbnail}
         width={blog.thumbnail?.width}
         height={blog.thumbnail?.height}
-        loading="async"
+        loading="lazy"
         decoding="async"
       />
     </picture>
@@ -119,7 +125,7 @@ const blog = await getDetail(slug as string);
       blog.tocVisible && (
         <div class={styles.toc}>
           <div class={styles.tocContainer}>
-            <div class={styles.tocTitle}>目次</div>
+            <strong class={styles.tocTitle}><span>#</span>目次</strong>
             <div class="toc" />
           </div>
         </div>
@@ -144,13 +150,19 @@ const blog = await getDetail(slug as string);
         tocSelector: tocSelector,
         contentSelector: contentSelector,
         headingSelector: 'h2, h3, h4',
-        scrollSmoothDuration: 300,
+        scrollSmoothDuration: 50,
       });
     }
   });
 </script>
 
 <style is:global>
+  .toc {
+    --toc-border-left: 3px;
+
+    margin-top: 4px;
+  }
+
   .toc .toc-list {
     padding-left: 1.5rem;
     padding-top: 0.1rem;
@@ -158,15 +170,34 @@ const blog = await getDetail(slug as string);
   }
 
   .toc > .toc-list {
-    padding-left: 0;
+    position: relative;
+    padding-left: 16px;
+    border-left: var(--toc-border-left) solid rgba(0, 0, 0, 0.12);
+  }
+
+  .toc .toc-list .toc-list-item {
+    padding: 0.12rem 0;
   }
 
   .toc .toc-link {
     color: rgba(0, 0, 0, 0.6);
+    transition: color 200ms ease;
   }
 
   .toc .is-active-link {
-    color: rgba(0, 0, 0, 0.87);
-    font-weight: 700;
+    color: rgba(0, 0, 0, 1);
+    font-weight: bold;
+  }
+
+  .toc .is-active-link::before {
+    content: '';
+    position: absolute;
+    left: calc(var(--toc-border-left) * -1);
+    width: var(--toc-border-left);
+    height: 1.1em;
+    background-color: var(--color-primary);
+    transform: translateY(4px);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.12);
+    border-radius: var(--border-radius);
   }
 </style>
