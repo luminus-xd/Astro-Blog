@@ -12,26 +12,27 @@
     "format": "prettier --write ."
   },
   "dependencies": {
+    "tocbot": "^4.23.0"
+  },
+  "devDependencies": {
     "@astrojs/check": "^0.3.1",
     "@astrojs/mdx": "^1.1.5",
     "@astrojs/rss": "^3.0.0",
     "@astrojs/sitemap": "^3.0.3",
+    "@vite-pwa/astro": "^0.1.5",
     "astro": "^3.6.0",
+    "astro-compress": "^2.2.3",
+    "astro-robots-txt": "^1.0.0",
     "cheerio": "1.0.0-rc.12",
+    "cross-env": "^7.0.3",
+    "cspell": "^8.0.0",
     "date-fns": "^2.30.0",
     "date-fns-tz": "^2.0.0",
     "highlight.js": "^11.9.0",
     "microcms-js-sdk": "^2.7.0",
-    "typescript": "^5.3.2"
-  },
-  "devDependencies": {
-    "@vite-pwa/astro": "^0.1.5",
-    "astro-compress": "^2.2.3",
-    "astro-robots-txt": "^1.0.0",
-    "cross-env": "^7.0.3",
-    "cspell": "^8.0.0",
     "prettier": "^3.1.0",
-    "prettier-plugin-astro": "^0.12.2"
+    "prettier-plugin-astro": "^0.12.2",
+    "typescript": "^5.3.2"
   },
   "volta": {
     "node": "20.10.0"

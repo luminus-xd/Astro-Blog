@@ -59,19 +59,13 @@ const blog = await getDetail(slug as string);
         media="(max-width: 640px)"
         srcset={`${blog.thumbnail?.url}?fm=avif&w=414 1x`}
       />
-      <source
-        type="image/avif"
-        srcset={`${blog.thumbnail?.url}?fm=avif&fit=crop&w=1200&h=630`}
-      />
+      <source type="image/avif" srcset={`${blog.thumbnail?.url}?fm=avif&fit=crop&w=1200&h=630`} />
       <source
         type="image/webp"
         media="(max-width: 640px)"
         srcset={`${blog.thumbnail?.url}?fm=webp&w=414 1x`}
       />
-      <source
-        type="image/webp"
-        srcset={`${blog.thumbnail?.url}?fm=webp&fit=crop&w=1200&h=630`}
-      />
+      <source type="image/webp" srcset={`${blog.thumbnail?.url}?fm=webp&fit=crop&w=1200&h=630`} />
       <img
         src={`${blog.thumbnail?.url}?fit=crop&w=1200&h=630`}
         alt=""
@@ -115,20 +109,63 @@ const blog = await getDetail(slug as string);
   </div>
   <div class={styles.column}>
     <div class={styles.content}>
-      <div class={styles.cms} set:html={formatRichText(blog.content)} />
+      <div id="cms" class={styles.cms} set:html={formatRichText(blog.content)} />
       <div class={styles.twitterShareBlock}>
         <!-- <ShareButton articleId={blog.id} articleTitle={blog.title} /> -->
       </div>
     </div>
-    <!-- {blog.tocVisible && (
-      <div class={styles.toc}>
-        <div class={styles.tocContainer}>
-          <TableOfContents toc={toc} />
+    {
+      blog.tocVisible && (
+        <div class={styles.toc}>
+          <div class={styles.tocContainer}>
+            <div class={styles.tocTitle}>目次</div>
+            <div class="toc" />
+          </div>
         </div>
-      </div>
-    )} -->
+      )
+    }
   </div>
   <div class={styles.topButton}>
-    <LinkButton href="/">トップページに戻る</LinkButton>
+    <LinkButton href="/blog/">トップページに戻る</LinkButton>
   </div>
 </BlogPost>
+
+<script>
+  import tocbot from 'tocbot';
+
+  document.addEventListener('astro:page-load', () => {
+    const tocSelector = '.toc';
+    const contentSelector = '#cms';
+    const tocElement = document.querySelector(tocSelector);
+    const cmsElement = document.querySelector(contentSelector);
+    if (tocElement && cmsElement) {
+      tocbot.init({
+        tocSelector: tocSelector,
+        contentSelector: contentSelector,
+        headingSelector: 'h2, h3, h4',
+        scrollSmoothDuration: 300,
+      });
+    }
+  });
+</script>
+
+<style is:global>
+  .toc .toc-list {
+    padding-left: 1.5rem;
+    padding-top: 0.1rem;
+    list-style-type: none;
+  }
+
+  .toc > .toc-list {
+    padding-left: 0;
+  }
+
+  .toc .toc-link {
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  .toc .is-active-link {
+    color: rgba(0, 0, 0, 0.87);
+    font-weight: 700;
+  }
+</style>
