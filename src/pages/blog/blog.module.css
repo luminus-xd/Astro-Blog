@@ -105,6 +105,12 @@
   overflow-y: auto;
 }
 
+.tocTitle {
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin: 0 0 1rem;
+}
+
 .cms {
   width: 100%;
 }
