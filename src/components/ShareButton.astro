@@ -96,6 +96,7 @@ const { blogId, blogTitle } = Astro.props;
   .shareButtonText {
     color: #000;
     transition: color 800ms;
+    transform: translateY(2px);
   }
 
   .shareButton:hover .shareButtonText,
@@ -106,6 +107,9 @@ const { blogId, blogTitle } = Astro.props;
   @media (max-width: 767px) {
     .shareButton {
       background-size: 50% 400%;
+    }
+    .shareButtonText {
+      transform: translateY(1px);
     }
   }
 </style>
