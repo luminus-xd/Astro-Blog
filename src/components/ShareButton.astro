@@ -1,5 +1,4 @@
 ---
-import { formatDate } from '../library/utils';
 import { SITE_URL } from '../consts';
 
 interface Props {
@@ -12,7 +11,7 @@ const { blogId, blogTitle } = Astro.props;
 
 <a
   class="shareButton"
-  href={`https://twitter.com/intent/tweet?text=${blogTitle}&url=${SITE_URL}/blog/${blogId}/`}
+  href={`https://twitter.com/intent/tweet?text=${blogTitle}&url=${Astro.url}`}
   target="_blank"
   rel="noopener noreferrer"
 >
