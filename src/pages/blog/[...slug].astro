@@ -125,7 +125,9 @@ const blog = await getDetail(slug as string);
       blog.tocVisible && (
         <div class={styles.toc}>
           <div class={styles.tocContainer}>
-            <strong class={styles.tocTitle}><span>#</span>目次</strong>
+            <strong class={styles.tocTitle}>
+              <span>#</span>目次
+            </strong>
             <div class="toc" />
           </div>
         </div>
@@ -164,7 +166,7 @@ const blog = await getDetail(slug as string);
   }
 
   .toc .toc-list {
-    padding-left: 1.5rem;
+    padding-left: 1em;
     padding-top: 0.1rem;
     list-style-type: none;
   }
