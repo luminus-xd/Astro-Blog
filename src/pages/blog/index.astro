@@ -11,60 +11,90 @@ const posts = await getList();
 
 <!doctype html>
 <html lang="ja">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-		<style>
-			main {
-				width: 960px;
-				max-width: 100%;
-			}
-			ul {
-				display: grid;
-				gap: 36px;
-				margin-top: 32px;
-				grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-			}
-			img {
-				display: block;
-				width: 100%;
-				height: auto;
-				border-radius: calc(var(--border-radius) * 2);
-				aspect-ratio: 40 / 21;
-				object-fit: cover;
-			}
-			h1 {
-				font-size: 2.8rem;
-			}
-			h2 {
-				font-size: 2rem;
-				margin-top: 0.6em;
-			}
-		</style>
-	</head>
-	<body>
-		<Header />
-		<main>
-			<section>
-				<h1>投稿記事一覧</h1>
-				<ul>
-					{
-						posts.contents.map((post) => (
-							<li>
-								<a href={`/blog/${post.id}/`}>
-									<picture>
-										<source type="image/avif" srcset={`${post.thumbnail?.url}?fm=avif&fit=crop&w=391&h=205 1x, ${post.thumbnail?.url}?fm=avif&fit=crop&w=391&h=205&dpr=2 2x`}>
-										<source type="image/webp" srcset={`${post.thumbnail?.url}?fm=webp&fit=crop&w=391&h=205 1x, ${post.thumbnail?.url}?fm=webp&fit=crop&w=391&h=205&dpr=2 2x`}>
-										<img width={391} height={205} srcset={`${post.thumbnail?.url}?fit=crop&w=391&h=205 1x, ${post.thumbnail?.url}?fit=crop&w=391&h=205&dpr=2 2x`} alt="" transition:name={`BlogMV-${post.id}`} />
-									</picture>
-									<h2>{post.title}</h2>
-									<PublishedDate date={post.publishedAt || post.createdAt} />
-								</a>
-							</li>
-						))
-					}
-				</ul>
-			</section>
-		</main>
-		<Footer />
-	</body>
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <style>
+      main {
+        width: 960px;
+        max-width: 100%;
+      }
+      ul {
+        display: grid;
+        gap: 36px;
+        margin-top: 32px;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      }
+      img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: calc(var(--border-radius) * 2);
+        aspect-ratio: 40 / 21;
+        object-fit: cover;
+      }
+      h1 {
+        font-size: 2.8rem;
+      }
+      h2 {
+        font-size: 2rem;
+        margin-top: 0.6em;
+      }
+      hgroup {
+        margin-top: 0.6em;
+      }
+      hgroup p {
+        font-size: 1.5rem;
+        overflow: hidden;
+        display: -webkit-box;
+        text-overflow: ellipsis;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        color: var(--color-text-sub);
+        margin: 0.2em 0 0 0;
+        /* ブラウザがサポートしていない場合のフェールセーフ */
+        max-height: 5em;
+      }
+    </style>
+  </head>
+  <body>
+    <Header />
+    <main>
+      <section>
+        <h1>投稿記事一覧</h1>
+        <ul>
+          {
+            posts.contents.map(post => (
+              <li>
+                <a href={`/blog/${post.id}/`}>
+                  <picture>
+                    <source
+                      type="image/avif"
+                      srcset={`${post.thumbnail?.url}?fm=avif&fit=crop&w=391&h=205 1x, ${post.thumbnail?.url}?fm=avif&fit=crop&w=391&h=205&dpr=2 2x`}
+                    />
+                    <source
+                      type="image/webp"
+                      srcset={`${post.thumbnail?.url}?fm=webp&fit=crop&w=391&h=205 1x, ${post.thumbnail?.url}?fm=webp&fit=crop&w=391&h=205&dpr=2 2x`}
+                    />
+                    <img
+                      width={391}
+                      height={205}
+                      srcset={`${post.thumbnail?.url}?fit=crop&w=391&h=205 1x, ${post.thumbnail?.url}?fit=crop&w=391&h=205&dpr=2 2x`}
+                      alt=""
+                      transition:name={`BlogMV-${post.id}`}
+                    />
+                  </picture>
+                  <hgroup>
+                    <h2>{post.title}</h2>
+                    <p>{post.description}</p>
+                  </hgroup>
+                  <PublishedDate date={post.publishedAt || post.createdAt} />
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+    </main>
+    <Footer />
+  </body>
 </html>

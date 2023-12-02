@@ -4,10 +4,11 @@ import mdx from '@astrojs/mdx';
 import AstroPWA from '@vite-pwa/astro';
 import compress from 'astro-compress';
 import sitemap from '@astrojs/sitemap';
+import { SITE_URL } from './src/consts';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://luminus.pages.dev/',
+  site: SITE_URL,
   integrations: [
     robotsTxt(),
     mdx(),

@@ -128,7 +128,19 @@
 }
 
 .cms > :is(h1, h2, h3, h4, h5, h6) {
-  margin: 2em 0 1rem;
+  position: relative;
+  margin: 2em 0 0.6em;
+  padding-left: 1.2em;
+}
+
+.cms > :is(h1, h2, h3, h4, h5, h6)::before {
+  content: '#';
+  position: absolute;
+  inset: 0;
+  font-size: 1em;
+  font-weight: normal;
+  color: var(--color-text-sub-2);
+  margin: auto auto auto 0;
 }
 
 .cms > h1 {
@@ -138,27 +150,27 @@
 }
 
 .cms > h2 {
-  font-size: 2rem;
+  font-size: 2.4rem;
   font-weight: bold;
 }
 
 .cms > h3 {
-  font-size: 1.82rem;
+  font-size: 2rem;
   font-weight: bold;
 }
 
 .cms > h4 {
-  font-size: 1.68rem;
+  font-size: 1.8rem;
   font-weight: bold;
 }
 
 .cms > h5 {
-  font-size: 1.6rem;
+  font-size: 1.7rem;
   font-weight: bold;
 }
 
 .cms > p {
-  margin: 1em 0 0.5rem;
+  margin: 0.8em 0 0.5rem;
   line-height: 2;
 }
 
@@ -223,6 +235,10 @@
 
 .cms img {
   border-radius: var(--border-radius);
+}
+
+.cms > figure {
+  margin: 2rem 0;
 }
 
 .cms > figure > img,
