@@ -1,18 +1,17 @@
 ---
-import type { CollectionEntry } from 'astro:content';
+import type { Blog } from '../library/microcms';
 import BaseHead from '../components/BaseHead.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import FormattedDate from '../components/FormattedDate.astro';
 
-type Props = CollectionEntry<'blog'>['data'];
+type Props = Blog;
 
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
+const { title, description, content, thumbnail, tags, writer, tocVisible } = Astro.props;
 ---
 
 <html lang="ja">
   <head>
-    <BaseHead title={title} description={description} />
+    <BaseHead title={title} description={description} image={thumbnail?.url} />
     <style>
       .blog-detail {
         width: 1000px;
@@ -38,9 +37,7 @@ const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
     <Header />
     <main class="blog-detail">
       <article>
-        <div class="prose">
-          <slot />
-        </div>
+        <slot />
       </article>
     </main>
     <Footer />
