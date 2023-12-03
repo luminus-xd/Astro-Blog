@@ -1,93 +1,93 @@
 :root {
-  --color-primary: #2a5298;
-  --color-primary-light: #2b79d5;
-  --color-text-main: #393939;
-  --color-text-sub: #737373;
-  --color-text-sub-2: #aaa;
-  --color-code-text: #abb2bf;
-  --color-bg-main: #fff;
-  --color-bg-sub: #fefefe;
-  --color-bg-sub-2: #f8f9fd;
-  --color-bg-code: #282c34;
-  --color-border-dark: #ccc;
-  --color-border: #ddd;
-  --color-border-light: #fefefe;
-  --color-current: #eee;
-  --color-darkest: #000;
-  --border-radius: 4px;
-  --box-shadows-xs: 0 2px 8px 1px rgb(0 0 0 / 0.07), 0 1px 1px -1px rgb(0 0 0 / 0.04);
-  --box-shadows-sm: 0 2px 8px 2px rgb(0 0 0 / 0.07), 0 2px 4px -1px rgb(0 0 0 / 0.04);
-  --box-shadows-md: 0 12px 20px 6px rgb(0 0 0 / 0.08);
-  --box-shadows-lg: 0 12px 34px 6px rgb(0 0 0 / 0.18);
-  --box-shadows-xl: 0 25px 65px 0px rgb(0 0 0 / 0.35);
-  --backdrop-filter-blur-bg: saturate(180%) blur(14px);
-  --gradient-primary-blue: linear-gradient(
-    60deg,
-    var(--color-primary) -20%,
-    var(--color-primary-light) 50%
-  );
-  --font-family-primary: Inter, GenJyuuGothic, -apple-system, BlinkMacSystemFont, 'Helvetica Neue',
-    YuGothic, 'ヒラギノ角ゴ ProN W3', Hiragino Kaku Gothic ProN, Arial, 'メイリオ', sans-serif;
+    --color-primary: #2a5298;
+    --color-primary-light: #2b79d5;
+    --color-text-main: #393939;
+    --color-text-sub: #737373;
+    --color-text-sub-2: #aaa;
+    --color-code-text: #abb2bf;
+    --color-bg-main: #fff;
+    --color-bg-sub: #fefefe;
+    --color-bg-sub-2: #f8f9fd;
+    --color-bg-code: #282c34;
+    --color-border-dark: #ccc;
+    --color-border: #ddd;
+    --color-border-light: #fefefe;
+    --color-current: #eee;
+    --color-darkest: #000;
+    --border-radius: 4px;
+    --box-shadows-xs: 0 2px 8px 1px rgb(0 0 0 / 0.07), 0 1px 1px -1px rgb(0 0 0 / 0.04);
+    --box-shadows-sm: 0 2px 8px 2px rgb(0 0 0 / 0.07), 0 2px 4px -1px rgb(0 0 0 / 0.04);
+    --box-shadows-md: 0 12px 20px 6px rgb(0 0 0 / 0.08);
+    --box-shadows-lg: 0 12px 34px 6px rgb(0 0 0 / 0.18);
+    --box-shadows-xl: 0 25px 65px 0px rgb(0 0 0 / 0.35);
+    --backdrop-filter-blur-bg: saturate(180%) blur(14px);
+    --gradient-primary-blue: linear-gradient(
+        60deg,
+        var(--color-primary) -20%,
+        var(--color-primary-light) 50%
+    );
+    --font-family-primary: Inter, GenJyuuGothic, -apple-system, BlinkMacSystemFont, 'Helvetica Neue',
+        YuGothic, 'ヒラギノ角ゴ ProN W3', Hiragino Kaku Gothic ProN, Arial, 'メイリオ', sans-serif;
 }
 
 /* inter-regular - latin */
 @font-face {
-  font-display: swap;
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
-  src: url('/fonts/inter/inter-v13-latin-regular.woff2') format('woff2');
+    font-display: swap;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    src: url('/fonts/inter/inter-v13-latin-regular.woff2') format('woff2');
 }
 /* inter-500 - latin */
 @font-face {
-  font-display: swap;
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 500;
-  src: url('/fonts/inter/inter-v13-latin-500.woff2') format('woff2');
+    font-display: swap;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 500;
+    src: url('/fonts/inter/inter-v13-latin-500.woff2') format('woff2');
 }
 /* inter-700 - latin */
 @font-face {
-  font-display: swap;
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 700;
-  src: url('/fonts/inter/inter-v13-latin-700.woff2') format('woff2');
+    font-display: swap;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 700;
+    src: url('/fonts/inter/inter-v13-latin-700.woff2') format('woff2');
 }
 
 * {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
 }
 
 html {
-  font-size: 62.5%;
-  scroll-behavior: smooth;
-  word-break: break-word;
-  line-break: strict;
-  scrollbar-gutter: stable;
-  font-feature-settings: normal;
+    font-size: 62.5%;
+    scroll-behavior: smooth;
+    word-break: break-word;
+    line-break: strict;
+    scrollbar-gutter: stable;
+    font-feature-settings: normal;
 }
 
 html,
 body {
-  max-width: 100vw;
-  /* overflow-x: hidden; */
+    max-width: 100vw;
+    /* overflow-x: hidden; */
 }
 
 body {
-  font-family: var(--font-family-primary);
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  color: var(--color-text-main);
-  line-height: 1.7;
-  font-size: 1.58rem;
+    font-family: var(--font-family-primary);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--color-text-main);
+    line-height: 1.7;
+    font-size: 1.58rem;
 }
 
 main {
-  margin: 60px auto 40px;
-  padding: 0 20px;
+    margin: 60px auto 40px;
+    padding: 0 20px;
 }
 
 h1,
@@ -96,131 +96,131 @@ h3,
 h4,
 h5,
 h6 {
-  line-height: 1.26;
+    line-height: 1.26;
 }
 
 h1 {
-  font-size: 2.8rem;
+    font-size: 2.8rem;
 }
 
 h2 {
-  font-size: 2.4rem;
+    font-size: 2.4rem;
 }
 
 h3 {
-  font-size: 2rem;
+    font-size: 2rem;
 }
 
 h4 {
-  font-size: 1.8rem;
+    font-size: 1.8rem;
 }
 
 h5 {
-  font-size: 1.6rem;
+    font-size: 1.6rem;
 }
 
 p {
-  margin-block: 1em;
+    margin-block: 1em;
 }
 
 code {
-  font-family: var(--font-family-primary);
-  color: var(--color-code-text);
+    font-family: var(--font-family-primary);
+    color: var(--color-code-text);
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
-  word-wrap: break-word;
+    color: inherit;
+    text-decoration: none;
+    word-wrap: break-word;
 }
 
 ol,
 ul {
-  list-style: none;
+    list-style: none;
 }
 
 img {
-  display: block;
-  user-select: none;
-  pointer-events: none;
+    display: block;
+    user-select: none;
+    pointer-events: none;
 }
 
 @media (max-width: 640px) {
-  body {
-    font-size: 1.6rem;
-  }
+    body {
+        font-size: 1.6rem;
+    }
 }
 
 @keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 /* Loading */
 .loading {
-  font-size: 1.4rem;
-  font-weight: bold;
-  letter-spacing: -0.04em;
-  background-image: linear-gradient(60deg, rgb(94, 162, 239) 25%, rgb(0, 114, 245) 100%);
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+    font-size: 1.4rem;
+    font-weight: bold;
+    letter-spacing: -0.04em;
+    background-image: linear-gradient(60deg, rgb(94, 162, 239) 25%, rgb(0, 114, 245) 100%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .loading span {
-  display: inline-block;
-  position: relative;
-  animation: loading-anim 1500ms linear infinite;
-  background-image: linear-gradient(60deg, rgb(94, 162, 239) 25%, rgb(0, 114, 245) 100%);
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  transform: translateY(-4px);
+    display: inline-block;
+    position: relative;
+    animation: loading-anim 1500ms linear infinite;
+    background-image: linear-gradient(60deg, rgb(94, 162, 239) 25%, rgb(0, 114, 245) 100%);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transform: translateY(-4px);
 }
 
 @keyframes loading-anim {
-  0% {
-    transform: translateY(0);
-  }
-  30% {
-    transform: translateY(3px);
-  }
-  70% {
-    transform: translateY(-3px);
-  }
-  100% {
-    transform: translateY(0);
-  }
+    0% {
+        transform: translateY(0);
+    }
+    30% {
+        transform: translateY(3px);
+    }
+    70% {
+        transform: translateY(-3px);
+    }
+    100% {
+        transform: translateY(0);
+    }
 }
 
 .loading span:nth-child(1) {
-  animation-delay: 300ms;
+    animation-delay: 300ms;
 }
 
 .loading span:nth-child(2) {
-  animation-delay: 600ms;
+    animation-delay: 600ms;
 }
 
 .loading span:nth-child(3) {
-  animation-delay: 900ms;
+    animation-delay: 900ms;
 }
 
 .sr-only {
-  border: 0;
-  padding: 0;
-  margin: 0;
-  position: absolute !important;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-  /* IE6, IE7 - a 0 height clip, off to the bottom right of the visible 1px box */
-  clip: rect(1px 1px 1px 1px);
-  /* maybe deprecated but we need to support legacy browsers */
-  clip: rect(1px, 1px, 1px, 1px);
-  /* modern browsers, clip-path works inwards from each corner */
-  clip-path: inset(50%);
-  /* added line to stop words getting smushed together (as they go onto seperate lines and some screen readers do not understand line feeds as a space */
-  white-space: nowrap;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    /* IE6, IE7 - a 0 height clip, off to the bottom right of the visible 1px box */
+    clip: rect(1px 1px 1px 1px);
+    /* maybe deprecated but we need to support legacy browsers */
+    clip: rect(1px, 1px, 1px, 1px);
+    /* modern browsers, clip-path works inwards from each corner */
+    clip-path: inset(50%);
+    /* added line to stop words getting smushed together (as they go onto seperate lines and some screen readers do not understand line feeds as a space */
+    white-space: nowrap;
 }

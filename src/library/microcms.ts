@@ -1,50 +1,50 @@
 import { createClient } from 'microcms-js-sdk';
 import type {
-  MicroCMSQueries,
-  MicroCMSImage,
-  MicroCMSDate,
-  MicroCMSContentId,
+    MicroCMSQueries,
+    MicroCMSImage,
+    MicroCMSDate,
+    MicroCMSContentId,
 } from 'microcms-js-sdk';
 
 /**
  * タグの型定義
  */
 export type Tag = {
-  name: string;
+    name: string;
 } & MicroCMSContentId &
-  MicroCMSDate;
+    MicroCMSDate;
 
 /**
  * ライターの型定義
  */
 export type Writer = {
-  name: string;
-  profile: string;
-  image?: MicroCMSImage;
+    name: string;
+    profile: string;
+    image?: MicroCMSImage;
 } & MicroCMSContentId &
-  MicroCMSDate;
+    MicroCMSDate;
 
 /**
  * 記事の型定義
  */
 export type Blog = {
-  title: string;
-  description: string;
-  content: string;
-  thumbnail?: MicroCMSImage;
-  tags?: Tag[];
-  writer?: Writer;
-  tocVisible: boolean;
+    title: string;
+    description: string;
+    content: string;
+    thumbnail?: MicroCMSImage;
+    tags?: Tag[];
+    writer?: Writer;
+    tocVisible: boolean;
 };
 
 export type Article = Blog & MicroCMSContentId & MicroCMSDate;
 
 if (!import.meta.env.MICROCMS_SERVICE_DOMAIN) {
-  throw new Error('MICROCMS_SERVICE_DOMAIN is required');
+    throw new Error('MICROCMS_SERVICE_DOMAIN is required');
 }
 
 if (!import.meta.env.MICROCMS_API_KEY) {
-  throw new Error('MICROCMS_API_KEY is required');
+    throw new Error('MICROCMS_API_KEY is required');
 }
 
 /**
@@ -52,8 +52,8 @@ if (!import.meta.env.MICROCMS_API_KEY) {
  * @see https://github.com/microcmsio/microcms-js-sdk
  */
 export const client = createClient({
-  serviceDomain: import.meta.env.MICROCMS_SERVICE_DOMAIN,
-  apiKey: import.meta.env.MICROCMS_API_KEY,
+    serviceDomain: import.meta.env.MICROCMS_SERVICE_DOMAIN,
+    apiKey: import.meta.env.MICROCMS_API_KEY,
 });
 
 /**
@@ -62,12 +62,12 @@ export const client = createClient({
  * @returns
  */
 export const getList = async (queries?: MicroCMSQueries) => {
-  const listData = await client.getList<Blog>({
-    endpoint: 'blog',
-    queries,
-  });
+    const listData = await client.getList<Blog>({
+        endpoint: 'blog',
+        queries,
+    });
 
-  return listData;
+    return listData;
 };
 
 /**
@@ -77,13 +77,13 @@ export const getList = async (queries?: MicroCMSQueries) => {
  * @returns
  */
 export const getDetail = async (contentId: string, queries?: MicroCMSQueries) => {
-  const detailData = await client.getListDetail<Blog>({
-    endpoint: 'blog',
-    contentId,
-    queries,
-  });
+    const detailData = await client.getListDetail<Blog>({
+        endpoint: 'blog',
+        contentId,
+        queries,
+    });
 
-  return detailData;
+    return detailData;
 };
 
 /**
@@ -92,12 +92,12 @@ export const getDetail = async (contentId: string, queries?: MicroCMSQueries) =>
  * @returns
  */
 export const getTagList = async (queries?: MicroCMSQueries) => {
-  const listData = await client.getList<Tag>({
-    endpoint: 'tags',
-    queries,
-  });
+    const listData = await client.getList<Tag>({
+        endpoint: 'tags',
+        queries,
+    });
 
-  return listData;
+    return listData;
 };
 
 /**
@@ -107,11 +107,11 @@ export const getTagList = async (queries?: MicroCMSQueries) => {
  * @returns
  */
 export const getTag = async (contentId: string, queries?: MicroCMSQueries) => {
-  const detailData = await client.getListDetail<Tag>({
-    endpoint: 'tags',
-    contentId,
-    queries,
-  });
+    const detailData = await client.getListDetail<Tag>({
+        endpoint: 'tags',
+        contentId,
+        queries,
+    });
 
-  return detailData;
+    return detailData;
 };

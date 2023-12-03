@@ -10,9 +10,9 @@ import 'highlight.js/styles/atom-one-dark.css';
  * @returns
  */
 export function formatDate(date: string) {
-  const utcDate = new Date(date);
-  const jstDate = utcToZonedTime(utcDate, 'Asia/Tokyo');
-  return format(jstDate, 'yyyy-MM-dd');
+    const utcDate = new Date(date);
+    const jstDate = utcToZonedTime(utcDate, 'Asia/Tokyo');
+    return format(jstDate, 'yyyy-MM-dd');
 }
 
 /**
@@ -23,31 +23,31 @@ export function formatDate(date: string) {
  * @returns
  */
 export function formatRichText(richText: string) {
-  const $ = cheerio.load(richText);
-  const highlight = (text: string, lang?: string) => {
-    if (!lang) return hljs.highlightAuto(text);
-    try {
-      return hljs.highlight(text, { language: lang?.replace(/^language-/, '') || '' });
-    } catch (e) {
-      return hljs.highlightAuto(text);
-    }
-  };
-  $('pre code').each((_, elm) => {
-    const lang = $(elm).attr('class');
-    const res = highlight($(elm).text(), lang);
-    $(elm).html(res.value);
-    $(elm).attr('tabindex', '0');
-  });
-  return $.html();
+    const $ = cheerio.load(richText);
+    const highlight = (text: string, lang?: string) => {
+        if (!lang) return hljs.highlightAuto(text);
+        try {
+            return hljs.highlight(text, { language: lang?.replace(/^language-/, '') || '' });
+        } catch (e) {
+            return hljs.highlightAuto(text);
+        }
+    };
+    $('pre code').each((_, elm) => {
+        const lang = $(elm).attr('class');
+        const res = highlight($(elm).text(), lang);
+        $(elm).html(res.value);
+        $(elm).attr('tabindex', '0');
+    });
+    return $.html();
 }
 
 /**
  * 目次のオブジェクト型
  */
 export type TocEntry = {
-  name?: string;
-  text?: string;
-  id?: string;
+    name?: string;
+    text?: string;
+    id?: string;
 };
 
 /**
@@ -56,15 +56,17 @@ export type TocEntry = {
  * @returns
  */
 export const renderToc = (body: string): TocEntry[] => {
-  const $ = cheerio.load(body);
-  const headings = $('h2, h3, h4').toArray();
-  const toc: TocEntry[] = headings.map((data: any) => {
-    const name = data.name;
-    const id = data.attribs?.id;
-    const text =
-      data.type === 'tag' && data.children[0]?.type === 'text' ? data.children[0].data : undefined;
-    return { name, text, id };
-  });
+    const $ = cheerio.load(body);
+    const headings = $('h2, h3, h4').toArray();
+    const toc: TocEntry[] = headings.map((data: any) => {
+        const name = data.name;
+        const id = data.attribs?.id;
+        const text =
+            data.type === 'tag' && data.children[0]?.type === 'text'
+                ? data.children[0].data
+                : undefined;
+        return { name, text, id };
+    });
 
-  return toc;
+    return toc;
 };

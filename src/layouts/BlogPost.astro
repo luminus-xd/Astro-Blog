@@ -10,36 +10,36 @@ const { title, description, content, thumbnail, tags, writer, tocVisible } = Ast
 ---
 
 <html lang="ja">
-  <head>
-    <BaseHead title={title} description={description} image={thumbnail?.url} />
-    <style>
-      .blog-detail {
-        width: 1000px;
-      }
+    <head>
+        <BaseHead title={title} description={description} image={thumbnail?.url} />
+        <style>
+            .blog-detail {
+                width: 1000px;
+            }
 
-      @media (max-width: 1040px) {
-        .blog-detail {
-          width: auto;
-          padding: 0 28px;
-        }
-      }
+            @media (max-width: 1040px) {
+                .blog-detail {
+                    width: auto;
+                    padding: 0 28px;
+                }
+            }
 
-      @media (max-width: 640px) {
-        .blog-detail {
-          width: auto;
-          padding: 0 20px;
-        }
-      }
-    </style>
-  </head>
+            @media (max-width: 640px) {
+                .blog-detail {
+                    width: auto;
+                    padding: 0 20px;
+                }
+            }
+        </style>
+    </head>
 
-  <body>
-    <Header />
-    <main class="blog-detail">
-      <article>
-        <slot />
-      </article>
-    </main>
-    <Footer />
-  </body>
+    <body>
+        <Header />
+        <main class="blog-detail">
+            <article>
+                <slot />
+            </article>
+        </main>
+        <Footer />
+    </body>
 </html>
