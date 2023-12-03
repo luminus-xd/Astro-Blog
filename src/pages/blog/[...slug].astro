@@ -9,11 +9,11 @@ import ShareButton from '../../components/ShareButton.astro';
 import styles from './blog.module.css';
 
 export async function getStaticPaths() {
-  const posts = await getList();
-  return posts.contents.map(post => ({
-    params: { slug: post.id },
-    props: post,
-  }));
+    const posts = await getList();
+    return posts.contents.map(post => ({
+        params: { slug: post.id },
+        props: post,
+    }));
 }
 
 const { slug } = Astro.params;
@@ -21,185 +21,185 @@ const blog = await getDetail(slug as string);
 ---
 
 <BlogPost {...blog}>
-  <h1 class={styles.title}>{blog.title}</h1>
-  <!-- <TagList tags={blog.tags} /> -->
-  <p class={styles.description}>{blog.description}</p>
-  <div class={styles.meta}>
-    {
-      blog.writer && (
-        <div class={styles.writer}>
-          <picture>
+    <h1 class={styles.title}>{blog.title}</h1>
+    <!-- <TagList tags={blog.tags} /> -->
+    <p class={styles.description}>{blog.description}</p>
+    <div class={styles.meta}>
+        {
+            blog.writer && (
+                <div class={styles.writer}>
+                    <picture>
+                        <source
+                            type="image/avif"
+                            srcset={`${blog.writer?.image?.url}?fm=avif&fit=crop&w=48&h=48 1x, ${blog.writer?.image?.url}?fm=avif&fit=crop&w=48&h=48&dpr=2 2x`}
+                        />
+                        <source
+                            type="image/webp"
+                            srcset={`${blog.writer?.image?.url}?fm=webp&fit=crop&w=48&h=48 1x, ${blog.writer?.image?.url}?fm=webp&fit=crop&w=48&h=48&dpr=2 2x`}
+                        />
+                        <img
+                            src={`${blog.writer?.image?.url}?&fit=crop&w=48&h=48`}
+                            alt=""
+                            class={styles.writerIcon}
+                            width={blog.writer?.image?.width}
+                            height={blog.writer?.image?.height}
+                            decoding="async"
+                            fetchpriority="high"
+                        />
+                    </picture>
+                    <span class={styles.writerName}>{blog.writer?.name}</span>
+                </div>
+            )
+        }
+        <PublishedDate date={blog.publishedAt || blog.createdAt} />
+    </div>
+    <div class={styles.thumbnail}>
+        <picture>
             <source
-              type="image/avif"
-              srcset={`${blog.writer?.image?.url}?fm=avif&fit=crop&w=48&h=48 1x, ${blog.writer?.image?.url}?fm=avif&fit=crop&w=48&h=48&dpr=2 2x`}
+                type="image/avif"
+                media="(max-width: 640px)"
+                srcset={`${blog.thumbnail?.url}?fm=avif&w=414 1x, ${blog.thumbnail?.url}?fm=avif&w=414&dpr=2 2x`}
             />
             <source
-              type="image/webp"
-              srcset={`${blog.writer?.image?.url}?fm=webp&fit=crop&w=48&h=48 1x, ${blog.writer?.image?.url}?fm=webp&fit=crop&w=48&h=48&dpr=2 2x`}
+                type="image/avif"
+                srcset={`${blog.thumbnail?.url}?fm=avif&fit=crop&w=1200&h=630 1x, ${blog.thumbnail?.url}?fm=avif&fit=crop&w=1200&h=630&dpr=2 2x`}
+            />
+            <source
+                type="image/webp"
+                media="(max-width: 640px)"
+                srcset={`${blog.thumbnail?.url}?fm=webp&w=414 1x, ${blog.thumbnail?.url}?fm=webp&w=414&dpr=2 2x`}
+            />
+            <source
+                type="image/webp"
+                srcset={`${blog.thumbnail?.url}?fm=webp&fit=crop&w=1200&h=630 1x, ${blog.thumbnail?.url}?fm=webp&fit=crop&w=1200&h=630&dpr=2 2x`}
             />
             <img
-              src={`${blog.writer?.image?.url}?&fit=crop&w=48&h=48`}
-              alt=""
-              class={styles.writerIcon}
-              width={blog.writer?.image?.width}
-              height={blog.writer?.image?.height}
-              decoding="async"
-              fetchpriority="high"
+                srcset={`${blog.thumbnail?.url}?fit=crop&w=1200&h=630 1x, ${blog.thumbnail?.url}?fit=crop&w=1200&h=630&dpr=2 2x`}
+                alt=""
+                class={styles.thumbnailFront}
+                width={blog.thumbnail?.width}
+                height={blog.thumbnail?.height}
+                decoding="async"
+                transition:name={`BlogMV-${blog.id}`}
+                fetchpriority="high"
             />
-          </picture>
-          <span class={styles.writerName}>{blog.writer?.name}</span>
-        </div>
-      )
-    }
-    <PublishedDate date={blog.publishedAt || blog.createdAt} />
-  </div>
-  <div class={styles.thumbnail}>
-    <picture>
-      <source
-        type="image/avif"
-        media="(max-width: 640px)"
-        srcset={`${blog.thumbnail?.url}?fm=avif&w=414 1x, ${blog.thumbnail?.url}?fm=avif&w=414&dpr=2 2x`}
-      />
-      <source
-        type="image/avif"
-        srcset={`${blog.thumbnail?.url}?fm=avif&fit=crop&w=1200&h=630 1x, ${blog.thumbnail?.url}?fm=avif&fit=crop&w=1200&h=630&dpr=2 2x`}
-      />
-      <source
-        type="image/webp"
-        media="(max-width: 640px)"
-        srcset={`${blog.thumbnail?.url}?fm=webp&w=414 1x, ${blog.thumbnail?.url}?fm=webp&w=414&dpr=2 2x`}
-      />
-      <source
-        type="image/webp"
-        srcset={`${blog.thumbnail?.url}?fm=webp&fit=crop&w=1200&h=630 1x, ${blog.thumbnail?.url}?fm=webp&fit=crop&w=1200&h=630&dpr=2 2x`}
-      />
-      <img
-        srcset={`${blog.thumbnail?.url}?fit=crop&w=1200&h=630 1x, ${blog.thumbnail?.url}?fit=crop&w=1200&h=630&dpr=2 2x`}
-        alt=""
-        class={styles.thumbnailFront}
-        width={blog.thumbnail?.width}
-        height={blog.thumbnail?.height}
-        decoding="async"
-        transition:name={`BlogMV-${blog.id}`}
-        fetchpriority="high"
-      />
-    </picture>
-    <picture class={styles.thumbnailBlur}>
-      <source
-        type="image/avif"
-        media="(max-width: 640px)"
-        srcset={`${blog.thumbnail?.url}?fm=avif&w=414&q=10&blur=75 1x, ${blog.thumbnail?.url}?fm=avif&w=414&q=10&blur=75&dpr=2 2x`}
-      />
-      <source
-        type="image/avif"
-        srcset={`${blog.thumbnail?.url}?fm=avif&fit=crop&w=1200&h=630&q=10&blur=75 1x, ${blog.thumbnail?.url}?fm=avif&fit=crop&w=1200&h=630&q=10&blur=75&dpr=2 2x`}
-      />
-      <source
-        type="image/webp"
-        media="(max-width: 640px)"
-        srcset={`${blog.thumbnail?.url}?fm=webp&w=41&q=10&blur=75 1x, ${blog.thumbnail?.url}?fm=webp&w=41&q=10&blur=75&dpr=2 2x`}
-      />
-      <source
-        type="image/webp"
-        srcset={`${blog.thumbnail?.url}?fm=webp&fit=crop&w=120&h=63&q=10&blur=75 1x, ${blog.thumbnail?.url}?fm=webp&fit=crop&w=120&h=63&q=10&blur=75&dpr=2 2x`}
-      />
-      <img
-        srcset={`${blog.thumbnail?.url}?fit=crop&w=1200&h=630&q=10&blur=75 1x, ${blog.thumbnail?.url}?fit=crop&w=1200&h=630&q=10&blur=75&dpr=2 2x`}
-        alt=""
-        class={styles.thumbnail}
-        width={blog.thumbnail?.width}
-        height={blog.thumbnail?.height}
-        loading="lazy"
-        decoding="async"
-      />
-    </picture>
-  </div>
-  <div class={styles.column}>
-    <div class={styles.content}>
-      <div id="cms" class={styles.cms} set:html={formatRichText(blog.content)} />
-      <div class={styles.twitterShareBlock}>
-        <ShareButton blogId={blog.id} blogTitle={blog.title} />
-      </div>
+        </picture>
+        <picture class={styles.thumbnailBlur}>
+            <source
+                type="image/avif"
+                media="(max-width: 640px)"
+                srcset={`${blog.thumbnail?.url}?fm=avif&w=414&q=10&blur=75 1x, ${blog.thumbnail?.url}?fm=avif&w=414&q=10&blur=75&dpr=2 2x`}
+            />
+            <source
+                type="image/avif"
+                srcset={`${blog.thumbnail?.url}?fm=avif&fit=crop&w=1200&h=630&q=10&blur=75 1x, ${blog.thumbnail?.url}?fm=avif&fit=crop&w=1200&h=630&q=10&blur=75&dpr=2 2x`}
+            />
+            <source
+                type="image/webp"
+                media="(max-width: 640px)"
+                srcset={`${blog.thumbnail?.url}?fm=webp&w=41&q=10&blur=75 1x, ${blog.thumbnail?.url}?fm=webp&w=41&q=10&blur=75&dpr=2 2x`}
+            />
+            <source
+                type="image/webp"
+                srcset={`${blog.thumbnail?.url}?fm=webp&fit=crop&w=120&h=63&q=10&blur=75 1x, ${blog.thumbnail?.url}?fm=webp&fit=crop&w=120&h=63&q=10&blur=75&dpr=2 2x`}
+            />
+            <img
+                srcset={`${blog.thumbnail?.url}?fit=crop&w=1200&h=630&q=10&blur=75 1x, ${blog.thumbnail?.url}?fit=crop&w=1200&h=630&q=10&blur=75&dpr=2 2x`}
+                alt=""
+                class={styles.thumbnail}
+                width={blog.thumbnail?.width}
+                height={blog.thumbnail?.height}
+                loading="lazy"
+                decoding="async"
+            />
+        </picture>
     </div>
-    {
-      blog.tocVisible && (
-        <div class={styles.toc}>
-          <div class={styles.tocContainer}>
-            <strong class={styles.tocTitle}>
-              <span>#</span>目次
-            </strong>
-            <div class="toc" />
-          </div>
+    <div class={styles.column}>
+        <div class={styles.content}>
+            <div id="cms" class={styles.cms} set:html={formatRichText(blog.content)} />
+            <div class={styles.twitterShareBlock}>
+                <ShareButton blogId={blog.id} blogTitle={blog.title} />
+            </div>
         </div>
-      )
-    }
-  </div>
-  <div class={styles.topButton}>
-    <LinkButton href="/blog/">トップページに戻る</LinkButton>
-  </div>
+        {
+            blog.tocVisible && (
+                <div class={styles.toc}>
+                    <div class={styles.tocContainer}>
+                        <strong class={styles.tocTitle}>
+                            <span>#</span>目次
+                        </strong>
+                        <div class="toc" />
+                    </div>
+                </div>
+            )
+        }
+    </div>
+    <div class={styles.topButton}>
+        <LinkButton href="/blog/">トップページに戻る</LinkButton>
+    </div>
 </BlogPost>
 
 <script>
-  import tocbot from 'tocbot';
+    import tocbot from 'tocbot';
 
-  document.addEventListener('astro:page-load', () => {
-    const tocSelector = '.toc';
-    const contentSelector = '#cms';
-    const tocElement = document.querySelector(tocSelector);
-    const cmsElement = document.querySelector(contentSelector);
-    if (tocElement && cmsElement) {
-      tocbot.init({
-        tocSelector: tocSelector,
-        contentSelector: contentSelector,
-        headingSelector: 'h2, h3, h4',
-        scrollSmoothDuration: 50,
-      });
-    }
-  });
+    document.addEventListener('astro:page-load', () => {
+        const tocSelector = '.toc';
+        const contentSelector = '#cms';
+        const tocElement = document.querySelector(tocSelector);
+        const cmsElement = document.querySelector(contentSelector);
+        if (tocElement && cmsElement) {
+            tocbot.init({
+                tocSelector: tocSelector,
+                contentSelector: contentSelector,
+                headingSelector: 'h2, h3, h4',
+                scrollSmoothDuration: 50,
+            });
+        }
+    });
 </script>
 
 <style is:global>
-  .toc {
-    --toc-border-left: 3px;
+    .toc {
+        --toc-border-left: 3px;
 
-    margin-top: 4px;
-  }
+        margin-top: 4px;
+    }
 
-  .toc .toc-list {
-    padding-left: 1em;
-    padding-top: 0.1rem;
-    list-style-type: none;
-  }
+    .toc .toc-list {
+        padding-left: 1em;
+        padding-top: 0.1rem;
+        list-style-type: none;
+    }
 
-  .toc > .toc-list {
-    position: relative;
-    padding-left: 16px;
-    border-left: var(--toc-border-left) solid rgba(0, 0, 0, 0.12);
-  }
+    .toc > .toc-list {
+        position: relative;
+        padding-left: 16px;
+        border-left: var(--toc-border-left) solid rgba(0, 0, 0, 0.12);
+    }
 
-  .toc .toc-list .toc-list-item {
-    padding: 0.12rem 0;
-  }
+    .toc .toc-list .toc-list-item {
+        padding: 0.12rem 0;
+    }
 
-  .toc .toc-link {
-    color: rgba(0, 0, 0, 0.6);
-    transition: color 200ms ease;
-  }
+    .toc .toc-link {
+        color: rgba(0, 0, 0, 0.6);
+        transition: color 200ms ease;
+    }
 
-  .toc .is-active-link {
-    color: rgba(0, 0, 0, 1);
-    font-weight: bold;
-  }
+    .toc .is-active-link {
+        color: rgba(0, 0, 0, 1);
+        font-weight: bold;
+    }
 
-  .toc .is-active-link::before {
-    content: '';
-    position: absolute;
-    left: calc(var(--toc-border-left) * -1);
-    width: var(--toc-border-left);
-    height: 1.1em;
-    background-color: var(--color-primary);
-    transform: translateY(4px);
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.12);
-    border-radius: var(--border-radius);
-  }
+    .toc .is-active-link::before {
+        content: '';
+        position: absolute;
+        left: calc(var(--toc-border-left) * -1);
+        width: var(--toc-border-left);
+        height: 1.1em;
+        background-color: var(--color-primary);
+        transform: translateY(4px);
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.12);
+        border-radius: var(--border-radius);
+    }
 </style>

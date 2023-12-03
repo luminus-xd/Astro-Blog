@@ -2,23 +2,23 @@
 import { formatDate } from '../library/utils';
 
 interface Props {
-  date: string;
+    date: string;
 }
 
 const { date } = Astro.props;
 ---
 
 <span class="date">
-  <img src="/images/clock.svg" alt="" width={16} height={16} />
-  <time datetime={date}>{formatDate(date)}</time>
+    <img src="/images/clock.svg" alt="" width={16} height={16} />
+    <time datetime={date}>{formatDate(date)}</time>
 </span>
 
 <style>
-  .date {
-    display: flex;
-    align-items: center;
-    line-height: 16px;
-    gap: 8px;
-    margin: 0.8rem 0;
-  }
+    .date {
+        display: flex;
+        align-items: center;
+        line-height: 16px;
+        gap: 8px;
+        margin: 0.8rem 0;
+    }
 </style>
