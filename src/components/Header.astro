@@ -65,6 +65,9 @@ import { SITE_TITLE } from '../consts';
     width: 2.4em;
     height: 2.4em;
   }
+  h2 a:hover:is(h2 img) {
+    filter: brightness(0.8);
+  }
   h2 span {
     color: var(--color-darkest);
   }
@@ -74,10 +77,14 @@ import { SITE_TITLE } from '../consts';
     justify-content: space-between;
   }
   nav a {
-    padding: 1em 0.5em;
-    color: var(--black);
+    padding: 1em 0.8em;
     border-bottom: 4px solid transparent;
     text-decoration: none;
+    transition: background 200ms ease;
+  }
+  nav a:hover,
+  nav a:focus-visible {
+    background: var(--color-bg-sub-2);
   }
   nav a.active {
     text-decoration: none;
@@ -88,6 +95,9 @@ import { SITE_TITLE } from '../consts';
     display: flex;
   }
   @media (max-width: 720px) {
+    nav a {
+      padding: 1em 0.5em;
+    }
     .social-links {
       display: none;
     }
