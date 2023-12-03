@@ -364,8 +364,8 @@
 
 @media (max-width: 1020px) {
   .column {
-    flex-wrap: wrap;
-    gap: 48px;
+    /* flex-wrap: wrap; */
+    gap: 36px;
   }
 
   .thumbnail {
@@ -380,15 +380,12 @@
   }
 
   .toc {
-    order: 1;
-    width: 280px;
+    width: 220px;
     max-width: 100%;
     margin: 0 auto;
-    /* display: none; */
   }
 
   .content {
-    order: 2;
     width: 100%;
   }
 
@@ -397,7 +394,12 @@
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 760px) {
+  .column {
+    flex-wrap: wrap;
+    gap: 48px;
+  }
+
   .title {
     font-size: 2.8rem;
     margin-bottom: 20px;
@@ -450,6 +452,15 @@
 
   .thumbnailBlur {
     filter: blur(16px) saturate(180%);
+  }
+
+  .toc {
+    order: 1;
+  }
+
+  .content {
+    order: 2;
+    width: 100%;
   }
 
   .twitterShareBlock::before {
