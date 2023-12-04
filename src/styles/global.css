@@ -30,14 +30,6 @@
         YuGothic, 'ヒラギノ角ゴ ProN W3', Hiragino Kaku Gothic ProN, Arial, 'メイリオ', sans-serif;
 }
 
-/* inter-regular - latin */
-@font-face {
-    font-display: swap;
-    font-family: 'Inter';
-    font-style: normal;
-    font-weight: 400;
-    src: url('/fonts/inter/inter-v13-latin-regular.woff2') format('woff2');
-}
 /* inter-500 - latin */
 @font-face {
     font-display: swap;

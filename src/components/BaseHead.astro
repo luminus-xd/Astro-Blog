@@ -10,6 +10,7 @@ interface Props {
 }
 
 import { ViewTransitions } from 'astro:transitions';
+import { SITE_TITLE } from '../consts';
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
@@ -20,13 +21,13 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link rel="icon" href="/favicon.ico" />
+<link rel="apple-touch-icon-precomposed" href="/images/icons/icon-384x384.png" />
 <meta name="generator" content={Astro.generator} />
 <meta name="theme-color" content="#282c34" />
 <meta name="msapplication-TileColor" content="#282c34" />
 
-<!-- Font CSS -->
-<link rel="stylesheet" href="/fonts/GenJyuuGothic-Normal/GenJyuuGothic-Normal.css" />
-<link rel="stylesheet" href="/fonts/GenJyuuGothic-Bold/GenJyuuGothic-Bold.css" />
+<!-- Preconnect -->
+<link rel="preconnect" href="https://images.microcms-assets.io" crossorigin />
 
 <!-- Font preloads -->
 <link
@@ -51,6 +52,7 @@ const { title, description, image = '/blog-placeholder-1.jpg' } = Astro.props;
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
+<meta name="apple-mobile-web-app-title" content={SITE_TITLE} />
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
