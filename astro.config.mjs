@@ -108,7 +108,9 @@ export default defineConfig({
                 ],
             },
         }),
-        compress(),
+        compress({
+            CSS: false,
+        }),
         sitemap(),
     ],
 });
