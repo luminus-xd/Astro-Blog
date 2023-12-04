@@ -12,6 +12,8 @@
         "format": "prettier --write ."
     },
     "dependencies": {
+        "astro-purgecss": "^3.2.1",
+        "purgecss": "^5.0.0",
         "tocbot": "^4.23.0"
     },
     "devDependencies": {
