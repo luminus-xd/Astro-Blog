@@ -2,7 +2,6 @@ import { defineConfig } from 'astro/config';
 import robotsTxt from 'astro-robots-txt';
 import mdx from '@astrojs/mdx';
 import AstroPWA from '@vite-pwa/astro';
-import compress from 'astro-compress';
 import sitemap from '@astrojs/sitemap';
 import { SITE_URL } from './src/consts';
 
@@ -52,12 +51,12 @@ export default defineConfig({
                         src: '/images/icons/icon-192x192.png',
                         sizes: '192x192',
                         type: 'image/png',
-                        purpose: 'any maskable',
                     },
                     {
                         src: '/images/icons/icon-384x384.png',
                         sizes: '384x384',
                         type: 'image/png',
+                        purpose: 'any maskable',
                     },
                     {
                         src: '/images/icons/icon-512x512.png',
@@ -108,7 +107,6 @@ export default defineConfig({
                 ],
             },
         }),
-        compress(),
         sitemap(),
     ],
 });
