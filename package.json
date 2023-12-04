@@ -21,7 +21,7 @@
         "@astrojs/sitemap": "^3.0.3",
         "@vite-pwa/astro": "^0.1.5",
         "astro": "^3.6.0",
-        "astro-compress": "^2.2.3",
+        "astro-compress": "^2.2.4",
         "astro-robots-txt": "^1.0.0",
         "cheerio": "1.0.0-rc.12",
         "cross-env": "^7.0.3",
@@ -32,7 +32,7 @@
         "microcms-js-sdk": "^2.7.0",
         "prettier": "^3.1.0",
         "prettier-plugin-astro": "^0.12.2",
-        "typescript": "^5.3.2"
+        "typescript": "^5.2"
     },
     "volta": {
         "node": "20.10.0"
