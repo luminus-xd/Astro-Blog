@@ -1,8 +1,9 @@
 import { defineConfig } from 'astro/config';
 import robotsTxt from 'astro-robots-txt';
 import mdx from '@astrojs/mdx';
-import AstroPWA from '@vite-pwa/astro';
 import sitemap from '@astrojs/sitemap';
+import purgecss from 'astro-purgecss';
+import AstroPWA from '@vite-pwa/astro';
 import { SITE_URL } from './src/consts';
 
 // https://astro.build/config
@@ -107,6 +108,7 @@ export default defineConfig({
                 ],
             },
         }),
+        purgecss(),
         sitemap(),
     ],
 });
