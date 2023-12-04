@@ -21,7 +21,6 @@
         "@astrojs/sitemap": "^3.0.3",
         "@vite-pwa/astro": "^0.1.5",
         "astro": "^3.6.0",
-        "astro-compress": "^2.2.4",
         "astro-robots-txt": "^1.0.0",
         "cheerio": "1.0.0-rc.12",
         "cross-env": "^7.0.3",
