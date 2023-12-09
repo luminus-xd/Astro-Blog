@@ -1,18 +1,21 @@
 ---
-import type { Blog } from '../library/microcms';
 import BaseHead from '../components/BaseHead.astro';
 import BaseBody from '../components/BaseBody.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
-type Props = Blog;
+import styles from '../styles/blog.module.css';
 
-const { title, description, content, thumbnail, tags, writer, tocVisible } = Astro.props;
+const { frontmatter } = Astro.props;
 ---
 
 <html lang="ja">
     <head>
-        <BaseHead title={title} description={description} image={thumbnail?.url} />
+        <BaseHead
+            title={frontmatter.title}
+            description={frontmatter.description}
+            image={frontmatter.thumbnail}
+        />
         <style>
             .blog-detail {
                 width: 960px;
@@ -38,7 +41,9 @@ const { title, description, content, thumbnail, tags, writer, tocVisible } = Ast
         <Header />
         <main class="blog-detail">
             <article>
-                <slot />
+                <div class={styles.cms}>
+                    <slot />
+                </div>
             </article>
         </main>
         <Footer />
