@@ -1,0 +1,42 @@
+---
+layout: ../layouts/Page.astro
+title: 'このサイトについて'
+description: 'このページについて'
+pubDate: '2023-12-09'
+heroImage: '/blog-placeholder-5.jpg'
+---
+
+# このサイトについて
+
+このサイトはLuminusによって作成されました。  
+主に僕の趣味であるプラグラミングやゲームについての記事を書いていきます。
+
+## サイトの構成
+
+サイトは、以下のような構成になっています。
+
+### ホスティング
+
+このサイトは、[Cloudflare Pages](https://www.cloudflare.com/ja-jp/developer-platform/pages/)によってホスティングされています。  
+GitHubのリポジトリにプッシュすると、自動的にビルドされ、デプロイされます。
+
+### CMS (コンテンツ管理システム)
+
+このサイトは、[microCMS](https://microcms.io/)によってCMS化されています。  
+国産ヘッドレスCMSのサービスとして提供されていて、APIを叩いて記事を取得しています。
+
+活発に開発が進んでおり、ユーザーの要望にも柔軟に対応してくれるので、とても気に入っているサービスです。
+
+### フロントエンド
+
+このサイトは、[Astro.js](https://astro.build/)によって作成されています。
+
+Astro.jsは、モダンなフロントエンドフレームワークです。  
+JavaScript、TypeScript、またはJSXを使用してコンポーネントを作成することができます。  
+ビルド時にHTMLとCSSを生成し、ブラウザにロードするJavaScriptの量を最小限に抑え、ハイパフォーマンスなサイトを構築することが可能です。
+
+### フォント
+
+- 日本語フォント: [源柔ゴシック](http://jikasei.me/font/genjyuu/) 
+    - そのまま利用すると非常に重いので、サブセット化したものを利用させていただいております。https://github.com/shogo82148/genjyuugothic-subsets
+- 英語フォント: [Inter](https://rsms.me/inter/)

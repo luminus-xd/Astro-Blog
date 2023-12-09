@@ -6,7 +6,7 @@ import PublishedDate from '../../components/PublishedDate.astro';
 import LinkButton from '../../components/LinkButton.astro';
 import ShareButton from '../../components/ShareButton.astro';
 
-import styles from './blog.module.css';
+import styles from '../../styles/blog.module.css';
 
 export async function getStaticPaths() {
     const posts = await getList();
