@@ -1,5 +1,5 @@
 ---
-import styles from '../styles/blog.module.css';
+import styles from '../styles/components/toc.module.css';
 ---
 
 <div class={styles.toc}>
@@ -24,7 +24,9 @@ import styles from '../styles/blog.module.css';
                 tocSelector: tocSelector,
                 contentSelector: contentSelector,
                 headingSelector: 'h2, h3, h4',
-                scrollSmoothDuration: 50,
+                scrollSmooth: false,
+                headingsOffset: 40,
+                scrollSmoothOffset: 20,
             });
         }
     });
