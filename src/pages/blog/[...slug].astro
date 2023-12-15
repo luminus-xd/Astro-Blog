@@ -32,15 +32,7 @@ const blog = await getDetail(slug as string);
                     <picture>
                         <source type="image/avif" srcset={`${blog.writer?.image?.url}?fm=avif&fit=crop&w=48&h=48 1x, ${blog.writer?.image?.url}?fm=avif&fit=crop&w=48&h=48&dpr=2 2x`} />
                         <source type="image/webp" srcset={`${blog.writer?.image?.url}?fm=webp&fit=crop&w=48&h=48 1x, ${blog.writer?.image?.url}?fm=webp&fit=crop&w=48&h=48&dpr=2 2x`} />
-                        <img
-                            src={`${blog.writer?.image?.url}?&fit=crop&w=48&h=48`}
-                            alt=""
-                            class={styles.writerIcon}
-                            width={blog.writer?.image?.width}
-                            height={blog.writer?.image?.height}
-                            decoding="async"
-                            fetchpriority="high"
-                        />
+                        <img src={`${blog.writer?.image?.url}?&fit=crop&w=48&h=48`} alt="" class={styles.writerIcon} width={48} height={48} decoding="async" fetchpriority="high" />
                     </picture>
                     <span class={styles.writerName}>{blog.writer?.name}</span>
                 </div>
@@ -58,24 +50,24 @@ const blog = await getDetail(slug as string);
                 srcset={`${blog.thumbnail?.url}?fit=crop&w=1200&h=630 1x, ${blog.thumbnail?.url}?fit=crop&w=1200&h=630&dpr=2 2x`}
                 alt=""
                 class={styles.thumbnailFront}
-                width={blog.thumbnail?.width}
-                height={blog.thumbnail?.height}
+                width={1200}
+                height={630}
                 decoding="async"
                 transition:name={`BlogMV-${blog.id}`}
                 fetchpriority="high"
             />
         </picture>
         <picture class={styles.thumbnailBlur}>
-            <source type="image/avif" media="(max-width: 640px)" srcset={`${blog.thumbnail?.url}?fm=avif&w=414&q=10&blur=75 1x, ${blog.thumbnail?.url}?fm=avif&w=414&q=10&blur=75&dpr=2 2x`} />
-            <source type="image/avif" srcset={`${blog.thumbnail?.url}?fm=avif&fit=crop&w=1200&h=630&q=10&blur=75 1x, ${blog.thumbnail?.url}?fm=avif&fit=crop&w=1200&h=630&q=10&blur=75&dpr=2 2x`} />
-            <source type="image/webp" media="(max-width: 640px)" srcset={`${blog.thumbnail?.url}?fm=webp&w=41&q=10&blur=75 1x, ${blog.thumbnail?.url}?fm=webp&w=41&q=10&blur=75&dpr=2 2x`} />
-            <source type="image/webp" srcset={`${blog.thumbnail?.url}?fm=webp&fit=crop&w=120&h=63&q=10&blur=75 1x, ${blog.thumbnail?.url}?fm=webp&fit=crop&w=120&h=63&q=10&blur=75&dpr=2 2x`} />
+            <source type="image/avif" media="(max-width: 640px)" srcset={`${blog.thumbnail?.url}?fm=avif&w=414&q=5&blur=75 1x, ${blog.thumbnail?.url}?fm=avif&w=414&q=5&blur=75&dpr=2 2x`} />
+            <source type="image/avif" srcset={`${blog.thumbnail?.url}?fm=avif&fit=crop&w=1200&h=630&q=5&blur=75 1x, ${blog.thumbnail?.url}?fm=avif&fit=crop&w=1200&h=630&q=5&blur=75&dpr=2 2x`} />
+            <source type="image/webp" media="(max-width: 640px)" srcset={`${blog.thumbnail?.url}?fm=webp&w=41&q=5&blur=75 1x, ${blog.thumbnail?.url}?fm=webp&w=41&q=5&blur=75&dpr=2 2x`} />
+            <source type="image/webp" srcset={`${blog.thumbnail?.url}?fm=webp&fit=crop&w=120&h=63&q=5&blur=75 1x, ${blog.thumbnail?.url}?fm=webp&fit=crop&w=120&h=63&q=5&blur=75&dpr=2 2x`} />
             <img
-                srcset={`${blog.thumbnail?.url}?fit=crop&w=1200&h=630&q=10&blur=75 1x, ${blog.thumbnail?.url}?fit=crop&w=1200&h=630&q=10&blur=75&dpr=2 2x`}
+                srcset={`${blog.thumbnail?.url}?fit=crop&w=1200&h=630&q=5&blur=75 1x, ${blog.thumbnail?.url}?fit=crop&w=1200&h=630&q=5&blur=75&dpr=2 2x`}
                 alt=""
                 class={styles.thumbnail}
-                width={blog.thumbnail?.width}
-                height={blog.thumbnail?.height}
+                width={1200}
+                height={630}
                 decoding="async"
                 fetchpriority="high"
             />
