@@ -1,10 +1,5 @@
 import { createClient } from 'microcms-js-sdk';
-import type {
-    MicroCMSQueries,
-    MicroCMSImage,
-    MicroCMSDate,
-    MicroCMSContentId,
-} from 'microcms-js-sdk';
+import type { MicroCMSQueries, MicroCMSImage, MicroCMSDate, MicroCMSContentId } from 'microcms-js-sdk';
 
 /**
  * タグの型定義

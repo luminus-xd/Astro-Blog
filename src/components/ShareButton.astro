@@ -9,22 +9,9 @@ interface Props {
 const { blogId, blogTitle } = Astro.props;
 ---
 
-<a
-    class="shareButton"
-    href={`https://twitter.com/intent/tweet?text=${blogTitle}&url=${Astro.url}`}
-    target="_blank"
-    rel="noopener noreferrer"
->
+<a class="shareButton" href={`https://twitter.com/intent/tweet?text=${blogTitle}&url=${Astro.url}`} target="_blank" rel="noopener noreferrer">
     <img class="twitterX" src="/images/twitter-x-logo.svg" alt="" width={40} height={40} />
-    <img
-        class="twitterX"
-        src="/images/twitter-x-logo-black.svg"
-        alt=""
-        width={40}
-        height={40}
-        aria-hidden="true"
-        data-clone="true"
-    />
+    <img class="twitterX" src="/images/twitter-x-logo-black.svg" alt="" width={40} height={40} aria-hidden="true" data-clone="true" />
     <span class="shareButtonText">記事をシェアする</span>
 </a>
 
