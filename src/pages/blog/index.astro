@@ -95,8 +95,8 @@ const posts = await getList();
                                                 height={21}
                                                 srcset={`${post.thumbnail?.url}?fit=crop&w=39&h=21&q=10&blur 1x, ${post.thumbnail?.url}?fit=crop&w=39&h=21&q=10&blur&dpr=2 2x`}
                                                 alt=""
+                                                decoding="async"
                                                 aria-hidden="true"
-                                                loading="lazy"
                                             />
                                         </picture>
                                         <picture>
@@ -108,6 +108,7 @@ const posts = await getList();
                                                 height={205}
                                                 srcset={`${post.thumbnail?.url}?fit=crop&w=391&h=205 1x, ${post.thumbnail?.url}?fit=crop&w=391&h=205&dpr=2 2x`}
                                                 alt=""
+                                                decoding="async"
                                                 transition:name={`BlogMV-${post.id}`}
                                                 fetchpriority={index <= 4 ? 'high' : 'auto'}
                                             />

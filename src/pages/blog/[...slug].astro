@@ -76,8 +76,8 @@ const blog = await getDetail(slug as string);
                 class={styles.thumbnail}
                 width={blog.thumbnail?.width}
                 height={blog.thumbnail?.height}
-                loading="lazy"
                 decoding="async"
+                fetchpriority="high"
             />
         </picture>
     </div>
