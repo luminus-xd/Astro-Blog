@@ -25,13 +25,24 @@ const posts = await getList();
                 margin-top: 32px;
                 grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             }
-            img {
+            ul .imageContainer {
+                position: relative;
+            }
+            ul .image,
+            ul .imageBlur {
                 display: block;
                 width: 100%;
                 height: auto;
                 border-radius: calc(var(--border-radius) * 2);
                 aspect-ratio: 40 / 21;
                 object-fit: cover;
+            }
+            ul .imageBlur {
+                position: absolute;
+                inset: 0;
+                margin: auto;
+                filter: blur(12px) saturate(180%);
+                will-change: filter;
             }
             h1 {
                 font-size: 2.8rem;
@@ -67,23 +78,44 @@ const posts = await getList();
                         posts.contents.map(post => (
                             <li>
                                 <a href={`/blog/${post.id}/`}>
-                                    <picture>
-                                        <source
-                                            type="image/avif"
-                                            srcset={`${post.thumbnail?.url}?fm=avif&fit=crop&w=391&h=205 1x, ${post.thumbnail?.url}?fm=avif&fit=crop&w=391&h=205&dpr=2 2x`}
-                                        />
-                                        <source
-                                            type="image/webp"
-                                            srcset={`${post.thumbnail?.url}?fm=webp&fit=crop&w=391&h=205 1x, ${post.thumbnail?.url}?fm=webp&fit=crop&w=391&h=205&dpr=2 2x`}
-                                        />
-                                        <img
-                                            width={391}
-                                            height={205}
-                                            srcset={`${post.thumbnail?.url}?fit=crop&w=391&h=205 1x, ${post.thumbnail?.url}?fit=crop&w=391&h=205&dpr=2 2x`}
-                                            alt=""
-                                            transition:name={`BlogMV-${post.id}`}
-                                        />
-                                    </picture>
+                                    <div class="imageContainer"> 
+                                        <picture>
+                                            <source
+                                                type="image/avif"
+                                                srcset={`${post.thumbnail?.url}?fm=avif&fit=crop&w=39&h=21&q=10&blur 1x, ${post.thumbnail?.url}?fm=avif&fit=crop&w=39&h=21&q=10&blur&dpr=2 2x`}
+                                            />
+                                            <source
+                                                type="image/webp"
+                                                srcset={`${post.thumbnail?.url}?fm=webp&fit=crop&w=39&h=21&q=10&blur 1x, ${post.thumbnail?.url}?fm=webp&fit=crop&w=39&h=21&q=10&blur&dpr=2 2x`}
+                                            />
+                                            <img
+                                                class="imageBlur"
+                                                width={39}
+                                                height={21}
+                                                srcset={`${post.thumbnail?.url}?fit=crop&w=39&h=21&q=10&blur 1x, ${post.thumbnail?.url}?fit=crop&w=39&h=21&q=10&blur&dpr=2 2x`}
+                                                alt=""
+                                                aria-hidden="true"
+                                            />
+                                        </picture>
+                                        <picture>
+                                            <source
+                                                type="image/avif"
+                                                srcset={`${post.thumbnail?.url}?fm=avif&fit=crop&w=391&h=205 1x, ${post.thumbnail?.url}?fm=avif&fit=crop&w=391&h=205&dpr=2 2x`}
+                                            />
+                                            <source
+                                                type="image/webp"
+                                                srcset={`${post.thumbnail?.url}?fm=webp&fit=crop&w=391&h=205 1x, ${post.thumbnail?.url}?fm=webp&fit=crop&w=391&h=205&dpr=2 2x`}
+                                            />
+                                            <img
+                                                class="image"
+                                                width={391}
+                                                height={205}
+                                                srcset={`${post.thumbnail?.url}?fit=crop&w=391&h=205 1x, ${post.thumbnail?.url}?fit=crop&w=391&h=205&dpr=2 2x`}
+                                                alt=""
+                                                transition:name={`BlogMV-${post.id}`}
+                                            />
+                                        </picture>
+                                    </div>
                                     <hgroup>
                                         <h2>{post.title}</h2>
                                         <p>{post.description}</p>
