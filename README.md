@@ -2,8 +2,7 @@
 
 [日本語版はこちら](./README-ja.md)
 
-Luminus Astro Blog is a blog site After cloning this project locally, use the following commands to
-install dependencies.
+Luminus Astro Blog is a blog site After cloning this project locally, use the following commands to install dependencies.
 
 ### Install
 

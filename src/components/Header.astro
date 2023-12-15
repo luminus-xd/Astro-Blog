@@ -19,13 +19,7 @@ import { SITE_TITLE } from '../consts';
         <div class="social-links">
             <a href="https://twitter.com/Midnight_dev2" target="_blank">
                 <span class="sr-only">X（ツイッター）を見に行く</span>
-                <img
-                    class="twitterX"
-                    src="/images/twitter-x-logo-black.svg"
-                    alt=""
-                    width={32}
-                    height={32}
-                />
+                <img class="twitterX" src="/images/twitter-x-logo-black.svg" alt="" width={32} height={32} />
             </a>
             <a href="https://github.com/luminus-xd" target="_blank">
                 <span class="sr-only">GitHubを見に行く</span>
@@ -42,7 +36,7 @@ import { SITE_TITLE } from '../consts';
 <style>
     header {
         margin: 0;
-        padding: 0 1em;
+        padding: 0 0 0 1em;
         background: white;
         box-shadow: 0 2px 8px rgba(var(--black), 5%);
     }
@@ -95,12 +89,23 @@ import { SITE_TITLE } from '../consts';
     .social-links a {
         display: flex;
     }
+    .internal-links {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
     @media (max-width: 720px) {
         nav a {
             padding: 1em 0.5em;
         }
         .social-links {
             display: none;
+        }
+        .internal-links {
+            position: absolute;
+            left: auto;
+            right: 0.6em;
+            transform: translateX(0);
         }
     }
     .twitterX {

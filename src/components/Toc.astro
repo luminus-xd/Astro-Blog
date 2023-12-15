@@ -1,0 +1,98 @@
+---
+import styles from '../styles/components/toc.module.css';
+---
+
+<div class={styles.toc}>
+    <div class={styles.tocContainer}>
+        <strong class={styles.tocTitle}>
+            <span>#</span>目次
+        </strong>
+        <div class="toc"></div>
+    </div>
+</div>
+
+<script>
+    import tocbot from 'tocbot';
+
+    document.addEventListener('astro:page-load', () => {
+        const tocSelector = '.toc';
+        const contentSelector = '#cms';
+        const tocElement = document.querySelector(tocSelector);
+        const cmsElement = document.querySelector(contentSelector);
+        if (tocElement && cmsElement) {
+            tocbot.init({
+                tocSelector: tocSelector,
+                contentSelector: contentSelector,
+                headingSelector: 'h2, h3, h4',
+                scrollSmooth: false,
+                headingsOffset: 40,
+                scrollSmoothOffset: 20,
+            });
+        }
+    });
+</script>
+
+<style is:global>
+    .toc {
+        --toc-border-left: 3px;
+
+        margin-top: 4px;
+    }
+
+    .toc .toc-list {
+        padding-left: 1em;
+        padding-top: 0.1rem;
+        list-style-type: none;
+    }
+
+    .toc > .toc-list {
+        position: relative;
+        padding-left: 16px;
+        border-left: var(--toc-border-left) solid rgba(0, 0, 0, 0.12);
+    }
+
+    .toc .toc-list .toc-list-item {
+        padding: 0.12rem 0;
+    }
+
+    .toc .toc-link {
+        display: block;
+        height: 100%;
+        color: rgba(0, 0, 0, 0.6);
+        transition: color 200ms ease;
+    }
+
+    .toc .toc-link:hover,
+    .toc .toc-link:focus-within {
+        color: rgba(0, 0, 0, 0.9);
+    }
+
+    .toc .toc-link:hover::before,
+    .toc .toc-link:focus-within::before {
+        content: '';
+        position: absolute;
+        left: calc(var(--toc-border-left) * -1);
+        width: var(--toc-border-left);
+        height: 1.1em;
+        background-color: var(--color-accent);
+        transform: translateY(4px);
+        border-radius: var(--border-radius);
+    }
+
+    .toc .is-active-link {
+        color: rgba(0, 0, 0, 1);
+        font-weight: bold;
+    }
+
+    .toc .is-active-link::before {
+        content: '';
+        position: absolute;
+        left: calc(var(--toc-border-left) * -1);
+        width: var(--toc-border-left);
+        height: 1.1em;
+        background-color: var(--color-primary);
+        transform: translateY(4px);
+        box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.12);
+        border-radius: var(--border-radius);
+    }
+</style>

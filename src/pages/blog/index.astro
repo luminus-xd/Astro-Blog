@@ -76,10 +76,10 @@ const posts = await getList();
                 <h1>投稿記事一覧</h1>
                 <ul>
                     {
-                        posts.contents.map(post => (
+                        posts.contents.map((post, index) => (
                             <li>
                                 <a href={`/blog/${post.id}/`}>
-                                    <div class="imageContainer"> 
+                                    <div class="imageContainer">
                                         <picture>
                                             <source
                                                 type="image/avif"
@@ -96,17 +96,12 @@ const posts = await getList();
                                                 srcset={`${post.thumbnail?.url}?fit=crop&w=39&h=21&q=10&blur 1x, ${post.thumbnail?.url}?fit=crop&w=39&h=21&q=10&blur&dpr=2 2x`}
                                                 alt=""
                                                 aria-hidden="true"
+                                                loading="lazy"
                                             />
                                         </picture>
                                         <picture>
-                                            <source
-                                                type="image/avif"
-                                                srcset={`${post.thumbnail?.url}?fm=avif&fit=crop&w=391&h=205 1x, ${post.thumbnail?.url}?fm=avif&fit=crop&w=391&h=205&dpr=2 2x`}
-                                            />
-                                            <source
-                                                type="image/webp"
-                                                srcset={`${post.thumbnail?.url}?fm=webp&fit=crop&w=391&h=205 1x, ${post.thumbnail?.url}?fm=webp&fit=crop&w=391&h=205&dpr=2 2x`}
-                                            />
+                                            <source type="image/avif" srcset={`${post.thumbnail?.url}?fm=avif&fit=crop&w=391&h=205 1x, ${post.thumbnail?.url}?fm=avif&fit=crop&w=391&h=205&dpr=2 2x`} />
+                                            <source type="image/webp" srcset={`${post.thumbnail?.url}?fm=webp&fit=crop&w=391&h=205 1x, ${post.thumbnail?.url}?fm=webp&fit=crop&w=391&h=205&dpr=2 2x`} />
                                             <img
                                                 class="image"
                                                 width={391}
@@ -114,6 +109,7 @@ const posts = await getList();
                                                 srcset={`${post.thumbnail?.url}?fit=crop&w=391&h=205 1x, ${post.thumbnail?.url}?fit=crop&w=391&h=205&dpr=2 2x`}
                                                 alt=""
                                                 transition:name={`BlogMV-${post.id}`}
+                                                fetchpriority={index <= 4 ? 'high' : 'auto'}
                                             />
                                         </picture>
                                     </div>

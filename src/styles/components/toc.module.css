@@ -1,0 +1,34 @@
+.toc {
+    width: 240px;
+    flex-shrink: 0;
+}
+
+.tocContainer {
+    position: sticky;
+    max-height: 100%;
+    top: 32px;
+    width: 100%;
+    padding-left: 2px;
+    overflow-y: auto;
+}
+
+.tocTitle {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin: 0 0 1rem -2px;
+}
+
+.tocTitle span {
+    display: inline-block;
+    margin-right: 4px;
+    font-weight: normal;
+    color: var(--color-text-sub);
+}
+
+@media (max-width: 1020px) {
+    .toc {
+        width: 220px;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+}
