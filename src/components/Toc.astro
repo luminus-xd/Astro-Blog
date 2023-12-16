@@ -15,6 +15,9 @@ import styles from '../styles/components/toc.module.css';
     import tocbot from 'tocbot';
 
     document.addEventListener('astro:page-load', () => {
+        const toc = document.querySelector('.toc');
+        if (!toc) return;
+
         const tocSelector = '.toc';
         const contentSelector = '#cms';
         const tocElement = document.querySelector(tocSelector);
