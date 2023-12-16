@@ -5,7 +5,7 @@
     --color-text-sub: #737373;
     --color-text-sub-2: #aaa;
     --color-code-text: #abb2bf;
-    --color-bg-main: #fff;
+    --color-bg-main: var(--color-lightest);
     --color-bg-sub: #fefefe;
     --color-bg-sub-2: #f8f9fd;
     --color-bg-code: #282c34;
@@ -15,7 +15,9 @@
     --color-current: #eee;
     --color-darkest: #000;
     --color-accent: #57d52b;
+    --color-lightest: #fff;
     --border-radius: 4px;
+    --easing-normal: cubic-bezier(0.33, 1, 0.68, 1);
     --box-shadows-xs: 0 2px 8px 1px rgb(0 0 0 / 0.07), 0 1px 1px -1px rgb(0 0 0 / 0.04);
     --box-shadows-sm: 0 2px 8px 2px rgb(0 0 0 / 0.07), 0 2px 4px -1px rgb(0 0 0 / 0.04);
     --box-shadows-md: 0 12px 20px 6px rgb(0 0 0 / 0.08);

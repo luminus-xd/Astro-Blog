@@ -1,11 +1,33 @@
 ---
 import TopLayout from '../layouts/top.astro';
+
+const cobeSize = 450;
 ---
 
 <TopLayout>
     <div class="container">
-        <h1>おはよう世界</h1>
+        <div class="mv">
+            <div class="mv-statement">
+                <h1>Hey, I'm <span>Luminus</span> ✋</h1>
+                <p class="mv-statement__description">
+                    <span>趣味であるプラグラミングやゲームについての記事を書いていきます。</span>
+                    <span>更新は気まぐれですが、どうか許してください。</span>
+                </p>
+                <ul class="mv-button-list">
+                    <li>
+                        <a class="mv-button-list__blog" href="/blog/">ブログを見る</a>
+                    </li>
+                    <li>
+                        <a class="mv-button-list__about" href="/about/">このサイトについて</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="mv-cobe" style=`--cobe-size: ${cobeSize}px`>
+                <canvas class="mv-cobe-canvas" width="420" height="420"></canvas>
+            </div>
+        </div>
         <div class="content">
+            <h2>見出し２</h2>
             <p>
                 汽車はもうだんだん早くなって、なにかほんとうに決心しているからな早いからねえザウエルという犬がいるよあの森琴の宿でしょう。月のあかりは汽車が通るときだけ青くなるようになったようにおもいました。
             </p>
@@ -14,51 +36,138 @@ import TopLayout from '../layouts/top.astro';
             </p>
         </div>
     </div>
-    <canvas id="cobe" style="width: 500px; height: 500px" width="1000" height="1000"></canvas>
 </TopLayout>
-
-<style>
-    .container {
-        max-width: 800px;
-        margin-inline: auto;
-    }
-    .content {
-        margin-top: 1.6rem;
-    }
-</style>
 
 <script>
     import createGlobe from 'cobe';
 
     document.addEventListener('astro:page-load', () => {
-        let phi = 0;
-        let canvas = document.getElementById('cobe') as HTMLCanvasElement;
+        const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-        createGlobe(canvas, {
+        let canvas = document.querySelector('.mv-cobe-canvas') as HTMLCanvasElement;
+        let phi = 2.24;
+        let theta = 0.4;
+        let width = 0;
+
+        const onResize = () => canvas && (width = canvas.offsetWidth);
+        window.addEventListener('resize', onResize);
+        onResize();
+
+        const globe = createGlobe(canvas, {
             devicePixelRatio: 2,
-            width: 1000,
-            height: 1000,
-            phi: 0,
-            theta: 0,
-            dark: 0,
-            diffuse: 1.2,
-            scale: 1,
+            width: width * 2,
+            height: width * 2,
+            phi,
+            theta,
+            dark: 1,
+            diffuse: 3,
+            scale: 1.2,
             mapSamples: 16000,
-            mapBrightness: 6,
-            baseColor: [0.3, 0.3, 0.3],
-            markerColor: [1, 0.5, 1],
-            glowColor: [1, 1, 1],
-            offset: [0, 0],
-            markers: [
-                { location: [37.7595, -122.4367], size: 0.03 },
-                { location: [40.7128, -74.006], size: 0.1 },
-            ],
+            mapBrightness: 1.2,
+            baseColor: [1, 1, 1],
+            markerColor: [251 / 255, 100 / 255, 21 / 255],
+            glowColor: [1.2, 1.2, 1.2],
+            markers: [{ location: [35.676, 139.65], size: 0.1 }],
             onRender: state => {
-                // Called on every animation frame.
-                // `state` will be an empty object, return updated params.
-                state.phi = phi;
-                phi += 0.01;
+                if (!mediaQuery.matches) {
+                    state.phi = phi;
+                    state.theta = theta;
+                    phi += 0.002;
+                    state.width = width * 2;
+                    state.height = width * 2;
+                }
             },
         });
+
+        setTimeout(() => (canvas.style.opacity = '1'));
+
+        return () => {
+            globe.destroy();
+            window.removeEventListener('resize', onResize);
+        };
     });
 </script>
+
+<style>
+    .container {
+        position: relative;
+        max-width: 1000px;
+        margin-inline: auto;
+    }
+    .content {
+        margin-top: 3rem;
+    }
+    .mv {
+        display: flex;
+        position: relative;
+        align-items: center;
+        justify-content: space-between;
+        gap: 32px;
+    }
+    .mv-statement h1 {
+        font-size: 4rem;
+        flex-shrink: 0;
+    }
+    .mv-statement h1 span {
+        display: inline-block;
+        background: -webkit-linear-gradient(0deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+    .mv-statement__description {
+        opacity: 0.84;
+    }
+    .mv-statement__description span {
+        display: inline-block;
+    }
+    .mv-button-list {
+        display: flex;
+        gap: 16px;
+    }
+    .mv-button-list li {
+        display: inline-block;
+    }
+    :is(.mv-button-list__blog, .mv-button-list__about) {
+        display: inline-flex;
+        height: 100%;
+        font-size: 1.4rem;
+        font-weight: bold;
+        padding: 0.8em 1em 0.68em;
+        box-sizing: border-box;
+        border-radius: var(--border-radius);
+        line-height: 1;
+        transition: transform 200ms var(--easing-normal);
+        align-items: center;
+        letter-spacing: 0.04em;
+    }
+    :is(.mv-button-list__blog, .mv-button-list__about):hover,
+    :is(.mv-button-list__blog, .mv-button-list__about):focus-visible {
+        transform: translateY(4px);
+    }
+    .mv-button-list__blog {
+        color: var(--color-lightest);
+        background-color: var(--color-primary);
+    }
+    .mv-button-list__about {
+        border: 2px solid var(--color-bg-code);
+    }
+    .mv-cobe {
+        width: 100%;
+        max-width: var(--cobe-size);
+        aspect-ratio: 1;
+        margin-inline: auto;
+    }
+    .mv-cobe-canvas {
+        width: 100%;
+        height: 100%;
+    }
+
+    @media screen and (max-width: 720px) {
+        .mv {
+            flex-wrap: wrap;
+        }
+        .mv-statement h1 {
+            font-size: 3.2rem;
+        }
+    }
+</style>
