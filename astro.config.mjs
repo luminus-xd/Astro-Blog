@@ -5,7 +5,7 @@ import sitemap from '@astrojs/sitemap';
 import purgecss from 'astro-purgecss';
 import AstroPWA from '@vite-pwa/astro';
 import react from '@astrojs/react';
-import { SITE_URL } from './src/consts';
+import { SITE_URL, SITE_DESCRIPTION } from './src/consts';
 
 // https://astro.build/config
 export default defineConfig({
@@ -24,7 +24,7 @@ export default defineConfig({
             manifest: {
                 name: 'Luminus',
                 short_name: 'Luminus',
-                description: 'ゲームや音楽、プログラミングなどについて書き散らかすLuminusのブログ',
+                description: SITE_DESCRIPTION,
                 theme_color: '#282c34',
                 background_color: '#f3f3f3',
                 scope: '/',
@@ -103,6 +103,13 @@ export default defineConfig({
                         handler: 'StaleWhileRevalidate',
                         options: {
                             cacheName: 'fonts',
+                        },
+                    },
+                    {
+                        urlPattern: /\.(?:mp3)$/,
+                        handler: 'StaleWhileRevalidate',
+                        options: {
+                            cacheName: 'audio',
                         },
                     },
                     {
