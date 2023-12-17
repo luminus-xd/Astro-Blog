@@ -18,7 +18,7 @@ export const useAudioPlayer = () => {
     /**
      * 最大音量 - あまり大きくしすぎないように
      */
-    const maxVolume = 0.36;
+    const maxVolume = 0.3;
 
     // サウンドオブジェクトの初期化とイベントハンドラの設定
     useEffect(() => {
