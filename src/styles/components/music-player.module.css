@@ -1,0 +1,59 @@
+.button {
+    --icon-size: 36px;
+    --button-size: 46px;
+
+    position: fixed;
+    bottom: 20px;
+    right: 28px;
+    display: inline-flex;
+    font-weight: bold;
+    font-family: var(--font-family-primary);
+    color: var(--color-text-main);
+    background-color: rgba(255, 255, 255, 0.72);
+    border: solid 1px rgba(0, 0, 0, 0.04);
+    cursor: pointer;
+    outline: none;
+    padding: 8px;
+    appearance: none;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: var(--backdrop-filter-blur-bg);
+    box-shadow: var(--box-shadows-md);
+    z-index: 100;
+}
+
+.button > span {
+    display: grid;
+    width: var(--button-size);
+    height: var(--button-size);
+    aspect-ratio: 1;
+    place-items: center;
+}
+
+.button > span svg {
+    width: var(--icon-size);
+    height: var(--icon-size);
+}
+
+.playing {
+    transform-origin: center center;
+    animation: spin 98000ms linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@media (max-width: 768px) {
+    .button {
+        bottom: 12px;
+        right: 16px;
+        padding: 2px;
+    }
+}

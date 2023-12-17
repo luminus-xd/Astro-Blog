@@ -1,9 +1,12 @@
 ---
+import GlobalMusicPlayer from './GlobalMusicPlayer';
+
 const today = new Date();
 ---
 
 <footer>
-    &copy; {today.getFullYear()} Luminus. All rights reserved.
+    <GlobalMusicPlayer client:only="react" />
+     &copy; {today.getFullYear()} Luminus. All rights reserved.
     <div class="social-links">
         <a href="https://twitter.com/Midnight_dev2" target="_blank">
             <span class="sr-only">X（ツイッター）を見に行く</span>
@@ -20,6 +23,7 @@ const today = new Date();
         </a>
     </div>
 </footer>
+
 <style>
     footer {
         padding: 2em 1em 6em 1em;

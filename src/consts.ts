@@ -1,3 +1,3 @@
 export const SITE_TITLE = 'Luminus';
-export const SITE_DESCRIPTION = 'LuminusのAstro Blogサンプルです。';
-export const SITE_URL = 'https://luminus.pages.dev';
+export const SITE_DESCRIPTION = '趣味であるプラグラミングやゲームについての記事を書いていきます。更新は気まぐれですが、どうか許してください。';
+export const SITE_URL = 'https://luminus.dev';
