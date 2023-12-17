@@ -30,6 +30,7 @@
         "@vite-pwa/astro": "^0.1.5",
         "astro": "^3.6.4",
         "astro-robots-txt": "^1.0.0",
+        "autoprefixer": "^10.4.16",
         "cheerio": "1.0.0-rc.12",
         "cross-env": "^7.0.3",
         "cspell": "^8.0.0",
@@ -37,6 +38,7 @@
         "date-fns-tz": "^2.0.0",
         "highlight.js": "^11.9.0",
         "microcms-js-sdk": "^2.7.0",
+        "postcss": "^8.4.32",
         "prettier": "^3.1.0",
         "prettier-plugin-astro": "^0.12.2",
         "typescript": "^5.2"
