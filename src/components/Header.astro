@@ -1,13 +1,19 @@
 ---
 import HeaderLink from './HeaderLink.astro';
 import { SITE_TITLE } from '../consts';
+
+const myIcon = 'https://images.microcms-assets.io/assets/086f9d42ce494f47b9788ee7f77e85e1/1678e66b9d6e4084ad2dfbf6cbd61734/luminus-renew.jpg';
 ---
 
 <header>
     <nav>
         <h2>
             <a href="/">
-                <img src="/images/logo.svg" alt="" />
+                <picture>
+                    <source type="image/avif" srcset={`${myIcon}?fm=avif&fit=crop&w=38&h=38 1x, ${myIcon}?fm=avif&fit=crop&w=38&h=38&dpr=3 2x`} />
+                    <source type="image/webp" srcset={`${myIcon}?fm=webp&fit=crop&w=38&h=38 1x, ${myIcon}?fm=webp&fit=crop&w=38&h=38&dpr=3 2x`} />
+                    <img srcset=`${myIcon}?fit=crop&w=38&h=38 1x, ${myIcon}?fit=crop&w=38&h=38&dpr=3 2x` width="38" alt="38" />
+                </picture>
                 <span>{SITE_TITLE}</span>
             </a>
         </h2>
@@ -59,6 +65,7 @@ import { SITE_TITLE } from '../consts';
         display: block;
         width: 2.4em;
         height: 2.4em;
+        border-radius: 12px;
     }
     h2 a:hover:is(h2 img) {
         filter: brightness(0.8);
