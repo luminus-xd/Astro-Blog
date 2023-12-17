@@ -7,7 +7,7 @@ let sound: Howl | null = null;
  * オーディオプレーヤーのカスタムフック
  * @returns {object} 再生状態と再生/一時停止のトグル関数
  */
-export const useAudioPlayer = () => {
+export const useMusicPlayer = () => {
     // 再生状態
     const [isPlaying, setIsPlaying] = useState(() => {
         // ローカルストレージから再生状態を読み込む
@@ -18,7 +18,7 @@ export const useAudioPlayer = () => {
     /**
      * 最大音量 - あまり大きくしすぎないように
      */
-    const maxVolume = 0.3;
+    const maxVolume = 0.16;
 
     // サウンドオブジェクトの初期化とイベントハンドラの設定
     useEffect(() => {
