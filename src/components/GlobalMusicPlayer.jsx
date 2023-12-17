@@ -1,14 +1,13 @@
 import React from 'react';
-import { useAudioPlayer } from '../hooks/useAudioPlayer.tsx';
+import { useMusicPlayer } from '../hooks/useMusicPlayer.tsx';
 import styles from '../styles/components/music-player.module.css';
 
 const GlobalMusicPlayer = () => {
-    const { isPlaying, togglePlay } = useAudioPlayer();
+    const { isPlaying, togglePlay } = useMusicPlayer();
 
     return (
         <>
             <audio id="music" loop>
-                <source src="/music/night-walk.mp3" type="audio/mpeg" />
                 このブラウザはaudio要素に対応していません。
             </audio>
             <button className={styles.button} onClick={() => togglePlay()}>
@@ -35,7 +34,6 @@ const GlobalMusicPlayer = () => {
                         </svg>
                     </span>
                 )}
-                {/* {isPlaying ? 'Pause' : 'Play'} Music */}
             </button>
         </>
     );
