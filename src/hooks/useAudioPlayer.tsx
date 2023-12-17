@@ -9,7 +9,7 @@ let sound: Howl | null = null;
  */
 export const useAudioPlayer = () => {
     // 再生状態
-    const [isPlaying, setIsPlaying] = useState<boolean>(() => {
+    const [isPlaying, setIsPlaying] = useState(() => {
         // ローカルストレージから再生状態を読み込む
         const storedState = localStorage.getItem('isPlaying');
         return storedState === 'true';

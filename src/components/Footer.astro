@@ -1,5 +1,5 @@
 ---
-import GlobalMusicPlayer from './GlobalMusicPlayer.jsx';
+import GlobalMusicPlayer from './GlobalMusicPlayer';
 
 const today = new Date();
 ---
@@ -23,56 +23,6 @@ const today = new Date();
         </a>
     </div>
 </footer>
-
-<script>
-    // window.addEventListener('DOMContentLoaded', () => {
-    //     const audioElement = document.getElementById('music') as HTMLAudioElement;
-    //     const playButton = document.getElementById('playButton') as HTMLButtonElement;
-    //     if (!audioElement || !playButton) {
-    //         console.error('Audio element or Play button not found');
-    //         return;
-    //     }
-
-    //     const audioCtx = new window.AudioContext();
-    //     const track = audioCtx.createMediaElementSource(audioElement);
-    //     const gainNode = audioCtx.createGain();
-
-    //     track.connect(gainNode).connect(audioCtx.destination);
-    //     gainNode.gain.setValueAtTime(0, audioCtx.currentTime);
-
-    //     let isPlaying = false;
-    //     const fadeDuration = 1200;
-
-    //     const updateButtonLabel = () => {
-    //         if (isPlaying) {
-    //             playButton.textContent = '停止';
-    //             playButton.setAttribute('aria-label', '音楽を停止する');
-    //         } else {
-    //             playButton.textContent = '再生';
-    //             playButton.setAttribute('aria-label', '音楽を再生する');
-    //         }
-    //     };
-
-    //     updateButtonLabel();
-    //     playButton.addEventListener('click', function () {
-    //         if (!isPlaying) {
-    //             gainNode.gain.linearRampToValueAtTime(1, audioCtx.currentTime + fadeDuration / 1000);
-    //             audioCtx.resume().then(() => {
-    //                 audioElement.play();
-    //                 isPlaying = true;
-    //                 updateButtonLabel();
-    //             });
-    //         } else {
-    //             gainNode.gain.linearRampToValueAtTime(0, audioCtx.currentTime + fadeDuration / 1000);
-    //             setTimeout(() => {
-    //                 audioElement.pause();
-    //                 isPlaying = false;
-    //                 updateButtonLabel();
-    //             }, fadeDuration);
-    //         }
-    //     });
-    // });
-</script>
 
 <style>
     footer {
