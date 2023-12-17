@@ -1,12 +1,10 @@
 ---
-import { SITE_URL } from '../consts';
-
 interface Props {
     blogId: string;
     blogTitle: string;
 }
 
-const { blogId, blogTitle } = Astro.props;
+const { blogTitle } = Astro.props;
 ---
 
 <a class="shareButton" href={`https://twitter.com/intent/tweet?text=${blogTitle}&url=${Astro.url}`} target="_blank" rel="noopener noreferrer">

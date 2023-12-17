@@ -1,11 +1,11 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
-import BaseBody from '../../components/BaseBody.astro';
-import Header from '../../components/Header.astro';
-import Footer from '../../components/Footer.astro';
-import PublishedDate from '../../components/PublishedDate.astro';
+import BaseHead from '@components/BaseHead.astro';
+import BaseBody from '@components/BaseBody.astro';
+import Header from '@components/Header.astro';
+import Footer from '@components/Footer.astro';
+import PublishedDate from '@components/PublishedDate.astro';
 
-import { getList } from '../../library/microcms';
+import { getList } from '@library/microcms';
 const posts = await getList();
 ---
 

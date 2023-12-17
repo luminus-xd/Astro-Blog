@@ -16,9 +16,15 @@
         "jsx": "preserve",
         "incremental": true,
         "paths": {
-            "@/*": ["./*"]
+            "@components/*": ["src/components/*"],
+            "@layouts/*": ["src/layouts/*"],
+            "@library/*": ["src/library/*"],
+            "@pages/*": ["src/pages/*"],
+            "@hooks/*": ["src/hooks/*"],
+            "@styles/*": ["src/styles/*"],
+            "@consts": ["src/consts.ts"]
         }
     },
-    "include": ["**/*.ts"],
+    "include": ["src/**/*.d.ts", "src/**/*.ts", "src/**/*.astro"],
     "exclude": ["node_modules"]
 }
