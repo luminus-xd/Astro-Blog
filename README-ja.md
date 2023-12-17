@@ -1,5 +1,7 @@
 # Luminus Astro Blog
 
+![Luminus Astro Blog](/public/images/top-ogp.png)
+
 Luminus Astro BlogはAstro.jsを使用したブログサイトです。microCMSを利用して記事を表示しています。  
 ホスティング先は任意で選択できますが、このリポジトリではCloudflare Pagesを使用しています。
 
