@@ -18,6 +18,7 @@ export const useAudioPlayer = () => {
                 src: ['/music/night-walk.mp3'],
                 html5: true,
                 volume: maxVolume,
+                loop: true,
             });
 
             sound.on('play', () => {
