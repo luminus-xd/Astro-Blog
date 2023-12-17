@@ -4,7 +4,6 @@ import BaseBody from '../../components/BaseBody.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import PublishedDate from '../../components/PublishedDate.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../../consts';
 
 import { getList } from '../../library/microcms';
 const posts = await getList();
@@ -13,7 +12,7 @@ const posts = await getList();
 <!doctype html>
 <html lang="ja">
     <head>
-        <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+        <BaseHead title="投稿記事一覧" description="" />
         <style>
             main {
                 width: 960px;
