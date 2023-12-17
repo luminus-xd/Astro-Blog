@@ -3,15 +3,24 @@ import { Howl } from 'howler';
 
 let sound: Howl | null = null;
 
+/**
+ * オーディオプレーヤーのカスタムフック
+ * @returns {object} 再生状態と再生/一時停止のトグル関数
+ */
 export const useAudioPlayer = () => {
+    // 再生状態
     const [isPlaying, setIsPlaying] = useState<boolean>(() => {
         // ローカルストレージから再生状態を読み込む
         const storedState = localStorage.getItem('isPlaying');
         return storedState === 'true';
     });
 
+    /**
+     * 最大音量 - あまり大きくしすぎないように
+     */
     const maxVolume = 0.36;
 
+    // サウンドオブジェクトの初期化とイベントハンドラの設定
     useEffect(() => {
         if (!sound) {
             sound = new Howl({
@@ -45,6 +54,7 @@ export const useAudioPlayer = () => {
         }
     }, []);
 
+    // 再生/一時停止のトグル関数
     const togglePlay = useCallback(() => {
         if (sound) {
             if (!isPlaying) {
