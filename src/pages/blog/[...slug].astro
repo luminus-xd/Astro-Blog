@@ -1,13 +1,13 @@
 ---
-import { getList, getDetail } from '../../library/microcms';
-import { formatRichText } from '../../library/utils';
-import BlogPost from '../../layouts/BlogPost.astro';
-import Toc from '../../components/Toc.astro';
-import PublishedDate from '../../components/PublishedDate.astro';
-import LinkButton from '../../components/LinkButton.astro';
-import ShareButton from '../../components/ShareButton.astro';
+import { getList, getDetail } from '@library/microcms';
+import { formatRichText } from '@library/utils';
+import BlogPost from '@layouts/BlogPost.astro';
+import Toc from '@components/Toc.astro';
+import PublishedDate from '@components/PublishedDate.astro';
+import LinkButton from '@components/LinkButton.astro';
+import ShareButton from '@components/ShareButton.astro';
 
-import styles from '../../styles/blog.module.css';
+import styles from '@styles/blog.module.css';
 
 export async function getStaticPaths() {
     const posts = await getList();

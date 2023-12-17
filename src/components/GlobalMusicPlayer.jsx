@@ -1,6 +1,6 @@
 import React from 'react';
-import { useMusicPlayer } from '../hooks/useMusicPlayer.tsx';
-import styles from '../styles/components/music-player.module.css';
+import { useMusicPlayer } from '@hooks/useMusicPlayer.tsx';
+import styles from '@styles/components/music-player.module.css';
 
 const GlobalMusicPlayer = () => {
     const { isPlaying, togglePlay } = useMusicPlayer();
