@@ -1,0 +1,26 @@
+.themeToggle {
+    display: flex;
+    background-color: transparent;
+    cursor: pointer;
+    appearance: none;
+    padding: 1em 0.8em;
+    border: none;
+    border-bottom: 4px solid transparent;
+    text-decoration: none;
+    transition: background 200ms ease;
+    align-items: center;
+}
+.sun {
+    fill: black;
+}
+.moon {
+    fill: transparent;
+}
+
+:is([data-dark]) .sun {
+    fill: transparent;
+}
+
+:is([data-dark]) .moon {
+    fill: white;
+}
