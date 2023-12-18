@@ -9,7 +9,12 @@ const { blogTitle } = Astro.props;
 
 <a class="shareButton" href={`https://twitter.com/intent/tweet?text=${blogTitle}&url=${Astro.url}`} target="_blank" rel="noopener noreferrer">
     <img class="twitterX" src="/images/twitter-x-logo.svg" alt="" width={40} height={40} />
-    <img class="twitterX" src="/images/twitter-x-logo-black.svg" alt="" width={40} height={40} aria-hidden="true" data-clone="true" />
+    <!-- <img class="twitterX" src="/images/twitter-x-logo-black.svg" alt="" width={40} height={40} aria-hidden="true" data-clone="true" /> -->
+    <svg class="twitterX" width="40" height="40" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" data-clone="true">
+        <path d="M88.2 60.6602L169.46 178.81H151.42L70.16 60.6602H88.2ZM92.93 51.6602H53.04L146.68 187.81H186.57L92.93 51.6602Z" fill="currentColor"/>
+        <path d="M132.54 109.25L182.24 51.6602H170.99L127.55 101.99L132.54 109.25Z" fill="currentColor"/>
+        <path d="M105.36 127.72L53.04 188.34H64.3L110.35 134.98L105.36 127.72Z" fill="currentColor"/>
+      </svg>
     <span class="shareButtonText">記事をシェアする</span>
 </a>
 
@@ -27,8 +32,8 @@ const { blogTitle } = Astro.props;
     }
 
     .shareButton {
-        --bg1: var(--color-darkest);
-        --bg1-reverse: var(--color-lightest);
+        --bg1: var(--color-bg-main-2);
+        --bg1-reverse: #ebebef;
         --bg2: #0000;
 
         position: relative;
@@ -43,7 +48,7 @@ const { blogTitle } = Astro.props;
             var(--_g1) 0 calc(134% - var(--_p, 0%)),
             var(--_g2) 0 calc(134% - var(--_p, 0%)),
             var(--_g1) 100% calc(200% - var(--_p, 0%)),
-            var(--_g2) 100% calc(200% - var(--_p, 0%)),
+            var(--_g2) 101% calc(200% - var(--_p, 0%)),
             var(--bg1);
         background-size: 50.2% 400%;
         -webkit-background-clip: text, border-box;
@@ -58,18 +63,19 @@ const { blogTitle } = Astro.props;
         box-sizing: border-box;
     }
 
-    :global(html[data-dark]) .shareButton {
-        --bg1: var(--color-lightest);
-        --bg1-reverse: var(--color-darkest);
-        --bg2: #0000;
+    @media (prefers-color-scheme: dark) {
+        .shareButton {
+            --bg1: #ebebef;
+            --bg1-reverse: var(--color-bg-main-2);
+        }
     }
 
     .shareButton:hover,
     .shareButton:focus-within {
         --_p: 134%;
         box-shadow:
-            0 0 32px 0 rgb(29, 161, 242),
-            0 0 20px 10px rgba(29, 161, 242, 0.64);
+            0 0 24px 0 rgb(29, 161, 242),
+            0 0 16px 8px rgba(29, 161, 242, 0.64);
     }
 
     .shareButton:hover .twitterX,

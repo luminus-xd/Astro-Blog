@@ -65,42 +65,11 @@ const { title, description, image = '/images/top-ogp.png' } = Astro.props;
 <!-- View Transitions -->
 <ViewTransitions />
 
-<script>
-    document.addEventListener('DOMContentLoaded', event => {
-        const toggleButton = document.getElementById('themeToggle');
-        if (!toggleButton) return;
-
-        const theme = (() => {
-            if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-                return localStorage.getItem('theme');
-            }
-            if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                return 'dark';
-            }
-            return 'light';
-        })();
-
+<script defer>
+    (function () {
+        const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
         if (theme === 'dark') {
             document.documentElement.setAttribute('data-dark', 'true');
-        } else {
-            document.documentElement.removeAttribute('data-dark');
         }
-
-        if (theme) {
-            window.localStorage.setItem('theme', theme);
-        }
-
-        const handleToggleClick = () => {
-            const element = document.documentElement;
-            if (element.hasAttribute('data-dark')) {
-                element.removeAttribute('data-dark');
-                localStorage.setItem('theme', 'light');
-            } else {
-                element.setAttribute('data-dark', 'true');
-                localStorage.setItem('theme', 'dark');
-            }
-        };
-
-        toggleButton.addEventListener('click', handleToggleClick);
-    });
+    })();
 </script>

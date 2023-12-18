@@ -17,7 +17,7 @@
 
 :root {
     --color-primary: #2a5298;
-    --color-primary-light: #2b79d5;
+    --color-primary-light: #2e94e7;
     --color-primary-lightest: #659cdb;
     --color-text-main: #393939;
     --color-text-sub: #737373;
@@ -44,25 +44,19 @@
     --box-shadows-xl: 0 25px 65px 0px rgb(0 0 0 / 0.35);
     --backdrop-filter-blur-bg: saturate(180%) blur(14px);
     --gradient-primary-blue: linear-gradient(60deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+    --gradient-primary-blue-2: linear-gradient(60deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
     --font-family-primary: Inter, GenJyuuGothic, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', YuGothic, 'ヒラギノ角ゴ ProN W3', Hiragino Kaku Gothic ProN, Arial, 'メイリオ', sans-serif;
 }
 
-/* @media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: dark) {
     :root {
         --color-primary-light: #2b7dd5;
         --color-text-main: #ebebef;
-        --color-text-sub: #9b9ba3;
+        --color-text-sub: #c4c4cc;
         --color-bg-main: var(--color-bg-main-2);
+        --color-bg-sub-2: #141723;
         --gradient-primary-blue: linear-gradient(60deg, var(--color-primary-light) 0%, var(--color-primary-lightest) 100%);
     }
-} */
-
-html[data-dark] {
-    --color-primary-light: #2b7dd5;
-    --color-text-main: #ebebef;
-    --color-text-sub: #c4c4cc;
-    --color-bg-main: var(--color-bg-main-2);
-    --gradient-primary-blue: linear-gradient(60deg, var(--color-primary-light) 0%, var(--color-primary-lightest) 100%);
 }
 
 ::view-transition-image-pair(root) {

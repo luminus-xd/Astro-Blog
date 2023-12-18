@@ -61,13 +61,13 @@ import styles from '@styles/components/toc.module.css';
     .toc .toc-link {
         display: block;
         height: 100%;
-        color: rgba(0, 0, 0, 0.6);
-        transition: color 200ms ease;
+        color: var(--color-text-main);
+        transition: opacity 300ms var(--easing-normal);
     }
 
     .toc .toc-link:hover,
     .toc .toc-link:focus-within {
-        color: rgba(0, 0, 0, 0.9);
+        opacity: 0.8;
     }
 
     .toc .toc-link:hover::before,

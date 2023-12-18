@@ -1,6 +1,5 @@
 ---
 import HeaderLink from './HeaderLink.astro';
-import ThemeIcon from './ThemeIcon.jsx';
 import { SITE_TITLE } from '@consts';
 
 const myIcon = 'https://images.microcms-assets.io/assets/086f9d42ce494f47b9788ee7f77e85e1/1678e66b9d6e4084ad2dfbf6cbd61734/luminus-renew.jpg';
@@ -24,7 +23,6 @@ const myIcon = 'https://images.microcms-assets.io/assets/086f9d42ce494f47b9788ee
             <HeaderLink href="/about">About</HeaderLink>
         </div>
         <div class="social-links">
-            <ThemeIcon client:only="react" />
             <a href="https://twitter.com/Midnight_dev2" target="_blank">
                 <span class="sr-only">X（ツイッター）を見に行く</span>
                 <svg class="twitterX" width="32" height="32" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -96,6 +94,11 @@ const myIcon = 'https://images.microcms-assets.io/assets/086f9d42ce494f47b9788ee
     nav a.active {
         text-decoration: none;
         border-bottom-color: var(--color-primary);
+    }
+    @media (prefers-color-scheme: dark) {
+        nav a.active {
+            border-bottom-color: var(--color-primary-light);
+        }
     }
     .social-links,
     .social-links a {

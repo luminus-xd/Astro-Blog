@@ -38,17 +38,20 @@ const { href, title, class: className, ...props } = Astro.props;
         box-shadow: none;
     }
 
-    :global(html[data-dark]) a {
-        color: var(--color-bg-main);
-        background-color: #dddde4;
-        border-color: #dddde4;
-    }
-
-    :global(html[data-dark]) :is(a:hover, a:focus-visible) {
-        color: #dddde4;
-        background-color: var(--color-bg-main);
-        background-position: 100% 50%;
-        box-shadow: none;
+    @media (prefers-color-scheme: dark) {
+        a {
+            color: var(--color-bg-main);
+            background-color: #dddde4;
+            border-color: #dddde4;
+            box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+        }
+    
+        :is(a:hover, a:focus-visible) {
+            color: #dddde4;
+            background-color: var(--color-bg-main);
+            background-position: 100% 50%;
+            box-shadow: none;
+        }
     }
 
     @media (max-width: 640px) {

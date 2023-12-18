@@ -58,7 +58,8 @@ const formattedDate = `${year}-${month}-${day}`;
         let canvas = document.querySelector('.mv-cobe-canvas') as HTMLCanvasElement;
         if (!canvas) return;
 
-        const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+        const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const isMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
         let phi = 2.24;
         let theta = 0.4;
@@ -75,17 +76,17 @@ const formattedDate = `${year}-${month}-${day}`;
             phi,
             theta,
             dark: 1,
-            diffuse: 3,
+            diffuse: 2.4,
             scale: 1.1,
             mapSamples: 16000,
-            mapBrightness: 1.2,
+            mapBrightness: 5,
             baseColor: [1, 1, 1],
-            markerColor: [251 / 255, 100 / 255, 21 / 255],
+            markerColor: [87 / 255, 213 / 255, 43 / 255],
             glowColor: [1.2, 1.2, 1.2],
-            opacity: 0.7,
-            markers: [{ location: [35.676, 139.65], size: 0.1 }],
+            opacity: !isDark ? 0.72 : 0.9,
+            markers: [{ location: [35.676, 139.65], size: 0.08 }],
             onRender: state => {
-                if (!mediaQuery.matches) {
+                if (!isMotion) {
                     state.phi = phi;
                     state.theta = theta;
                     phi += 0.002;
@@ -166,10 +167,11 @@ const formattedDate = `${year}-${month}-${day}`;
     }
     .mv-button-list__blog {
         color: var(--color-lightest);
-        background-color: var(--color-primary);
+        background: var(--gradient-primary-blue-2);
+        border: 1px solid var(--color-primary);
     }
     .mv-button-list__about {
-        border: 2px solid var(--color-bg-code);
+        border: 2px solid var(--color-primary);
     }
     .mv-cobe {
         width: 100%;
