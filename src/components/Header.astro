@@ -25,7 +25,11 @@ const myIcon = 'https://images.microcms-assets.io/assets/086f9d42ce494f47b9788ee
         <div class="social-links">
             <a href="https://twitter.com/Midnight_dev2" target="_blank">
                 <span class="sr-only">X（ツイッター）を見に行く</span>
-                <img class="twitterX" src="/images/twitter-x-logo-black.svg" alt="" width={32} height={32} />
+                <svg class="twitterX" width="32" height="32" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M88.2 60.6602L169.46 178.81H151.42L70.16 60.6602H88.2ZM92.93 51.6602H53.04L146.68 187.81H186.57L92.93 51.6602Z" fill="currentColor"></path>
+                    <path d="M132.54 109.25L182.24 51.6602H170.99L127.55 101.99L132.54 109.25Z" fill="currentColor"></path>
+                    <path d="M105.36 127.72L53.04 188.34H64.3L110.35 134.98L105.36 127.72Z" fill="currentColor"></path>
+                </svg>
             </a>
             <a href="https://github.com/luminus-xd" target="_blank">
                 <span class="sr-only">GitHubを見に行く</span>
@@ -43,7 +47,6 @@ const myIcon = 'https://images.microcms-assets.io/assets/086f9d42ce494f47b9788ee
     header {
         margin: 0;
         padding: 0 0 0 1em;
-        background: white;
         box-shadow: 0 2px 8px rgba(var(--black), 5%);
     }
     h2 {
@@ -71,7 +74,7 @@ const myIcon = 'https://images.microcms-assets.io/assets/086f9d42ce494f47b9788ee
         filter: brightness(0.8);
     }
     h2 span {
-        color: var(--color-darkest);
+        color: var(--color-text-main);
     }
     nav {
         display: flex;
@@ -91,6 +94,11 @@ const myIcon = 'https://images.microcms-assets.io/assets/086f9d42ce494f47b9788ee
     nav a.active {
         text-decoration: none;
         border-bottom-color: var(--color-primary);
+    }
+    @media (prefers-color-scheme: dark) {
+        nav a.active {
+            border-bottom-color: var(--color-primary-light);
+        }
     }
     .social-links,
     .social-links a {
