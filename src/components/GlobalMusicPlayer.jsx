@@ -3,13 +3,10 @@ import { useMusicPlayer } from '@hooks/useMusicPlayer.tsx';
 import styles from '@styles/components/music-player.module.css';
 
 const GlobalMusicPlayer = () => {
-    const { isPlaying, togglePlay } = useMusicPlayer();
+    const { isPlaying, togglePlay } = useMusicPlayer('/music/night-walk.mp3');
 
     return (
         <>
-            <audio id="music" loop>
-                このブラウザはaudio要素に対応していません。
-            </audio>
             <button className={styles.button} onClick={() => togglePlay()}>
                 {isPlaying ? (
                     <span className={styles.playing}>
