@@ -1,18 +1,37 @@
 ---
-import type { Blog } from '@library/microcms';
+import type { Article } from '@library/microcms';
 import BaseHead from '@components/BaseHead.astro';
 import BaseBody from '@components/BaseBody.astro';
 import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
 
-type Props = Blog;
+import { SITE_AUTHOR } from '@consts';
 
-const { title, description, content, thumbnail, tags, writer, tocVisible } = Astro.props;
+type Props = Article;
+
+const { title, description, content, thumbnail, tags, writer, tocVisible, updatedAt, publishedAt } = Astro.props;
+
+const schema = JSON.stringify({
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: title,
+    author: {
+        '@type': 'Person',
+        name: SITE_AUTHOR,
+        url: Astro.site,
+    },
+    description: description,
+    url: Astro.url,
+    datePublished: publishedAt,
+    dateModified: updatedAt,
+    image: [thumbnail?.url]
+});
 ---
 
 <html lang="ja">
     <head>
         <BaseHead title={title} description={description} image={thumbnail?.url} />
+        <script type="application/ld+json" set:html={schema} />
         <style>
             .blog-detail {
                 width: 960px;
