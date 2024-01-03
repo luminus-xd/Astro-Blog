@@ -58,6 +58,7 @@
     width: 1200px;
     max-width: 960px;
     height: auto;
+    margin-inline: auto;
 }
 
 .thumbnailFront {
