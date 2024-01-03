@@ -24,7 +24,7 @@ const schema = JSON.stringify({
     url: Astro.url,
     datePublished: publishedAt,
     dateModified: updatedAt,
-    image: [thumbnail?.url]
+    image: [thumbnail?.url],
 });
 ---
 
@@ -34,7 +34,8 @@ const schema = JSON.stringify({
         <script type="application/ld+json" set:html={schema} />
         <style>
             .blog-detail {
-                width: 960px;
+                width: 100%;
+                max-width: 1180px;
             }
 
             @media (max-width: 1040px) {

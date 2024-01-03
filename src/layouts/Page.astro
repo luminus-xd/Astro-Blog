@@ -14,7 +14,8 @@ const { frontmatter } = Astro.props;
         <BaseHead title={frontmatter.title} description={frontmatter.description} image={frontmatter.thumbnail} />
         <style>
             .blog-detail {
-                width: 960px;
+                width: 100%;
+                max-width: 1180px;
             }
 
             @media (max-width: 1040px) {
