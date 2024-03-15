@@ -15,7 +15,7 @@ const posts = await getList();
         <BaseHead title="投稿記事一覧" description="" />
         <style>
             main {
-                width: 1180px;
+                width: 980px;
                 max-width: 100%;
             }
             ul {
@@ -23,6 +23,7 @@ const posts = await getList();
                 gap: 36px;
                 margin-top: 32px;
                 grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+                word-break: auto-phrase;
             }
             ul .imageContainer {
                 position: relative;

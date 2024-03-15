@@ -18,6 +18,7 @@
     color: var(--color-text-sub);
     margin: 24px 40px;
     text-align: center;
+    word-break: auto-phrase;
 }
 
 .meta {
@@ -108,14 +109,15 @@
     margin-top: 0;
 }
 
-.cms > :is(h2, h3, h4, h5, h6) {
+.cms> :is(h2, h3, h4, h5, h6) {
     position: relative;
     margin: 2em 0 0.6em;
     padding-left: 1.2em;
     scroll-margin-top: 1em;
+    word-break: auto-phrase;
 }
 
-.cms > :is(h2, h3, h4, h5, h6)::before {
+.cms> :is(h2, h3, h4, h5, h6)::before {
     content: '#';
     position: absolute;
     inset: 0;
@@ -125,42 +127,42 @@
     margin: auto auto auto 0;
 }
 
-.cms > h2 {
+.cms>h2 {
     font-size: 2.4rem;
     font-weight: bold;
 }
 
-.cms > h3 {
+.cms>h3 {
     font-size: 2rem;
     font-weight: bold;
 }
 
-.cms > h4 {
+.cms>h4 {
     font-size: 1.8rem;
     font-weight: bold;
 }
 
-.cms > h5 {
+.cms>h5 {
     font-size: 1.7rem;
     font-weight: bold;
 }
 
-.cms > p {
+.cms>p {
     margin: 0.8em 0 0.5rem;
     line-height: 2;
 }
 
-.cms > p > a {
+.cms>p>a {
     color: var(--color-primary);
     transition: opacity 300ms var(--easing-normal);
 }
 
-.cms > p > :is(a:hover, a:focus-visible) {
+.cms>p> :is(a:hover, a:focus-visible) {
     opacity: 0.76;
 }
 
 @media (prefers-color-scheme: dark) {
-    .cms > p > a {
+    .cms>p>a {
         color: var(--color-primary-lightest);
     }
 }
@@ -177,11 +179,11 @@
     vertical-align: 0.2em;
 }
 
-.cms > pre {
+.cms>pre {
     overflow-x: auto;
 }
 
-.cms pre > code {
+.cms pre>code {
     background-color: var(--color-bg-code);
     font-size: 1.4rem;
     display: block;
@@ -195,7 +197,7 @@
     letter-spacing: 0.024em;
 }
 
-.cms pre > code:focus-within {
+.cms pre>code:focus-within {
     outline: 2px solid var(--color-primary-light);
 }
 
@@ -224,17 +226,17 @@
     margin: 1em 0 1em 2rem;
 }
 
-.cms > ul,
-.cms > ol {
+.cms>ul,
+.cms>ol {
     margin-top: 2rem;
     margin-bottom: 2rem;
 }
 
-.cms ul > li {
+.cms ul>li {
     list-style: disc;
 }
 
-.cms ol > li {
+.cms ol>li {
     list-style: decimal;
 }
 
@@ -250,68 +252,68 @@
     border-radius: var(--border-radius);
 }
 
-.cms > figure {
+.cms>figure {
     margin: 2rem 0;
 }
 
-.cms > figure > img,
-.cms > figure > a > img {
+.cms>figure>img,
+.cms>figure>a>img {
     max-width: 100%;
     height: auto;
     margin: 2rem 0;
 }
 
-.cms > figure > figcaption {
+.cms>figure>figcaption {
     margin-top: -1.6rem;
     color: var(--color-text-sub);
     font-size: 0.9em;
 }
 
-.cms > strong {
+.cms>strong {
     font-weight: bold;
 }
 
-.cms > blockquote {
+.cms>blockquote {
     border-left: 4px solid var(--color-border);
     padding-left: 1rem;
     font-style: italic;
     margin: 2rem 0;
 }
 
-.cms > blockquote > figure > a > img {
+.cms>blockquote>figure>a>img {
     width: 100%;
     height: auto;
 }
 
-.cms > blockquote > figure + p {
+.cms>blockquote>figure+p {
     margin-top: 0.4rem;
 }
 
-.cms > blockquote > figure > figcaption {
+.cms>blockquote>figure>figcaption {
     margin-top: 4px;
     color: var(--color-text-sub);
     font-size: 0.9em;
 }
 
-.cms > hr {
+.cms>hr {
     margin: 4rem 0;
     height: 1px;
     background-color: var(--color-border);
     border: none;
 }
 
-.cms > table {
+.cms>table {
     width: 100%;
     margin: 2rem 0;
 }
 
-.cms > table th {
+.cms>table th {
     background-color: var(--color-bg-sub-2);
     text-align: left;
     padding: 1rem;
 }
 
-.cms > table td {
+.cms>table td {
     text-align: left;
     padding: 1rem;
 }
