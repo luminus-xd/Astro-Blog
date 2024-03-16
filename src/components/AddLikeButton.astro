@@ -7,8 +7,6 @@ type Props = {
 
 const { articleId } = Astro.props;
 
-export const prerender = false;
-
 const likes = await db.select().from(Like).where(eq(Like.articleId, articleId));
 const likesCount = likes.length;
 ---
