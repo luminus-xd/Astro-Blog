@@ -6,6 +6,7 @@
     font-weight: 500;
     src: url('/fonts/inter/inter-v13-latin-500.woff2') format('woff2');
 }
+
 /* inter-700 - latin */
 @font-face {
     font-display: swap;
@@ -35,6 +36,7 @@
     --color-accent: #57d52b;
     --color-lightest: #fff;
     --color-darkest: #000;
+    --color-like: #982e2a;
     --border-radius: 4px;
     --easing-normal: cubic-bezier(0.33, 1, 0.68, 1);
     --box-shadows-xs: 0 2px 8px 1px rgb(0 0 0 / 0.07), 0 1px 1px -1px rgb(0 0 0 / 0.04);
@@ -172,6 +174,7 @@ img {
     0% {
         transform: rotate(0deg);
     }
+
     100% {
         transform: rotate(360deg);
     }
@@ -201,12 +204,15 @@ img {
     0% {
         transform: translateY(0);
     }
+
     30% {
         transform: translateY(3px);
     }
+
     70% {
         transform: translateY(-3px);
     }
+
     100% {
         transform: translateY(0);
     }
