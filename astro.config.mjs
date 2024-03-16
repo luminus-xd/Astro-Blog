@@ -12,8 +12,9 @@ import db from "@astrojs/db";
 
 // https://astro.build/config
 export default defineConfig({
-  site: SITE_URL,
+  output: "hybrid",
   adapter: cloudflare(),
+  site: SITE_URL,
   style: {
     postcss: {
       plugins: ['autoprefixer']

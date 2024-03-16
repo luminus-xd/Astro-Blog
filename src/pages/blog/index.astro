@@ -1,18 +1,13 @@
 ---
-import { db, Favorite } from 'astro:db';
-
-const favoriteList = await db.select().from(Favorite);
-
 import BaseHead from '@components/BaseHead.astro';
 import BaseBody from '@components/BaseBody.astro';
 import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
 import PublishedDate from '@components/PublishedDate.astro';
+import LikeCounter from '@components/LikeCounter.astro';
 
 import { getList } from '@library/microcms';
 const posts = await getList();
-
-// console.log(favoriteList);
 ---
 
 <!doctype html>
@@ -26,7 +21,7 @@ const posts = await getList();
             }
             ul {
                 display: grid;
-                gap: 36px;
+                gap: 48px;
                 margin-top: 32px;
                 grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
                 word-break: auto-phrase;
@@ -81,14 +76,6 @@ const posts = await getList();
                 /* align-items: center; */
                 gap: 18px;
             }
-            .favorite {
-                display: flex;
-                align-items: center;
-                gap: 6px;
-            }
-            .favorite-icon {
-                transform: translateY(2px);
-            }
             @keyframes fadeIn {
                 from {
                     opacity: 0;
@@ -107,8 +94,6 @@ const posts = await getList();
                 <ul>
                     {
                         posts.contents.map((post, index) => {
-                            const favoriteCount = favoriteList.filter(v => v.articleId === post.id).length;
-
                             return (
                                 <li>
                                     <a href={`/blog/${post.id}/`}>
@@ -158,17 +143,7 @@ const posts = await getList();
                                             <p>{post.description}</p>
                                         </hgroup>
                                         <div class="meta-field">
-                                            <span class="favorite">
-                                                <span class="favorite-icon">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 256 256">
-                                                        <path
-                                                            fill="currentColor"
-                                                            d="M240 94c0 70-103.79 126.66-108.21 129a8 8 0 0 1-7.58 0C119.79 220.66 16 164 16 94a62.07 62.07 0 0 1 62-62c20.65 0 38.73 8.88 50 23.89C139.27 40.88 157.35 32 178 32a62.07 62.07 0 0 1 62 62"
-                                                        />
-                                                    </svg>
-                                                </span>
-                                                <span class="favorite-count">{favoriteCount}</span>
-                                            </span>
+                                            <LikeCounter id={post.id} />
                                             <PublishedDate date={post.publishedAt || post.createdAt} />
                                         </div>
                                     </a>

@@ -334,13 +334,12 @@
 
 .twitterShareBlock {
     position: relative;
-    display: grid;
-    justify-items: center;
-    align-items: center;
+    display: flex;
     margin-top: 4.8rem;
+    gap: 18px;
 }
 
-.twitterShareBlock::before {
+/* .twitterShareBlock::before {
     content: '';
     position: absolute;
     inset: 0;
@@ -358,7 +357,7 @@
     width: 300px;
     height: 3px;
     background-color: var(--color-bg-main);
-}
+} */
 
 .topButton {
     margin-top: 120px;

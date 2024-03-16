@@ -4,6 +4,7 @@
     "version": "0.0.1",
     "scripts": {
         "dev": "astro dev",
+        "dev-db": "astro dev --remote",
         "start": "astro dev",
         "build": "astro check && astro build",
         "preview": "astro preview",
@@ -37,6 +38,7 @@
         "cspell": "8.6.0",
         "date-fns": "^2.30.0",
         "date-fns-tz": "^2.0.0",
+        "drizzle-orm": "^0.30.2",
         "highlight.js": "^11.9.0",
         "microcms-js-sdk": "^2.7.0",
         "postcss": "^8.4.32",

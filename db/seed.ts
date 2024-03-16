@@ -1,9 +1,9 @@
-import { db, Favorite } from 'astro:db';
+import { db, Like } from 'astro:db';
 
 export default async function () {
-	let today = await new Date();
-	await db.insert(Favorite).values([
-		{ articleId: "npq5cyvzr3", publishDate: today },
-		{ articleId: "npq5cyvzr3", publishDate: today },
+	await db.insert(Like).values([
+		{ articleId: "npq5cyvzr3" },
+		{ articleId: "npq5cyvzr3" },
+		{ articleId: "ki_pi9fgwk1" },
 	])
 }
