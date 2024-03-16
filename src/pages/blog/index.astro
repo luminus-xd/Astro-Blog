@@ -4,6 +4,7 @@ import BaseBody from '@components/BaseBody.astro';
 import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
 import PublishedDate from '@components/PublishedDate.astro';
+import LikeCounter from '@components/LikeCounter.astro';
 
 import { getList } from '@library/microcms';
 const posts = await getList();
@@ -20,7 +21,7 @@ const posts = await getList();
             }
             ul {
                 display: grid;
-                gap: 36px;
+                gap: 48px;
                 margin-top: 32px;
                 grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
                 word-break: auto-phrase;
@@ -69,6 +70,12 @@ const posts = await getList();
                 /* ブラウザがサポートしていない場合のフェールセーフ */
                 max-height: 5em;
             }
+            .meta-field {
+                display: flex;
+                justify-content: flex-end;
+                /* align-items: center; */
+                gap: 18px;
+            }
             @keyframes fadeIn {
                 from {
                     opacity: 0;
@@ -86,52 +93,63 @@ const posts = await getList();
                 <h1>投稿記事一覧</h1>
                 <ul>
                     {
-                        posts.contents.map((post, index) => (
-                            <li>
-                                <a href={`/blog/${post.id}/`}>
-                                    <div class="imageContainer">
-                                        <picture>
-                                            <source
-                                                type="image/avif"
-                                                srcset={`${post.thumbnail?.url}?fm=avif&fit=crop&w=39&h=21&q=10&blur 1x, ${post.thumbnail?.url}?fm=avif&fit=crop&w=39&h=21&q=10&blur&dpr=2 2x`}
-                                            />
-                                            <source
-                                                type="image/webp"
-                                                srcset={`${post.thumbnail?.url}?fm=webp&fit=crop&w=39&h=21&q=10&blur 1x, ${post.thumbnail?.url}?fm=webp&fit=crop&w=39&h=21&q=10&blur&dpr=2 2x`}
-                                            />
-                                            <img
-                                                class="imageBlur"
-                                                width={39}
-                                                height={21}
-                                                srcset={`${post.thumbnail?.url}?fit=crop&w=39&h=21&q=10&blur 1x, ${post.thumbnail?.url}?fit=crop&w=39&h=21&q=10&blur&dpr=2 2x`}
-                                                alt=""
-                                                decoding="async"
-                                                aria-hidden="true"
-                                            />
-                                        </picture>
-                                        <picture>
-                                            <source type="image/avif" srcset={`${post.thumbnail?.url}?fm=avif&fit=crop&w=391&h=205 1x, ${post.thumbnail?.url}?fm=avif&fit=crop&w=391&h=205&dpr=2 2x`} />
-                                            <source type="image/webp" srcset={`${post.thumbnail?.url}?fm=webp&fit=crop&w=391&h=205 1x, ${post.thumbnail?.url}?fm=webp&fit=crop&w=391&h=205&dpr=2 2x`} />
-                                            <img
-                                                class="image"
-                                                width={391}
-                                                height={205}
-                                                srcset={`${post.thumbnail?.url}?fit=crop&w=391&h=205 1x, ${post.thumbnail?.url}?fit=crop&w=391&h=205&dpr=2 2x`}
-                                                alt=""
-                                                decoding="async"
-                                                transition:name={`BlogMV-${post.id}`}
-                                                fetchpriority={index <= 4 ? 'high' : 'auto'}
-                                            />
-                                        </picture>
-                                    </div>
-                                    <hgroup>
-                                        <h2>{post.title}</h2>
-                                        <p>{post.description}</p>
-                                    </hgroup>
-                                    <PublishedDate date={post.publishedAt || post.createdAt} />
-                                </a>
-                            </li>
-                        ))
+                        posts.contents.map((post, index) => {
+                            return (
+                                <li>
+                                    <a href={`/blog/${post.id}/`}>
+                                        <div class="imageContainer">
+                                            <picture>
+                                                <source
+                                                    type="image/avif"
+                                                    srcset={`${post.thumbnail?.url}?fm=avif&fit=crop&w=39&h=21&q=10&blur 1x, ${post.thumbnail?.url}?fm=avif&fit=crop&w=39&h=21&q=10&blur&dpr=2 2x`}
+                                                />
+                                                <source
+                                                    type="image/webp"
+                                                    srcset={`${post.thumbnail?.url}?fm=webp&fit=crop&w=39&h=21&q=10&blur 1x, ${post.thumbnail?.url}?fm=webp&fit=crop&w=39&h=21&q=10&blur&dpr=2 2x`}
+                                                />
+                                                <img
+                                                    class="imageBlur"
+                                                    width={39}
+                                                    height={21}
+                                                    srcset={`${post.thumbnail?.url}?fit=crop&w=39&h=21&q=10&blur 1x, ${post.thumbnail?.url}?fit=crop&w=39&h=21&q=10&blur&dpr=2 2x`}
+                                                    alt=""
+                                                    decoding="async"
+                                                    aria-hidden="true"
+                                                />
+                                            </picture>
+                                            <picture>
+                                                <source
+                                                    type="image/avif"
+                                                    srcset={`${post.thumbnail?.url}?fm=avif&fit=crop&w=391&h=205 1x, ${post.thumbnail?.url}?fm=avif&fit=crop&w=391&h=205&dpr=2 2x`}
+                                                />
+                                                <source
+                                                    type="image/webp"
+                                                    srcset={`${post.thumbnail?.url}?fm=webp&fit=crop&w=391&h=205 1x, ${post.thumbnail?.url}?fm=webp&fit=crop&w=391&h=205&dpr=2 2x`}
+                                                />
+                                                <img
+                                                    class="image"
+                                                    width={391}
+                                                    height={205}
+                                                    srcset={`${post.thumbnail?.url}?fit=crop&w=391&h=205 1x, ${post.thumbnail?.url}?fit=crop&w=391&h=205&dpr=2 2x`}
+                                                    alt=""
+                                                    decoding="async"
+                                                    transition:name={`BlogMV-${post.id}`}
+                                                    fetchpriority={index <= 4 ? 'high' : 'auto'}
+                                                />
+                                            </picture>
+                                        </div>
+                                        <hgroup>
+                                            <h2>{post.title}</h2>
+                                            <p>{post.description}</p>
+                                        </hgroup>
+                                        <div class="meta-field">
+                                            <LikeCounter id={post.id} />
+                                            <PublishedDate date={post.publishedAt || post.createdAt} />
+                                        </div>
+                                    </a>
+                                </li>
+                            );
+                        })
                     }
                 </ul>
             </section>

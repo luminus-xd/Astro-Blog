@@ -4,6 +4,7 @@ import { formatRichText } from '@library/utils';
 import BlogPost from '@layouts/BlogPost.astro';
 import Toc from '@components/Toc.astro';
 import PublishedDate from '@components/PublishedDate.astro';
+import AddLikeButton from '@components/AddLikeButton.astro';
 import LinkButton from '@components/LinkButton.astro';
 import ShareButton from '@components/ShareButton.astro';
 
@@ -19,6 +20,12 @@ export async function getStaticPaths() {
 
 const { slug } = Astro.params;
 const blog = await getDetail(slug as string);
+
+interface Props {
+    id: String;
+}
+
+const { id } = Astro.props;
 ---
 
 <BlogPost {...blog}>
@@ -77,6 +84,7 @@ const blog = await getDetail(slug as string);
         <div class={styles.content}>
             <div id="cms" class={styles.cms} set:html={formatRichText(blog.content)} />
             <div class={styles.twitterShareBlock}>
+                <AddLikeButton articleId={blog.id} />
                 <ShareButton blogId={blog.id} blogTitle={blog.title} />
             </div>
         </div>
