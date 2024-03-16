@@ -6,7 +6,7 @@
         "dev": "astro dev",
         "dev-db": "astro dev --remote",
         "start": "astro dev",
-        "build": "astro check && astro build",
+        "build": "astro check && astro build --remote",
         "preview": "astro preview",
         "astro": "astro",
         "format": "prettier --write ."
@@ -17,6 +17,7 @@
         "astro-purgecss": "4.1.0",
         "cobe": "^0.6.3",
         "howler": "^2.2.4",
+        "js-confetti": "^0.12.0",
         "purgecss": "^5.0.0",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
