@@ -2,7 +2,7 @@
 import { getList, getDetail } from '@library/microcms';
 import { formatRichText } from '@library/utils';
 import BlogPost from '@layouts/BlogPost.astro';
-// import Toc from '@components/Toc.astro';
+import Toc from '@components/Toc.astro';
 import PublishedDate from '@components/PublishedDate.astro';
 import AddLikeButton from '@components/AddLikeButton.astro';
 import LinkButton from '@components/LinkButton.astro';
@@ -90,11 +90,11 @@ const { id } = Astro.props;
                 <ShareButton blogId={blog.id} blogTitle={blog.title} />
             </div>
         </div>
-        <!-- <div class={styles.side}>
+        <div class={styles.side}>
             <div class={styles.sideSticky}>
                 {blog.tocVisible && <Toc />}
             </div>
-        </div> -->
+        </div>
     </div>
     <div class={styles.topButton}>
         <LinkButton href="/blog/">トップページに戻る</LinkButton>
