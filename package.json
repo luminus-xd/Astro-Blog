@@ -11,6 +11,7 @@
         "format": "prettier --write ."
     },
     "dependencies": {
+        "@astrojs/db": "^0.8.6",
         "astro-purgecss": "4.1.0",
         "cobe": "^0.6.3",
         "howler": "^2.2.4",
