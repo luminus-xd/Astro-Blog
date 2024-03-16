@@ -83,12 +83,16 @@ const { id } = Astro.props;
     <div class={styles.column}>
         <div class={styles.content}>
             <div id="cms" class={styles.cms} set:html={formatRichText(blog.content)} />
+            <AddLikeButton articleId={blog.id} />
             <div class={styles.twitterShareBlock}>
-                <AddLikeButton articleId={blog.id} />
                 <ShareButton blogId={blog.id} blogTitle={blog.title} />
             </div>
         </div>
-        {blog.tocVisible && <Toc />}
+        <div class={styles.side}>
+            <div class={styles.sideSticky}>
+                {blog.tocVisible && <Toc />}
+            </div>
+        </div>
     </div>
     <div class={styles.topButton}>
         <LinkButton href="/blog/">トップページに戻る</LinkButton>
