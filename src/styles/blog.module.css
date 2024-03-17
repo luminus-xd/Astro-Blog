@@ -101,6 +101,21 @@
     margin: 4.8rem 0 0;
 }
 
+.side {
+    width: 100%;
+    max-width: 200px;
+    overflow-y: visible;
+}
+
+.sideSticky {
+    position: sticky;
+    top: 32px;
+}
+
+.side>.sideSticky>*+* {
+    margin-top: 20px;
+}
+
 .cms {
     width: 100%;
 }
@@ -334,12 +349,13 @@
 
 .twitterShareBlock {
     position: relative;
-    display: flex;
+    display: grid;
+    justify-items: center;
+    align-items: center;
     margin-top: 4.8rem;
-    gap: 18px;
 }
 
-/* .twitterShareBlock::before {
+.twitterShareBlock::before {
     content: '';
     position: absolute;
     inset: 0;
@@ -357,7 +373,7 @@
     width: 300px;
     height: 3px;
     background-color: var(--color-bg-main);
-} */
+}
 
 .topButton {
     margin-top: 120px;
