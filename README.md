@@ -6,7 +6,9 @@
 
 Luminus Astro Blog is a blog site After cloning this project locally, use the following commands to install dependencies.
 
-### Install
+## Setting
+
+### Install NPM package
 
 | Package Manager | Command        |
 | --------------- | -------------- |
@@ -15,7 +17,19 @@ Luminus Astro Blog is a blog site After cloning this project locally, use the fo
 | pnpm            | `pnpm install` |
 | bun             | `bun install`  |
 
-### Scripts
+### Add .env file
+
+Please create the .env file required for the build.  
+ Without this file, both the build and local environment won't function properly.
+
+```env
+MICROCMS_SERVICE_DOMAIN="{ microCMS domain }"
+MICROCMS_API_KEY="{ microCMS API KEY }"
+BUN_VERSION="{ Bun version }"
+BASE_URL="{　Page URL　}"
+```
+
+## Scripts
 
 | Script (Example) | Description                          |
 | ---------------- | ------------------------------------ |
