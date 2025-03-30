@@ -32,7 +32,7 @@
         "astro": "5.5.5",
         "astro-robots-txt": "^1.0.0",
         "autoprefixer": "^10.4.21",
-        "cheerio": "1.0.0-rc.12",
+        "cheerio": "^1.0.0",
         "cross-env": "^7.0.3",
         "cspell": "8.6.0",
         "date-fns": "^2.30.0",

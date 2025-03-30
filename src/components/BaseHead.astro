@@ -61,7 +61,7 @@ const { title, description, image = '/images/top-ogp.png' } = Astro.props;
 <!-- Manifest -->
 <link rel="manifest" href="/manifest.webmanifest" crossorigin="use-credentials" />
 
-<script defer>
+<script is:inline defer>
     (function () {
         const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
         if (theme === 'dark') {

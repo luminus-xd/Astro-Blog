@@ -1,6 +1,6 @@
 import { format } from 'date-fns';
 import { utcToZonedTime } from 'date-fns-tz';
-import cheerio from 'cheerio';
+import { load } from 'cheerio';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/atom-one-dark.css';
 
@@ -23,7 +23,7 @@ export function formatDate(date: string) {
  * @returns
  */
 export function formatRichText(richText: string) {
-    const $ = cheerio.load(richText);
+    const $ = load(richText);
     const highlight = (text: string, lang?: string) => {
         if (!lang) return hljs.highlightAuto(text);
         try {
@@ -56,12 +56,13 @@ export type TocEntry = {
  * @returns
  */
 export const renderToc = (body: string): TocEntry[] => {
-    const $ = cheerio.load(body);
+    const $ = load(body);
     const headings = $('h2, h3, h4').toArray();
-    const toc: TocEntry[] = headings.map((data: any) => {
+    const toc: TocEntry[] = headings.map((data) => {
+        const element = $(data);
         const name = data.name;
         const id = data.attribs?.id;
-        const text = data.type === 'tag' && data.children[0]?.type === 'text' ? data.children[0].data : undefined;
+        const text = element.text();
         return { name, text, id };
     });
 
