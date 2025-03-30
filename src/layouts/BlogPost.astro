@@ -9,9 +9,11 @@ import { SITE_AUTHOR } from '@consts';
 
 type Props = Article;
 
-const { title, description, content, thumbnail, tags, writer, tocVisible, updatedAt, publishedAt } = Astro.props;
+const { title, description, thumbnail, updatedAt, publishedAt } = Astro.props;
 
-const schema = JSON.stringify({
+// JSON-LDスキーマをHTMLとして生成
+const jsonLdScript = `<script type="application/ld+json">
+${JSON.stringify({
     '@context': 'https://schema.org',
     '@type': 'Article',
     headline: title,
@@ -25,13 +27,14 @@ const schema = JSON.stringify({
     datePublished: publishedAt,
     dateModified: updatedAt,
     image: [thumbnail?.url],
-});
+})}
+</script>`;
 ---
 
 <html lang="ja">
     <head>
         <BaseHead title={title} description={description} image={thumbnail?.url} />
-        <script type="application/ld+json" set:html={schema} />
+        <Fragment set:html={jsonLdScript} />
         <style>
             .blog-detail {
                 width: 100%;

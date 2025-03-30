@@ -4,7 +4,6 @@ import { formatRichText } from '@library/utils';
 import BlogPost from '@layouts/BlogPost.astro';
 import Toc from '@components/Toc.astro';
 import PublishedDate from '@components/PublishedDate.astro';
-import AddLikeButton from '@components/AddLikeButton.astro';
 import LinkButton from '@components/LinkButton.astro';
 import ShareButton from '@components/ShareButton.astro';
 
@@ -24,10 +23,8 @@ const { slug } = Astro.params;
 const blog = await getDetail(slug as string);
 
 interface Props {
-    id: String;
+    id: string;
 }
-
-const { id } = Astro.props;
 ---
 
 <BlogPost {...blog}>
@@ -85,7 +82,6 @@ const { id } = Astro.props;
     <div class={styles.column}>
         <div class={styles.content}>
             <div id="cms" class={styles.cms} set:html={formatRichText(blog.content)} />
-            <AddLikeButton articleId={blog.id} />
             <div class={styles.twitterShareBlock}>
                 <ShareButton blogId={blog.id} blogTitle={blog.title} />
             </div>

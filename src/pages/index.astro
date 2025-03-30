@@ -34,7 +34,7 @@ const formattedDate = `${year}-${month}-${day}`;
                 </ul>
             </div>
             <div class="mv-cobe" style=`--cobe-size: ${cobeSize}px`>
-                <canvas class="mv-cobe-canvas" width="420" height="420"></canvas>
+                <canvas class="mv-cobe-canvas" width="420" height="420" style="opacity: 0;"></canvas>
             </div>
         </div>
         <div class="content">
@@ -54,54 +54,94 @@ const formattedDate = `${year}-${month}-${day}`;
 <script>
     import createGlobe from 'cobe';
 
-    document.addEventListener('astro:page-load', () => {
-        let canvas = document.querySelector('.mv-cobe-canvas') as HTMLCanvasElement;
-        if (!canvas) return;
+    // 初期化済みフラグ
+    let globeInitialized = false;
 
-        const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        const isMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    // 両方のイベントで初期化を試みる
+    const initGlobe = () => {
+        console.log('Initializing globe');
+        // すでに初期化済みならスキップ
+        if (globeInitialized) {
+            console.log('Globe already initialized, skipping');
+            return;
+        }
 
-        let phi = 2.24;
-        let theta = 0.4;
-        let width = 0;
+        try {
+            let canvas = document.querySelector('.mv-cobe-canvas') as HTMLCanvasElement;
+            console.log('canvas element:', canvas);
+            if (!canvas) return;
 
-        const onResize = () => canvas && (width = canvas.offsetWidth);
-        window.addEventListener('resize', onResize);
-        onResize();
+            // WebGLサポートのチェック
+            const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+            if (!gl) {
+                console.error('WebGL is not supported');
+                return;
+            }
 
-        const globe = createGlobe(canvas, {
-            devicePixelRatio: 2,
-            width: width * 2,
-            height: width * 2,
-            phi,
-            theta,
-            dark: 1,
-            diffuse: 2.4,
-            scale: 1.1,
-            mapSamples: 16000,
-            mapBrightness: 5,
-            baseColor: [1, 1, 1],
-            markerColor: [87 / 255, 213 / 255, 43 / 255],
-            glowColor: [1.2, 1.2, 1.2],
-            opacity: !isDark ? 0.72 : 0.9,
-            markers: [{ location: [35.676, 139.65], size: 0.08 }],
-            onRender: state => {
-                if (!isMotion) {
-                    state.phi = phi;
-                    state.theta = theta;
-                    phi += 0.002;
-                    state.width = width * 2;
-                    state.height = width * 2;
-                }
-            },
-        });
+            const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const isMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-        setTimeout(() => (canvas.style.opacity = '1'));
+            let phi = 2.24;
+            let theta = 0.4;
+            let width = 0;
 
-        return () => {
-            globe.destroy();
-            window.removeEventListener('resize', onResize);
-        };
+            const onResize = () => canvas && (width = canvas.offsetWidth);
+            window.addEventListener('resize', onResize);
+            onResize();
+            
+            console.log('Creating globe with width:', width);
+            // 幅が0の場合は最小値を設定
+            if (width <= 0) {
+                console.log('Width is zero, setting default width');
+                width = 300;
+            }
+
+            const globe = createGlobe(canvas, {
+                devicePixelRatio: 2,
+                width: width * 2,
+                height: width * 2,
+                phi,
+                theta,
+                dark: 1,
+                diffuse: 2.4,
+                scale: 1.1,
+                mapSamples: 16000,
+                mapBrightness: 5,
+                baseColor: [1, 1, 1],
+                markerColor: [87 / 255, 213 / 255, 43 / 255],
+                glowColor: [1.2, 1.2, 1.2],
+                opacity: !isDark ? 0.72 : 0.9,
+                markers: [{ location: [35.676, 139.65], size: 0.08 }],
+                onRender: state => {
+                    if (!isMotion) {
+                        state.phi = phi;
+                        state.theta = theta;
+                        phi += 0.002;
+                        state.width = width * 2;
+                        state.height = width * 2;
+                    }
+                },
+            });
+            globeInitialized = true;
+
+            setTimeout(() => {
+                canvas.style.opacity = '1';
+                console.log('Canvas opacity set to 1');
+            }, 100);
+
+            return () => {
+                globe.destroy();
+                window.removeEventListener('resize', onResize);
+            };
+        } catch (error) {
+            console.error('Error creating globe:', error);
+        }
+    };
+
+    // 通常のDOM読み込みイベント
+    document.addEventListener('DOMContentLoaded', () => {
+        console.log('DOMContentLoaded event fired');
+        initGlobe();
     });
 </script>
 
