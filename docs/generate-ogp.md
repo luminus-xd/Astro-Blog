@@ -26,14 +26,12 @@ node tools/generate-ogp/index.js --title "記事タイトル" --authorName "著�
 
 ### オプション
 
-オプションの値は、このプロジェクトで利用しているフォントファイルと著者アイコンのパスを指定しています。
-
 | オプション | 説明 | デフォルト値 |
 |----------|------|------------|
 | `--title` | 記事タイトル（必須） | - |
 | `--authorName` | 著者名 | "Luminus" |
 | `--authorIconPath` | 著者アイコンのパス | "public/images/icons/icon-512x512.png" |
-| `--outputPath` | 出力先のパス | "tools/output/ogp.png" |
+| `--outputPath` | 出力先のパス | "tools/generate-ogp/output/ogp.png" |
 | `--fontPath` | フォントファイルのパス | "tools/generate-ogp/fonts/mobo/MOBO-Bold.otf" |
 
 ### 使用例
@@ -48,8 +46,30 @@ npm run generate-ogp -- --title "Next v13.3からのSitemap.xml生成" --authorN
 
 ## OGP画像のカスタマイズ
 
-OGP画像のデザインをカスタマイズする場合は、`tools/generate-ogp/index.js`ファイルを編集してください。
-このスクリプトは@vercel/ogを使用しており、HTMLライクなオブジェクト構文でデザインを変更できます。
+OGP画像のデザインをカスタマイズする場合は、`tools/generate-ogp/config.js`ファイルを編集してください。
+設定ファイルでは以下の項目をカスタマイズできます：
+
+- 画像サイズ（幅、高さ）
+- タイトルの書式設定（最大文字数、フォントサイズ、行数制限など）
+- 背景色とグラデーション
+- コンテナスタイル（背景色、角丸、影など）
+- 著者情報の表示スタイル
+- フォント設定
+- 出力パス
+
+例えば、背景色を変更するには：
+
+```javascript
+// tools/generate-ogp/config.js
+export default {
+  // ...他の設定
+  background: {
+    color: "#000000", // 変更前: "#4158D0"
+    gradient: "linear-gradient(43deg, #000000 0%, #333333 100%)" // グラデーションを変更
+  },
+  // ...他の設定
+};
+```
 
 ## 生成されたOGP画像の使用方法
 
