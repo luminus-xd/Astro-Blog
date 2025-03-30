@@ -14,7 +14,7 @@ import styles from '@styles/components/toc.module.css';
 <script>
     import tocbot from 'tocbot';
 
-    document.addEventListener('astro:page-load', () => {
+    document.addEventListener('DOMContentLoaded', () => {
         const toc = document.querySelector('.toc');
         if (!toc) return;
 
