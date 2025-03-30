@@ -37,7 +37,3 @@ BASE_URL="{　Page URL　}"
 | npm run build    | Builds the project for production.   |
 | npm run preview  | Previews the built project.          |
 
-## License
-
-The license for this project is the MIT License.  
-It would be appreciated if you fork it for your use.
