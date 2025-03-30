@@ -12,7 +12,7 @@ import db from "@astrojs/db";
 
 // https://astro.build/config
 export default defineConfig({
-  output: "hybrid",
+  output: "server",
   adapter: cloudflare(),
   site: SITE_URL,
   style: {
