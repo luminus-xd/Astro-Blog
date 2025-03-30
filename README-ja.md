@@ -2,38 +2,41 @@
 
 ![Luminus Astro Blog](/public/images/top-ogp.png)
 
-Luminus Astro BlogはAstro.jsを使用したブログサイトです。microCMSを利用して記事を表示しています。  
-ホスティング先は任意で選択できますが、このリポジトリではCloudflare Pagesを使用しています。
+[English version here](./README.md)
+
+Luminus Astro Blogはブログサイトです。このプロジェクトをローカルにクローンした後、以下のコマンドを使用して依存関係をインストールしてください。
 
 ## 設定
 
-このリポジトリをローカルにクローンした後、以下のコマンドを使用して依存関係をインストールします。
+### NPMパッケージのインストール
 
-### インストール
-
-| パッケージマネージャ | コマンド       |
-| -------------------- | -------------- |
-| npm                  | `npm install`  |
-| yarn                 | `yarn install` |
-| pnpm                 | `pnpm install` |
-| bun                  | `bun install`  |
+| パッケージマネージャー | コマンド        |
+| --------------- | -------------- |
+| npm             | `npm install`  |
+| yarn            | `yarn install` |
+| pnpm            | `pnpm install` |
+| bun             | `bun install`  |
 
 ### .envファイルの追加
 
 ビルドに必要な.envファイルを作成してください。  
-このファイルがないとBuildやローカルが正常に動きません
+このファイルがないと、ビルドとローカル環境の両方が正常に機能しません。
 
 ```env
-MICROCMS_SERVICE_DOMAIN="{ microCMSのドメイン }"
-MICROCMS_API_KEY="{ microCMS APIキー }"
-BUN_VERSION="{ Bunのバージョン }"
-BASE_URL="{　ページURL　}"
+MICROCMS_SERVICE_DOMAIN="{ microCMS domain }"
+MICROCMS_API_KEY="{ microCMS API KEY }"
+BUN_VERSION="{ Bun version }"
+BASE_URL="{　Page URL　}"
 ```
 
-### スクリプト
+## スクリプト
 
-| スクリプト (例) | 説明                                       |
-| --------------- | ------------------------------------------ |
-| npm run dev     | ローカルの開発サーバーを起動します。       |
-| npm run build   | プロジェクトを本番用にビルドします。       |
-| npm run preview | ビルドしたプロジェクトをプレビューします。 |
+| スクリプト (例) | 説明                                |
+| ---------------- | ------------------------------------ |
+| npm run dev      | ローカル開発サーバーを起動します。 |
+| npm run build    | 本番用にプロジェクトをビルドします。   |
+| npm run preview  | ビルドされたプロジェクトをプレビューします。          |
+
+## ドキュメント
+
+より詳細なドキュメントについては、[docsディレクトリ](./docs/README.md)を参照してください。

@@ -37,3 +37,6 @@ BASE_URL="{　Page URL　}"
 | npm run build    | Builds the project for production.   |
 | npm run preview  | Previews the built project.          |
 
+## Documentation
+
+For more detailed documentation, please see the [docs directory](./docs/README.md).
