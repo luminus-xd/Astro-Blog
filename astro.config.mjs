@@ -5,13 +5,13 @@ import sitemap from '@astrojs/sitemap';
 import purgecss from 'astro-purgecss';
 import AstroPWA from '@vite-pwa/astro';
 import react from '@astrojs/react';
-import cloudflare from '@astrojs/cloudflare';
+// import cloudflare from '@astrojs/cloudflare';
 import { SITE_URL, SITE_DESCRIPTION } from './src/consts';
 
 // https://astro.build/config
 export default defineConfig({
-  output: "server",
-  adapter: cloudflare(),
+  output: "static",
+  // adapter: cloudflare(),
   site: SITE_URL,
   style: {
     postcss: {
