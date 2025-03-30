@@ -2,6 +2,11 @@
 
 このツールは@vercel/ogを使用して、記事タイトルと著者情報を含むOGP画像を生成します。
 
+以下のようなOGP画像が出力されます。
+
+![ogp](https://github.com/user-attachments/assets/88fc0ceb-a40b-442b-b2dd-b276afe941cb)
+
+
 ## 必要条件
 
 - Node.js v18以上
