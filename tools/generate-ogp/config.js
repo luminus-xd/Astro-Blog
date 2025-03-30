@@ -42,7 +42,7 @@ export default {
 		fontWeight: "bold",
 		color: "#ffffff",
 		icon: {
-			size: 60,
+			size: 68,
 			borderColor: "rgba(255, 255, 255, 0.2)",
 			borderWidth: "1px",
 		},
