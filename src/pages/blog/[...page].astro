@@ -1,20 +1,62 @@
 ---
+import type { GetStaticPathsOptions } from 'astro';
+
 import BaseHead from '@components/BaseHead.astro';
 import BaseBody from '@components/BaseBody.astro';
 import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
 import PublishedDate from '@components/PublishedDate.astro';
-
-// export const prerender = false;
+import Pagination from '@components/Pagination.astro';
 
 import { getList } from '@library/microcms';
-const posts = await getList();
+
+// 1ページに表示する件数
+export const postsPerPage = 12;
+
+// getStaticPaths()で動的なルートを設定
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+    // 総件数を取得
+    const initialResponse = await getList({
+        limit: 0,
+        fields: ['id'],
+    });
+
+    const totalCount = initialResponse.totalCount;
+
+    // 50件ずつ分割して全記事を取得
+    const allContents = [];
+    const batchSize = 50; // 1回あたりの取得件数
+    const batchCount = Math.ceil(totalCount / batchSize);
+
+    for (let i = 0; i < batchCount; i++) {
+        const batchResponse = await getList({
+            limit: batchSize,
+            offset: i * batchSize,
+            fields: ['id', 'title', 'description', 'thumbnail', 'publishedAt', 'createdAt'], //取得するフィールド
+            orders: '-publishedAt', //公開日順でソート
+        });
+        allContents.push(...batchResponse.contents);
+    }
+
+    // 取得した全記事に対してページネーションを適用
+    return paginate(allContents, {
+        pageSize: postsPerPage,
+        params: { page: undefined }, // 1ページ目のパスパラメータをundefinedに設定
+    });
+}
+
+const { page } = Astro.props;
+
+// リダイレクト防止：1ページ目は/blog/1ではなく/blogにする
+if (page.currentPage === 1 && Astro.params.page === '1') {
+    return Astro.redirect('/blog/');
+}
 ---
 
 <!doctype html>
 <html lang="ja">
     <head>
-        <BaseHead title="投稿記事一覧" description="" />
+        <BaseHead title={`投稿記事一覧${page.currentPage > 1 ? ` - ${page.currentPage}ページ目` : ''}`} description="" />
         <style>
             main {
                 width: 980px;
@@ -78,6 +120,9 @@ const posts = await getList();
                 /* align-items: center; */
                 gap: 18px;
             }
+            .pagination-container {
+                margin-block-start: 32px;
+            }
             @keyframes fadeIn {
                 from {
                     opacity: 0;
@@ -95,7 +140,7 @@ const posts = await getList();
                 <h1>投稿記事一覧</h1>
                 <ul>
                     {
-                        posts.contents.map((post, index) => {
+                        page.data.map((post, index) => {
                             return (
                                 <li>
                                     <a href={`/blog/${post.id}/`}>
@@ -153,9 +198,18 @@ const posts = await getList();
                         })
                     }
                 </ul>
+
+                <div class="pagination-container">
+                    <Pagination currentPage={page.currentPage} totalPages={page.lastPage} url="/blog/" />
+                </div>
             </section>
         </main>
         <Footer />
         <BaseBody />
+        <style>
+            .pagination-container {
+                margin-block-start: 32px;
+            }
+        </style>
     </body>
 </html>

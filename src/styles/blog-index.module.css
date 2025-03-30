@@ -1,0 +1,73 @@
+main {
+	width: 980px;
+	max-width: 100%;
+}
+ul {
+	display: grid;
+	gap: 48px;
+	margin-top: 32px;
+	grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+	word-break: auto-phrase;
+}
+ul .imageContainer {
+	position: relative;
+}
+ul .image,
+ul .imageBlur {
+	display: block;
+	width: 100%;
+	height: auto;
+	border-radius: calc(var(--border-radius) * 2);
+	aspect-ratio: 40 / 21;
+	object-fit: cover;
+}
+ul .imageBlur {
+	position: absolute;
+	inset: 0;
+	margin: auto;
+	opacity: 0;
+	filter: blur(12px) saturate(180%);
+	will-change: filter;
+	z-index: -1;
+	animation: fadeIn 500ms cubic-bezier(0.33, 1, 0.68, 1) 180ms forwards;
+}
+h1 {
+	font-size: 2.8rem;
+}
+h2 {
+	font-size: 2rem;
+	margin-top: 0.6em;
+}
+hgroup {
+	margin-block-start: 1.4em;
+}
+hgroup p {
+	font-size: 1.5rem;
+	overflow: hidden;
+	display: -webkit-box;
+	text-overflow: ellipsis;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	color: var(--color-text-sub);
+	margin: 0.4em 0 0 0;
+	line-height: 1.72;
+	/* ブラウザがサポートしていない場合のフェールセーフ */
+	max-height: 5em;
+}
+.meta-field {
+	display: flex;
+	justify-content: flex-end;
+	/* align-items: center; */
+	gap: 18px;
+}
+.pagination-container {
+	margin-block-start: 32px;
+}
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
