@@ -38,10 +38,10 @@ node tools/generate-ogp/index.js --title "記事タイトル" --authorName "著�
 
 ```bash
 # 基本的な例
-npm run generate-ogp -- --title "Next v13.3からのSitemap.xml生成"
+npm run generate-ogp -- --title "サンプルテキスト タイトル"
 
 # 全オプションを指定
-npm run generate-ogp -- --title "Next v13.3からのSitemap.xml生成" --authorName "Luminus" --authorIconPath "./public/images/author.jpg" --outputPath "./tools/output/article-1.png" --fontPath "./tools/generate-ogp/fonts/custom-font.ttf"
+npm run generate-ogp -- --title "サンプルテキスト タイトル" --authorName "Luminus" --authorIconPath "./public/images/author.jpg" --outputPath "./tools/output/article-1.png" --fontPath "./tools/generate-ogp/fonts/custom-font.ttf"
 ```
 
 ## OGP画像のカスタマイズ
@@ -73,7 +73,7 @@ export default {
 
 ## 生成されたOGP画像の使用方法
 
-生成されたOGP画像は`tools/output/ogp.png`（または指定した出力先）に保存されます。
+生成されたOGP画像は`tools/output/generate-ogp/ogp.png`（または指定した出力先）に保存されます。
 この画像は記事のメタデータに設定して使用できます。
 
 ## Vercel OGの詳細情報
