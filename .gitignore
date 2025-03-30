@@ -25,3 +25,8 @@ yarn.lock
 
 # macOS-specific files
 .DS_Store
+
+# generated OGP images
+tools/generate-ogp/output/
+tools/generate-ogp/fonts/
+tools/output/ogp.png
