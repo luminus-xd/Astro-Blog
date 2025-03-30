@@ -18,6 +18,7 @@
         "cobe": "^0.6.3",
         "howler": "^2.2.4",
         "js-confetti": "^0.12.0",
+        "lucide-astro": "^0.485.0",
         "purgecss": "^5.0.0",
         "react": "^18.3.1",
         "react-dom": "^18.3.1",

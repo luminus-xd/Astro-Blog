@@ -15,7 +15,6 @@ export const postsPerPage = 12;
 
 // getStaticPaths()で動的なルートを設定
 export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
-    // 総件数を取得
     const initialResponse = await getList({
         limit: 0,
         fields: ['id'],
@@ -121,7 +120,7 @@ if (page.currentPage === 1 && Astro.params.page === '1') {
                 gap: 18px;
             }
             .pagination-container {
-                margin-block-start: 32px;
+                margin-block-start: 48px;
             }
             @keyframes fadeIn {
                 from {
@@ -206,10 +205,5 @@ if (page.currentPage === 1 && Astro.params.page === '1') {
         </main>
         <Footer />
         <BaseBody />
-        <style>
-            .pagination-container {
-                margin-block-start: 32px;
-            }
-        </style>
     </body>
 </html>

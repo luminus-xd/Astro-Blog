@@ -1,4 +1,6 @@
 ---
+import { ArrowLeft, ArrowRight } from 'lucide-astro';
+
 const { currentPage, totalPages, url } = Astro.props;
 
 // ページ番号の配列を生成
@@ -6,7 +8,7 @@ const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
 
 // ページのURLを生成する関数
 function getPageUrl(pageNum: number) {
-  return pageNum === 1 ? url : `${url}${pageNum}/`;
+    return pageNum === 1 ? url : `${url}${pageNum}/`;
 }
 
 // 前のページが存在するかどうか
@@ -17,202 +19,175 @@ const hasNextPage = currentPage < totalPages;
 ---
 
 <nav class="pagination" aria-label="ページナビゲーション">
-  <div class="pagination__container">
-    <a 
-      href={hasPrevPage ? getPageUrl(currentPage - 1) : undefined} 
-      class="pagination__prev" 
-      aria-label="前のページへ"
-      inert={!hasPrevPage}
-    >
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="pagination__icon">
-        <path d="m15 18-6-6 6-6"></path>
-      </svg>
-      <span>前へ</span>
-    </a>
+    <div class="pagination__container">
+        <a href={hasPrevPage ? getPageUrl(currentPage - 1) : undefined} class="pagination__prev" aria-label="前のページへ" inert={!hasPrevPage}>
+            <ArrowLeft class="pagination__icon" />
+            <span>前へ</span>
+        </a>
 
-    <ol class="pagination__numbers">
-      {
-        pages.map((num) => (
-          <li>
-            {num === currentPage ? (
-              <span 
-                class="pagination__link _active" 
-                aria-current="page"
-                inert
-              >
-                {num}
-              </span>
-            ) : (
-              <a 
-                href={getPageUrl(num)} 
-                class="pagination__link"
-                aria-label={`${num}ページ目へ`}
-              >
-                {num}
-              </a>
-            )}
-          </li>
-        ))
-      }
-    </ol>
+        <ol class="pagination__numbers">
+            {
+                pages.map(num => (
+                    <li>
+                        {num === currentPage ? (
+                            <span class="pagination__link _active" aria-current="page" inert>
+                                {num}
+                            </span>
+                        ) : (
+                            <a href={getPageUrl(num)} class="pagination__link" aria-label={`${num}ページ目へ`}>
+                                {num}
+                            </a>
+                        )}
+                    </li>
+                ))
+            }
+        </ol>
 
-    <a 
-      href={hasNextPage ? getPageUrl(currentPage + 1) : undefined} 
-      class="pagination__next" 
-      aria-label="次のページへ"
-      inert={!hasNextPage}
-    >
-      <span>次へ</span>
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="pagination__icon">
-        <path d="m9 18 6-6-6-6"></path>
-      </svg>
-    </a>
-  </div>
+        <a href={hasNextPage ? getPageUrl(currentPage + 1) : undefined} class="pagination__next" aria-label="次のページへ" inert={!hasNextPage}>
+            <span>次へ</span>
+            <ArrowRight class="pagination__icon" />
+        </a>
+    </div>
 </nav>
 
 <style>
-  .pagination {
-    width: 100%;
-    margin-top: 3rem;
-  }
+    .pagination {
+        width: 100%;
+    }
 
-  .pagination__container {
-    display: grid;
-    grid-template-columns: minmax(80px, 1fr) auto minmax(80px, 1fr);
-    align-items: center;
-    max-width: 960px;
-    margin: 0 auto;
-    gap: 1rem;
-  }
+    .pagination__container {
+        display: grid;
+        grid-template-columns: minmax(80px, 1fr) auto minmax(80px, 1fr);
+        align-items: center;
+        max-width: 960px;
+        margin: 0 auto;
+        gap: 1rem;
+    }
 
-  .pagination__numbers {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.5rem;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
+    .pagination__numbers {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
 
-  .pagination__numbers li {
-    margin: 0;
-    padding: 0;
-  }
+    .pagination__numbers li {
+        margin: 0;
+        padding: 0;
+    }
 
-  .pagination__link,
-  .pagination__prev,
-  .pagination__next {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: var(--border-radius);
-    text-decoration: none;
-    color: var(--color-text);
-    background-color: var(--color-bg-alt);
-    transition: all 0.2s ease;
-  }
-
-  .pagination__link {
-    width: 2.5rem;
-    height: 2.5rem;
-    padding: 12px;
-  }
-
-  .pagination__link._active {
-    background-color: var(--color-primary);
-    color: var(--color-bg);
-    font-weight: bold;
-    transform: scale(1.05);
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
-    cursor: default;
-  }
-
-  .pagination__prev,
-  .pagination__next {
-    height: 2.5rem;
-    padding: 0 1rem;
-    gap: 0.5rem;
-  }
-
-  .pagination__prev {
-    justify-self: start;
-  }
-
-  .pagination__next {
-    justify-self: end;
-  }
-
-  .pagination__icon {
-    width: 16px;
-    height: 16px;
-  }
-
-  /* hover効果 */
-  .pagination__link:hover:not(._active),
-  .pagination__prev:hover:not([inert]),
-  .pagination__next:hover:not([inert]) {
-    background-color: var(--color-primary-light);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  }
-
-  /* フォーカス効果 */
-  .pagination__link:focus-visible,
-  .pagination__prev:focus-visible,
-  .pagination__next:focus-visible {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 2px;
-  }
-
-  /* inert要素のスタイル */
-  [inert] {
-    opacity: 0.5;
-    cursor: not-allowed;
-    background-color: var(--color-bg-alt);
-    color: var(--color-text-sub);
-  }
-
-  @media (prefers-reduced-motion: reduce) {
     .pagination__link,
     .pagination__prev,
     .pagination__next {
-      transition: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: var(--border-radius);
+        text-decoration: none;
+        color: var(--color-text);
+        background-color: var(--color-bg-alt);
+        transition: all 0.2s ease;
     }
-    
+
+    .pagination__link {
+        width: 2.5rem;
+        height: 2.5rem;
+        line-height: var(--leading-trim);
+    }
+
+    .pagination__link._active {
+        background-color: var(--color-primary);
+        color: var(--color-bg);
+        cursor: default;
+    }
+
+    .pagination__prev,
+    .pagination__next {
+        height: 2.5rem;
+        gap: 0.5rem;
+    }
+
+    .pagination__prev {
+        justify-self: start;
+    }
+
+    .pagination__next {
+        justify-self: end;
+    }
+
+    .pagination__icon {
+        width: 16px;
+        height: 16px;
+    }
+
+    /* hover効果 */
     .pagination__link:hover:not(._active),
     .pagination__prev:hover:not([inert]),
     .pagination__next:hover:not([inert]) {
-      transform: none;
-      box-shadow: none;
+        background-color: var(--color-primary-light);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
-  }
 
-  @media (max-width: 640px) {
-    .pagination__container {
-      grid-template-columns: 1fr 1fr;
-      grid-template-areas:
-        "prev next"
-        "numbers numbers";
-      gap: 1rem 0.5rem;
+    /* フォーカス効果 */
+    .pagination__link:focus-visible,
+    .pagination__prev:focus-visible,
+    .pagination__next:focus-visible {
+        outline: 2px solid var(--color-primary);
+        outline-offset: 2px;
     }
-    
-    .pagination__prev {
-      grid-area: prev;
+
+    /* inert要素のスタイル */
+    [inert] {
+        opacity: 0.5;
+        cursor: not-allowed;
+        background-color: var(--color-bg-alt);
+        color: var(--color-text-sub);
     }
-    
-    .pagination__next {
-      grid-area: next;
+
+    @media (prefers-reduced-motion: reduce) {
+        .pagination__link,
+        .pagination__prev,
+        .pagination__next {
+            transition: none;
+        }
+
+        .pagination__link:hover:not(._active),
+        .pagination__prev:hover:not([inert]),
+        .pagination__next:hover:not([inert]) {
+            transform: none;
+            box-shadow: none;
+        }
     }
-    
-    .pagination__numbers {
-      grid-area: numbers;
-      margin-top: 0.5rem;
+
+    @media (max-width: 640px) {
+        .pagination__container {
+            grid-template-columns: 1fr 1fr;
+            grid-template-areas:
+                'prev next'
+                'numbers numbers';
+            gap: 1rem 0.5rem;
+        }
+
+        .pagination__prev {
+            grid-area: prev;
+        }
+
+        .pagination__next {
+            grid-area: next;
+        }
+
+        .pagination__numbers {
+            grid-area: numbers;
+            margin-top: 0.5rem;
+        }
+
+        .pagination__link {
+            width: 2rem;
+            height: 2rem;
+        }
     }
-    
-    .pagination__link {
-      width: 2rem;
-      height: 2rem;
-    }
-  }
 </style>
