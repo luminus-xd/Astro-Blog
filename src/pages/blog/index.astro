@@ -4,7 +4,6 @@ import BaseBody from '@components/BaseBody.astro';
 import Header from '@components/Header.astro';
 import Footer from '@components/Footer.astro';
 import PublishedDate from '@components/PublishedDate.astro';
-import LikeCounter from '@components/LikeCounter.astro';
 
 // export const prerender = false;
 
@@ -145,7 +144,6 @@ const posts = await getList();
                                             <p>{post.description}</p>
                                         </hgroup>
                                         <div class="meta-field">
-                                            <LikeCounter id={post.id} />
                                             <PublishedDate date={post.publishedAt || post.createdAt} />
                                         </div>
                                     </a>

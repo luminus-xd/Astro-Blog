@@ -4,16 +4,14 @@
     "version": "0.0.1",
     "scripts": {
         "dev": "astro dev",
-        "dev-db": "astro dev --remote",
         "start": "astro dev",
-        "build": "astro check && astro build --remote",
+        "build": "astro check && astro build",
         "preview": "astro preview",
         "astro": "astro",
         "format": "prettier --write ."
     },
     "dependencies": {
         "@astrojs/cloudflare": "12.3.1",
-        "@astrojs/db": "0.14.9",
         "astro-purgecss": "4.1.0",
         "cobe": "^0.6.3",
         "howler": "^2.2.4",

@@ -9,7 +9,6 @@ interface Props {
     image?: string;
 }
 
-import { ViewTransitions } from 'astro:transitions';
 import { SITE_TITLE } from '@consts';
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
@@ -27,14 +26,14 @@ const { title, description, image = '/images/top-ogp.png' } = Astro.props;
 <meta name="msapplication-TileColor" content="#282c34" />
 
 <!-- Preconnect -->
-<link rel="preconnect" href="https://images.microcms-assets.io" crossorigin />
+<link rel="preconnect" href="https://images.microcms-assets.io" crossorigin="anonymous" />
 
 <!-- Font preloads -->
-<link rel="preload" href="/fonts/inter/inter-v13-latin-500.woff2" as="font" type="font/woff2" crossorigin />
-<link rel="preload" href="/fonts/inter/inter-v13-latin-700.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href="/fonts/inter/inter-v13-latin-500.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
+<link rel="preload" href="/fonts/inter/inter-v13-latin-700.woff2" as="font" type="font/woff2" crossorigin="anonymous" />
 
 <!-- Canonical URL -->
-<link rel="canonical" href={canonicalURL} />
+<link rel="canonical" href={canonicalURL.toString()} />
 
 <!-- Primary Meta Tags -->
 <title>{title}</title>
@@ -44,26 +43,23 @@ const { title, description, image = '/images/top-ogp.png' } = Astro.props;
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
-<meta property="og:url" content={Astro.url} />
+<meta property="og:url" content={Astro.url.toString()} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content={new URL(image, Astro.url)} />
+<meta property="og:image" content={new URL(image, Astro.url).toString()} />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content={Astro.url} />
+<meta property="twitter:url" content={Astro.url.toString()} />
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={new URL(image, Astro.url)} />
+<meta property="twitter:image" content={new URL(image, Astro.url).toString()} />
 
 <!-- Sitemap -->
 <link rel="sitemap" href="/sitemap-0.xml" />
 
 <!-- Manifest -->
 <link rel="manifest" href="/manifest.webmanifest" crossorigin="use-credentials" />
-
-<!-- View Transitions -->
-<ViewTransitions />
 
 <script defer>
     (function () {

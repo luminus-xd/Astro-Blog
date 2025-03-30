@@ -8,8 +8,6 @@ import react from '@astrojs/react';
 import cloudflare from '@astrojs/cloudflare';
 import { SITE_URL, SITE_DESCRIPTION } from './src/consts';
 
-import db from "@astrojs/db";
-
 // https://astro.build/config
 export default defineConfig({
   output: "server",
@@ -107,5 +105,5 @@ export default defineConfig({
         }
       }]
     }
-  }), purgecss(), sitemap(), db()]
+  }), purgecss(), sitemap()]
 });

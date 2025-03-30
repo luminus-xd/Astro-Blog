@@ -9,7 +9,7 @@ import { SITE_AUTHOR } from '@consts';
 
 type Props = Article;
 
-const { title, description, content, thumbnail, tags, writer, tocVisible, updatedAt, publishedAt } = Astro.props;
+const { title, description, thumbnail, updatedAt, publishedAt } = Astro.props;
 
 const schema = JSON.stringify({
     '@context': 'https://schema.org',
@@ -31,7 +31,7 @@ const schema = JSON.stringify({
 <html lang="ja">
     <head>
         <BaseHead title={title} description={description} image={thumbnail?.url} />
-        <script type="application/ld+json" set:html={schema} />
+        <script type="application/ld+json">{schema}</script>
         <style>
             .blog-detail {
                 width: 100%;
