@@ -47,6 +47,8 @@
     --gradient-primary-blue: linear-gradient(60deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
     --gradient-primary-blue-2: linear-gradient(60deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
     --font-family-primary: Inter, GenJyuuGothic, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', YuGothic, 'ヒラギノ角ゴ ProN W3', Hiragino Kaku Gothic ProN, Arial, 'メイリオ', sans-serif;
+
+    --leading-trim: calc((1em - 1lh) / 2);
 }
 
 @media (prefers-color-scheme: dark) {
